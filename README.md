@@ -28,7 +28,7 @@ another along a predefined series of static waypoints.
 enable ssh and wifi in the Raspberry Pi imager.
 
 2. Ssh into your Raspberry Pi and update the OS using `sudo apt update && sudo
-apt upgrade`.
+apt upgrade -y`.
 
 3. Install git using `sudo apt install git` so that we can clone this software
 project through git.
