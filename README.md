@@ -10,12 +10,12 @@ waypoints.
 
 ## Hardware Requirements
 
-- A Raspberry Pi 5 (16GB)
+- Raspberry Pi 5 (16GB)
 
-- A Raspberry Pi 5 charger (CanaKit 45W USB-C Power Supply with PD for Raspberry
+- Raspberry Pi 5 charger (CanaKit 45W USB-C Power Supply with PD for Raspberry
   Pi 5 (27W @ 5A))
 
-- A GPS Dongle (VK-162 G-Mouse USB GPS Dongle Navigation Module External GPS
+- GPS Dongle (VK-162 G-Mouse USB GPS Dongle Navigation Module External GPS
   Antenna Remote Mount USB GPS Receiver for Raspberry Pi Support Google Earth
   Window Linux Geekstory)
 
