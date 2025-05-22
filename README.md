@@ -41,4 +41,4 @@ https://github.com/kimsh02/awns-rpi5.git`.
 6. Go into the project directory with `cd awns-rpi5`.
 
 7. Run `./install-docker.sh`. This will install docker as this is a docker
-container project.
+project.
