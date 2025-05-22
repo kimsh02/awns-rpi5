@@ -35,7 +35,10 @@ project through git.
 
 4. Install the GPS driver using `sudo apt install gpsd`.
 
-. Clone this project using `git clone https://github.com/kimsh02/awns-rpi5.git`
-and then go into the project directory.
-. Run `./install-docker.sh`. This will install docker as this is a docker
+5. Clone this project using `git clone
+https://github.com/kimsh02/awns-rpi5.git`.
+
+6. Go into the project directory with `cd awns-rpi5`.
+
+7. Run `./install-docker.sh`. This will install docker as this is a docker
 container project.
