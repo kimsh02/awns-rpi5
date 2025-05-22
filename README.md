@@ -3,10 +3,11 @@
 
 ## About
 
-This software project enables autonomous waypoint navigation for a mobile
-platform using a Raspberry Pi 5. The system will use GPS data to guide the
-platform from one location to another along a predefined series of static
-waypoints.
+- This software project enables autonomous waypoint navigation for a mobile
+platform using a Raspberry Pi 5.
+
+- The system will use GPS data to guide the platform from one location to
+another along a predefined series of static waypoints.
 
 ## Hardware Requirements
 
