@@ -20,6 +20,8 @@ another along a predefined series of static waypoints.
   Antenna Remote Mount USB GPS Receiver for Raspberry Pi Support Google Earth
   Window Linux Geekstory)
 
+- A flash drive (8GB+)
+
 ## Installation
 
 1. Flash Raspberry Pi OS Lite (64-bit) onto your Raspberry Pi 5. Make sure to
