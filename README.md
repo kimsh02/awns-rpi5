@@ -1,1 +1,1 @@
-# Autonomous Waypoint Navigation System for Raspberry Pi 5
+# Autonomous Waypoint Navigation System for Raspberry Pi 5 (awns-rpi5)
