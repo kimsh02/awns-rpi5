@@ -24,21 +24,24 @@ another along a predefined series of static waypoints.
 
 ## Installation
 
+1. Plug charger and GPS dongle into your Raspberry Pi
+
 1. Flash Raspberry Pi OS Lite (64-bit) onto your Raspberry Pi 5. Make sure to
 enable ssh and wifi in the Raspberry Pi imager.
 
-2. Ssh into your Raspberry Pi and update the OS using `sudo apt update && sudo
+1. Ssh into your Raspberry Pi and update the OS using `sudo apt update && sudo
 apt upgrade -y`.
 
-3. Install git using `sudo apt install git` so that we can clone this software
+1. Install git using `sudo apt install git` so that we can clone this software
 project through git.
 
-4. Install the GPS driver using `sudo apt install gpsd`.
-
-5. Clone this project using `git clone
+1. Clone this project using `git clone
 https://github.com/kimsh02/awns-rpi5.git`.
 
-6. Go into the project directory with `cd awns-rpi5`.
+1. Go into the project directory with `cd awns-rpi5`.
 
-7. Run `./install-docker.sh`. This will install docker as this is a docker
+1. Run `./install-docker.sh`. This will install docker as this is a docker
 project.
+
+1. Run `./install-gpsd.sh`. This will install the GPS drivers (Optional: Test
+connection to the GPS dongle with `cgps`).
