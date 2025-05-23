@@ -43,5 +43,5 @@ https://github.com/kimsh02/awns-rpi5.git`.
 1. Run `./install-docker.sh`. This will install docker as this is a docker
 project.
 
-1. Run `./install-gpsd.sh`. This will install the GPS drivers (Optional: Test
-connection to the GPS dongle with `cgps`).
+1. Run `./install-gpsd.sh`. This will install and setup the GPS drivers
+(Optional: Test connection to the GPS dongle with `cgps`).
