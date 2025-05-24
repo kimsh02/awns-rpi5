@@ -40,6 +40,5 @@ https://github.com/kimsh02/awns-rpi5.git`.
 
 1. Go into the project directory with `cd awns-rpi5`.
 
-1. Run `./install-tools.sh`. This will install and set up the GPS drivers as
-well as additional tools used in the build (Optional: Test connection to the GPS
-dongle with `cgps` after the script is finished running).
+1. Run `./install.sh`. This will install and setup the necessary tools, and then
+build and install the executable to the system.
