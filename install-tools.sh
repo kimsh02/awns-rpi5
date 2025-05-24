@@ -1,4 +1,4 @@
-# Install CMake
+# Install CMake to build project
 sudo apt install cmake -y
 
 # Install and set up GPS drivers
