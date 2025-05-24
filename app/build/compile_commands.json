@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/Users/kimsh/Downloads/jobs/last-semester/awns-rpi5/app/build",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++  -I/Users/kimsh/Downloads/jobs/last-semester/awns-rpi5/app -Wall -Wextra -pedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -fno-optimize-sibling-calls -g  -std=gnu++23 -arch arm64 -o CMakeFiles/awns-rpi5.dir/main.cpp.o -c /Users/kimsh/Downloads/jobs/last-semester/awns-rpi5/app/main.cpp",
+  "file": "/Users/kimsh/Downloads/jobs/last-semester/awns-rpi5/app/main.cpp",
+  "output": "CMakeFiles/awns-rpi5.dir/main.cpp.o"
+}
+]

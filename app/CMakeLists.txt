@@ -20,22 +20,22 @@ elseif (CMAKE_BUILD_TYPE STREQUAL "release")
   set(CMAKE_CXX_FLAGS "${COMPILER_FLAGS} ${OPTIMIZATION_FLAGS} ${IGNORE_ERROR_FLAGS}")
 endif()
 
-# option(ENABLE_COVERAGE "Enable coverage reporting" OFF)
-# if (ENABLE_COVERAGE)
-#   message(STATUS "Building with coverage flags...")
-#   add_compile_options(-fprofile-instr-generate -fcoverage-mapping)
+option(ENABLE_COVERAGE "Enable coverage reporting" OFF)
+if (ENABLE_COVERAGE)
+  message(STATUS "Building with coverage flags...")
+  add_compile_options(-fprofile-instr-generate -fcoverage-mapping)
 
-#   # Detect and link the correct `clang_rt.profile` library for the system
-#   if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")  # macOS
-#     set(COVERAGE_LIB "-lclang_rt.profile_osx")
-#   elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")  # Linux
-#     set(COVERAGE_LIB "-lclang_rt.profile")
-#   else()
-#     message(WARNING "Unknown system, trying generic coverage library")
-#     set(COVERAGE_LIB "-lclang_rt.profile")
-#   endif()
-#   add_link_options(${COVERAGE_LIB})
-# endif()
+  # Detect and link the correct `clang_rt.profile` library for the system
+  if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")  # macOS
+    set(COVERAGE_LIB "-lclang_rt.profile_osx")
+  elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")  # Linux
+    set(COVERAGE_LIB "-lclang_rt.profile")
+  else()
+    message(WARNING "Unknown system, trying generic coverage library")
+    set(COVERAGE_LIB "-lclang_rt.profile")
+  endif()
+  add_link_options(${COVERAGE_LIB})
+endif()
 
 # Headers
 include_directories(${CMAKE_SOURCE_DIR})
