@@ -1,3 +1,6 @@
+# This is the CMake file specifying compiler options for development and release
+# executables.
+
 CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
 project(awns-rpi5)
 
