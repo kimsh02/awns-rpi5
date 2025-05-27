@@ -25,7 +25,7 @@ another along a predefined series of static waypoints.
 
 ## Installation
 
-1. Plug charger and GPS dongle into your Raspberry Pi
+1. Plug charger and GPS dongle into your Raspberry Pi.
 
 1. Flash Raspberry Pi OS Lite (64-bit) onto your Raspberry Pi 5. Make sure to
 enable ssh and wifi in the Raspberry Pi imager.
