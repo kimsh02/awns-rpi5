@@ -3,7 +3,7 @@
 
 ## About
 
-- This software project enables autonomous waypoint navigation for a mobile
+- This software program enables autonomous waypoint navigation for a mobile
 platform using a Raspberry Pi 5.
 
 - The system will use GPS data to guide the platform from one location to
@@ -42,3 +42,7 @@ https://github.com/kimsh02/awns-rpi5.git`.
 
 1. Run `./install.sh`. This will install and setup the necessary tools, and then
 build and install the executable to the system.
+
+## Usage
+
+- You can now invoke the program with the command `awns-rpi5`.
