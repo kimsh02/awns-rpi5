@@ -8,6 +8,7 @@ sudo systemctl disable gpsd.socket
 sudo gpsd /dev/ttyACM0 -F /var/run/gpsd.sock
 sudo systemctl enable gpsd.socket
 sudo systemctl start  gpsd.socket
+sudo gpsd -G /dev/ttyACM0 -F /var/run/gpsd.sock
 
 # Go into build directory
 cd app/build/
