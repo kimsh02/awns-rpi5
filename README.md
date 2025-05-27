@@ -45,4 +45,4 @@ build and install the executable to the system.
 
 ## Usage
 
-- You can now invoke the program with the command `awns-rpi5`.
+- You should now be able to invoke the program with the command `awns-rpi5`.
