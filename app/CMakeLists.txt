@@ -54,14 +54,14 @@ add_executable(awns-rpi5 ${SOURCES_CPP} ${SOURCES_C})
 # add_executable(awns-rpi5 ${SOURCES_CPP})
 
 # Ignore certain warnings in order to use libraries
-target_compile_options(awns-rpi5 PRIVATE
-  -Wno-nested-anon-types
-  -Wno-error=nested-anon-types
-)
+# target_compile_options(awns-rpi5 PRIVATE
+#   -Wno-nested-anon-types
+#   -Wno-error=nested-anon-types
+# )
 
 # Link libgps using pkg-config
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(GPS REQUIRED libgps)
 
-target_include_directories(awns-rpi5 PRIVATE ${GPS_INCLUDE_DIRS})
+target_include_directories(awns-rpi5 SYSTEM PRIVATE ${GPS_INCLUDE_DIRS})
 target_link_libraries(awns-rpi5 PRIVATE ${GPS_LDFLAGS})
