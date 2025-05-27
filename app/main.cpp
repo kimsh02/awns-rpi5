@@ -9,7 +9,6 @@ extern "C" {
 int main()
 {
 	gps_data_t gps_data{};
-	// connect over the UNIX socket
 	if (gps_open(nullptr, nullptr, &gps_data) != 0) {
 		std::cerr << "gps_open failed: " << gps_errstr(errno) << "\n";
 		return EXIT_FAILURE;
