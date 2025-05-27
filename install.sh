@@ -3,9 +3,9 @@ sudo apt install cmake -y
 
 # Install and set up GPS drivers/libraries
 sudo apt install gpsd gpsd-clients libgps-dev -y
-sudo systemctl stop gpsd.socket
-sudo systemctl disable gpsd.socket
-sudo gpsd /dev/ttyACM0 -F /var/run/gpsd.sock
+# sudo systemctl stop gpsd.socket
+# sudo systemctl disable gpsd.socket
+# sudo gpsd /dev/ttyACM0 -F /var/run/gpsd.sock
 
 # Go into build directory
 cd app/build/
