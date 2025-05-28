@@ -82,7 +82,8 @@ std::optional<GPSFix> GPSClient::readFix(int timeout_us)
 				       data_.fix.latitude };
 		}
 	}
-	/* Either timeout has expired and no data has arrived (for whatever
-	   reason), or another error has occured such as the socket closing */
+	/* Either timeout has expired and no data/not enough data has arrived
+	   (for whatever reason), or another error has occured such as the
+	   socket closing */
 	return std::nullopt;
 }
