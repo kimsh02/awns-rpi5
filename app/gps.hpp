@@ -22,7 +22,7 @@ class GPSClient {
 
 	/* GPS Dongle polling rate is 1 Hz, so set timeout_us to 1.2 seconds to
 	   allow for any jitters or delays */
-	std::optional<GPSFix> readFix(int timeout_us = 1200000);
+	std::optional<GPSFix> readFix(int timeout_us = 5000000);
 
     private:
 	gps_data_t  data_;
