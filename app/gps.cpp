@@ -75,11 +75,11 @@ std::optional<GPSFix> GPSClient::readFix(int timeout_us)
 				  << "\n";
 			return std::nullopt;
 		}
-		/* If GPS at least sends longitude and latitude (and maybe not
+		/* If GPS at least sends latitude and longitude (and maybe not
 		   altitude), return GPSFix struct */
 		if (data_.fix.mode >= MODE_2D) {
-			return GPSFix{ data_.fix.longitude,
-				       data_.fix.latitude };
+			return GPSFix{ data_.fix.latitude,
+				       data_.fix.longitude };
 		}
 	}
 	/* Either timeout has expired and no data/not enough data has arrived
