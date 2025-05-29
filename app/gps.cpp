@@ -71,6 +71,7 @@ std::optional<GPSFix> GPSClient::readFix(void)
 		timespec t	= data_.fix.time;
 		double	 fix_ts = t.tv_sec + t.tv_nsec * 1e-9;
 		if (fix_ts <= last_ts_) {
+			std::cout << fix_ts << " " << last_ts_ << "\n";
 			return std::nullopt;
 		}
 		last_ts_ = fix_ts;
