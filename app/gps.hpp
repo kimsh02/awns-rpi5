@@ -13,10 +13,10 @@ struct GPSFix {
 
 class GPSClient {
     public:
-	/* Default timeout for GPS polling set to 1 second */
+	/* Default timeout for GPS polling set to 1.2 seconds */
 	/* Default number of tries to get 2D fix from GPS set to 5 tries */
 	GPSClient(const char *host = nullptr, const char *port = nullptr,
-		  int timeout_us = 1000000, int max_tries = 5) noexcept;
+		  int timeout_us = 1200000, int max_tries = 5) noexcept;
 	~GPSClient(void) noexcept;
 
 	bool connect(void);
