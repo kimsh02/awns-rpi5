@@ -22,7 +22,7 @@ bool Navigator::readCSV(void)
 	/* Catch invalid file path */
 	file.open(csv_path_);
 	if (!file) {
-		std::cerr << "Error opening file '" << csv_path_ << "'\n";
+		std::cerr << "Error opening file '" << csv_path_ << "'.\n";
 		return false;
 	}
 	std::string line;

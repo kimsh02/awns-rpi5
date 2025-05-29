@@ -2,6 +2,7 @@
 
 #include <cerrno>
 #include <chrono>
+#include <cmath>
 #include <cstring>
 #include <iostream>
 #include <optional>
@@ -75,7 +76,8 @@ std::optional<GPSFix> GPSClient::readFix(void)
 		}
 		/* If GPS reports at least latitude and longitude (and maybe not
 		   altitude), return GPSFix struct */
-		if (data_.fix.mode >= MODE_2D) {
+		if (data_.fix.mode >= MODE_2D &&
+		    std::isfinite(data_.fix.track)) {
 			return GPSFix{ data_.fix.latitude,
 				       data_.fix.longitude,
 				       data_.fix.track };
