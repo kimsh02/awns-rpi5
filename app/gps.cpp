@@ -1,9 +1,11 @@
 #include "gps.hpp"
 
 #include <cerrno>
+#include <chrono>
 #include <cstring>
 #include <iostream>
 #include <optional>
+#include <thread>
 
 /* Constructor */
 GPSClient::GPSClient(const char *host, const char *port, int timeout_us,
@@ -94,6 +96,7 @@ std::optional<GPSFix> GPSClient::waitReadFix(void)
 	int tries = max_tries_;
 	/* Try to get GPS fix */
 	while (tries) {
+		std::this_thread::sleep_for(std::chrono::microseconds(1000000));
 		auto optFix{ readFix() };
 		if (optFix) {
 			/* If we get 2D fix, then return fix */
