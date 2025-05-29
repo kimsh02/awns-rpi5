@@ -76,16 +76,27 @@ bool Navigator::readCSV(void)
 			std::cout << "Testing GPS connection.\n";
 			gps.connect();
 			gps.startStream();
-			auto optFix{ gps.waitReadFix() };
-			/* If a fix was received, print and break */
-			if (optFix) {
-				logWaypoint(*optFix);
-				std::cout << "GPS connection successful.\n\n";
+
+			/* Poll GPS 5 times to ensure connection */
+			bool connected = false;
+			for (size_t i = 0; i < 5; i++) {
+				auto optFix{ gps.waitReadFix() };
+				logWaypoint(optFix ? *optFix :
+						     GPSFix{ 0, 0, 0 });
+				/* Check that last poll gives a fix */
+				if (i == 4 && optFix) {
+					std::cout
+						<< "GPS connection successful.\n\n";
+					connected = true;
+				}
+			}
+			/* If GPS connection test was successful, proceed */
+			if (connected) {
 				break;
 			}
-			/* Else, ask user whether to retry */
+			/* Else, ask user whether to retry connection */
 			std::cout
-				<< "GPS connection failed. A few attempts may be necessary if device was recently booted up. Press enter to retry.";
+				<< "GPS connection failed. Press enter to retry.";
 			std::string dummy{};
 			std::getline(std::cin, dummy);
 			std::cout << "\n";
