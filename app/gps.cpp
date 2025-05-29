@@ -76,8 +76,7 @@ std::optional<GPSFix> GPSClient::readFix(void)
 		}
 		/* If GPS reports at least latitude and longitude (and maybe not
 		   altitude), return GPSFix struct */
-		if (data_.fix.mode >= MODE_2D &&
-		    std::isfinite(data_.fix.track)) {
+		if (data_.fix.mode >= MODE_2D) {
 			return GPSFix{ data_.fix.latitude,
 				       data_.fix.longitude,
 				       data_.fix.track };
