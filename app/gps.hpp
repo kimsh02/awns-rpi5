@@ -20,11 +20,18 @@ class GPSClient {
 	void startStream(void);
 	void stopStream(void);
 
-	std::optional<GPSFix> readFix(int timeout_us = 5000000);
+	std::optional<GPSFix> waitReadFix(void);
 
     private:
+	/* Set timeout for GPS polling to 5 seconds */
+	static constexpr int timeout_us_ = 5000000;
+	/* Number of tries to get 2D fix reading from GPS */
+	static constexpr int max_tries_ = 5;
+
 	gps_data_t  data_;
 	const char *host_;
 	const char *port_;
 	bool	    connected_;
+
+	std::optional<GPSFix> readFix(void);
 };

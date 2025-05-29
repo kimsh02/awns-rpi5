@@ -59,15 +59,11 @@ void GPSClient::stopStream(void)
 }
 
 /* Fix-reading with appropriate error handling */
-std::optional<GPSFix> GPSClient::readFix(int timeout_us)
+std::optional<GPSFix> GPSClient::readFix(void)
 {
-	/* If GPSClient is not connected, return nullopt */
-	if (!connected_)
-		return std::nullopt;
-
 	/* Poll GPS daemon's socket for data */
-	if (gps_waiting(&data_, timeout_us)) {
-		/* Read GPS data into data_ */
+	if (gps_waiting(&data_, timeout_us_)) {
+		/* Read GPS data into data_ struct */
 		if (gps_read(&data_, nullptr, 0) < 0) {
 			/* If gps_read() returns less than 0, report error and
 			   return nullopt */
@@ -75,7 +71,7 @@ std::optional<GPSFix> GPSClient::readFix(int timeout_us)
 				  << "\n";
 			return std::nullopt;
 		}
-		/* If GPS at least sends latitude and longitude (and maybe not
+		/* If GPS reports at least latitude and longitude (and maybe not
 		   altitude), return GPSFix struct */
 		if (data_.fix.mode >= MODE_2D) {
 			return GPSFix{ data_.fix.latitude,
@@ -85,5 +81,24 @@ std::optional<GPSFix> GPSClient::readFix(int timeout_us)
 	/* Either timeout has expired and no data/not enough data has arrived
 	   (for whatever reason), or another error has occured such as the
 	   socket closing */
+	return std::nullopt;
+}
+
+/* Wrapper for readFix(), attemps to get 2D fix reading */
+std::optional<GPSFix> GPSClient::waitReadFix(void)
+{
+	/* If GPSClient is not connected, return nullopt */
+	if (!connected_)
+		return std::nullopt;
+
+	int tries = max_tries_;
+	/* Try to get GPS fix */
+	while (tries) {
+		auto optFix{ readFix() };
+		if (optFix) {
+			return optFix;
+		}
+		tries--;
+	}
 	return std::nullopt;
 }
