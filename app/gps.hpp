@@ -32,6 +32,7 @@ class GPSClient {
 	bool	    connected_;
 	const int   timeout_us_;
 	const int   max_tries_;
+	double	    last_ts_;
 
 	std::optional<GPSFix> readFix(void);
 };

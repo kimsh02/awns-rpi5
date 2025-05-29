@@ -2,8 +2,8 @@
 
 #include <cerrno>
 #include <chrono>
-#include <cmath>
 #include <cstring>
+#include <ctime>
 #include <iostream>
 #include <optional>
 #include <thread>
@@ -14,7 +14,8 @@ GPSClient::GPSClient(const char *host, const char *port, int timeout_us,
 					       port_{ port },
 					       connected_{ false },
 					       timeout_us_{ timeout_us },
-					       max_tries_{ max_tries }
+					       max_tries_{ max_tries },
+					       last_ts_{ 0 }
 {
 	/* Allocates memory for gps_data_t data_ */
 	std::memset(&data_, 0, sizeof(data_));
@@ -66,6 +67,13 @@ std::optional<GPSFix> GPSClient::readFix(void)
 {
 	/* Poll GPS daemon's socket for data */
 	if (gps_waiting(&data_, timeout_us_)) {
+		/* Check for fresh fix */
+		timespec t	= data_.fix.time;
+		double	 fix_ts = t.tv_sec + t.tv_nsec * 1e-9;
+		if (fix_ts <= last_ts_) {
+			return std::nullopt;
+		}
+		last_ts_ = fix_ts;
 		/* Read GPS data into data_ struct */
 		if (gps_read(&data_, nullptr, 0) < 0) {
 			/* If gps_read() returns less than 0, report error and
