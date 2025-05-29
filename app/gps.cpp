@@ -67,14 +67,6 @@ std::optional<GPSFix> GPSClient::readFix(void)
 {
 	/* Poll GPS daemon's socket for data */
 	if (gps_waiting(&data_, timeout_us_)) {
-		/* Check for fresh fix */
-		timespec t	= data_.fix.time;
-		double	 fix_ts = t.tv_sec + t.tv_nsec * 1e-9;
-		if (fix_ts <= last_ts_) {
-			std::cout << fix_ts << " " << last_ts_ << "\n";
-			return std::nullopt;
-		}
-		last_ts_ = fix_ts;
 		/* Read GPS data into data_ struct */
 		if (gps_read(&data_, nullptr, 0) < 0) {
 			/* If gps_read() returns less than 0, report error and
@@ -83,6 +75,15 @@ std::optional<GPSFix> GPSClient::readFix(void)
 				  << "\n";
 			return std::nullopt;
 		}
+		/* Check for fresh fix */
+		timespec t	= data_.fix.time;
+		double	 fix_ts = t.tv_sec + t.tv_nsec * 1e-9;
+		/* If stale fix, return nullopt */
+		if (fix_ts <= last_ts_) {
+			std::cout << fix_ts << " " << last_ts_ << "\n";
+			return std::nullopt;
+		}
+		last_ts_ = fix_ts;
 		/* If GPS reports at least latitude and longitude (and maybe not
 		   altitude), return GPSFix struct */
 		if (data_.fix.mode >= MODE_2D) {
