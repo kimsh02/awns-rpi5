@@ -81,6 +81,7 @@ bool Navigator::readCSV(void)
 			bool connected = false;
 			for (size_t i = 0; i < 5; i++) {
 				auto optFix{ gps.waitReadFix() };
+				std::cout << "(" << i + 1 << "/5) ";
 				logWaypoint(optFix ? *optFix :
 						     GPSFix{ 0, 0, 0 });
 				/* Check that last poll gives a fix */
