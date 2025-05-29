@@ -85,7 +85,7 @@ bool Navigator::readCSV(void)
 			}
 			/* Else, ask user whether to retry */
 			std::cout
-				<< "GPS connection failed. Press enter to retry.";
+				<< "GPS connection failed. A few attempts may be necessary if device was recently booted up. Press enter to retry.";
 			std::string dummy{};
 			std::getline(std::cin, dummy);
 			std::cout << "\n";
