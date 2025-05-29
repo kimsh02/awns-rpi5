@@ -96,6 +96,7 @@ std::optional<GPSFix> GPSClient::waitReadFix(void)
 	int tries = max_tries_;
 	/* Try to get GPS fix */
 	while (tries) {
+		/* Try to get 2D fix every 1 second */
 		std::this_thread::sleep_for(std::chrono::microseconds(1000000));
 		auto optFix{ readFix() };
 		if (optFix) {
