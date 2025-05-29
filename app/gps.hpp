@@ -23,8 +23,8 @@ class GPSClient {
 	std::optional<GPSFix> waitReadFix(void);
 
     private:
-	/* Set timeout for GPS polling to 5 seconds */
-	static constexpr int timeout_us_ = 5000000;
+	/* Set timeout for GPS polling to 1.2 seconds */
+	static constexpr int timeout_us_ = 1200000;
 	/* Number of tries to get 2D fix reading from GPS */
 	static constexpr int max_tries_ = 5;
 
