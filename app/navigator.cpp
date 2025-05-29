@@ -80,6 +80,7 @@ bool Navigator::readCSV(void)
 			/* If a fix was received, print and break */
 			if (optFix) {
 				logWaypoint(*optFix);
+				std::cout << "GPS connection successfull.\n\n";
 				break;
 			}
 			/* Else, ask user whether to retry */
