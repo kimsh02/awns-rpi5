@@ -77,7 +77,8 @@ std::optional<GPSFix> GPSClient::readFix(void)
 		   altitude), return GPSFix struct */
 		if (data_.fix.mode >= MODE_2D) {
 			return GPSFix{ data_.fix.latitude,
-				       data_.fix.longitude };
+				       data_.fix.longitude,
+				       data_.fix.track };
 		}
 	}
 	/* Either timeout has expired and no data/not enough data has arrived

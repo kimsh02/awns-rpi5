@@ -8,6 +8,7 @@ extern "C" {
 struct GPSFix {
 	const double latitude;
 	const double longitude;
+	const double heading;
 };
 
 class GPSClient {

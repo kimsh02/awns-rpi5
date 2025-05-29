@@ -2,20 +2,11 @@ extern "C" {
 #include <gps.h>
 }
 
-#include <iostream>
-
-#include "gps.hpp"
+#include "navigator.hpp"
 
 int main()
 {
-	GPSClient gps{};
-	gps.connect();
-	gps.startStream();
-
-	GPSFix fix = gps.waitReadFix().value_or(GPSFix{ 0, 0 });
-	std::cout << "Lat: " << fix.latitude << ", Lon: " << fix.longitude
-		  << "\n";
-
-	gps.stopStream();
-	return 0;
+	/* Instantiate and run navigator */
+	Navigator nav{};
+	nav.run();
 }
