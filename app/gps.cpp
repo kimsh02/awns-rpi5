@@ -1,17 +1,17 @@
 #include "gps.hpp"
 
-#include <gps.h>
-
 #include <cerrno>
 #include <cstring>
 #include <iostream>
 #include <optional>
 
 /* Constructor */
-GPSClient::GPSClient(const char *host, const char *port) noexcept
-	: host_(host),
-	  port_(port),
-	  connected_(false)
+GPSClient::GPSClient(const char *host, const char *port, int timeout_us,
+		     int max_tries) noexcept : host_{ host },
+					       port_{ port },
+					       connected_{ false },
+					       timeout_us_{ timeout_us },
+					       max_tries_{ max_tries }
 {
 	/* Allocates memory for gps_data_t data_ */
 	std::memset(&data_, 0, sizeof(data_));
