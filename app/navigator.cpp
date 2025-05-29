@@ -76,6 +76,9 @@ bool Navigator::readCSV(void)
 	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
 	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
 	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
+	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
+	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
+	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
 
 	gps.stopStream();
 
