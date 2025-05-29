@@ -69,38 +69,26 @@ bool Navigator::readCSV(void)
 /* Hot loop to run navigation system */
 [[noreturn]] void Navigator::run(void)
 {
-	GPSClient gps{};
-	gps.connect();
-	gps.startStream();
-
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
-
-	gps.stopStream();
-
 	while (true) {
+		GPSClient gps{};
+		/* Test GPS connection */
+		while (true) {
+			std::cout << "Testing GPS connection.\n";
+			gps.connect();
+			gps.startStream();
+			auto optFix{ gps.waitReadFix() };
+			/* If a fix was received, print and break */
+			if (optFix) {
+				logWaypoint(*optFix);
+				break;
+			}
+			/* Else, ask user whether to retry */
+			std::cout
+				<< "GPS connection failed. Press enter to retry.";
+			std::string dummy{};
+			std::getline(std::cin, dummy);
+			std::cout << "\n";
+		}
 		/* Enter waypoint CSV path */
 		while (true) {
 			std::cout << "Enter waypoint CSV path: ";
@@ -109,7 +97,9 @@ bool Navigator::readCSV(void)
 				break;
 			}
 		}
+
 		/* Placeholder */
+		gps.stopStream();
 		std::exit(0);
 	}
 }
