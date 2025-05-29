@@ -12,7 +12,7 @@
 void Navigator::logWaypoint(GPSFix fix) noexcept
 {
 	std::cout << "Lat: " << fix.latitude << ", Lon: " << fix.longitude
-		  << "\n";
+		  << ", Heading: " << fix.heading << "\n";
 }
 
 /* Read CSV file for waypoints */
@@ -69,6 +69,16 @@ bool Navigator::readCSV(void)
 /* Hot loop to run navigation system */
 [[noreturn]] void Navigator::run(void)
 {
+	GPSClient gps{};
+	gps.connect();
+	gps.startStream();
+
+	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
+	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
+	logWaypoint(gps.waitReadFix().value_or(GPSFix{ 0, 0, 0 }));
+
+	gps.stopStream();
+
 	while (true) {
 		/* Enter waypoint CSV path */
 		while (true) {
