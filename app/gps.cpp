@@ -96,9 +96,11 @@ std::optional<GPSFix> GPSClient::waitReadFix(void)
 	while (tries) {
 		auto optFix{ readFix() };
 		if (optFix) {
+			/* If we get 2D fix, then return fix */
 			return optFix;
 		}
 		tries--;
 	}
+	/* If we don't get any 2D fix max_tries_, return nullopt */
 	return std::nullopt;
 }
