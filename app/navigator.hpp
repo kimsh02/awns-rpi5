@@ -15,7 +15,7 @@ class Navigator {
 	std::string	    csv_path_;
 	std::vector<GPSFix> waypoints_;
 
-	void logWaypoint(GPSFix) noexcept;
+	void logFix(GPSFix) noexcept;
 	bool readCSV(void);
 	void bestPath(void) noexcept;
 	void retryPrompt(const char *) noexcept;

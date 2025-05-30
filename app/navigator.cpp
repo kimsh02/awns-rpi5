@@ -10,10 +10,11 @@
 #include "gps.hpp"
 
 /* Log waypoint method to print waypoints to stdout */
-void Navigator::logWaypoint(GPSFix fix) noexcept
+void Navigator::logFix(GPSFix fix) noexcept
 {
-	std::cout << "Lat: " << fix.latitude << ", Lon: " << fix.longitude
-		  << ", Heading: " << fix.heading << "\n";
+	std::cout << "[Latitude: " << fix.latitude
+		  << ", Longitude: " << fix.longitude
+		  << ", Bearing: " << fix.heading << "]\n";
 }
 
 /* Read CSV file for waypoints */
@@ -51,7 +52,17 @@ bool Navigator::readCSV(void)
 			continue;
 		}
 		try {
-			waypoints_.emplace_back(std::stod(lat), std::stod(lon));
+			/* Add waypoint to waypoints_ */
+			waypoints_.emplace_back(
+				std::stod(lat),
+				std::stod(lon),
+				std::numeric_limits<double>::quiet_NaN());
+			/* Print waypoint that was loaded */
+			std::cout << "Loaded waypoint ";
+			logFix(GPSFix{
+				std::stod(lat),
+				std::stod(lon),
+				std::numeric_limits<double>::quiet_NaN() });
 		} catch (const std::exception &) {
 			/* Catch malformed numbers */
 			std::cerr << "Error: Line " << lineNo
@@ -83,8 +94,7 @@ bool Navigator::readCSV(void)
 			for (size_t i = 0; i < 5; i++) {
 				auto optFix{ gps.waitReadFix() };
 				std::cout << "(" << i + 1 << "/5) ";
-				logWaypoint(optFix ? *optFix :
-						     GPSFix{ 0, 0, 0 });
+				logFix(optFix ? *optFix : GPSFix{ 0, 0, 0 });
 				/* Check that last poll gives a fix */
 				if (i == 4 && optFix) {
 					std::cout
@@ -126,13 +136,10 @@ void Navigator::retryPrompt(const char *message) noexcept
 {
 	std::cout << message << " Press Enter to retry.";
 	std::cout.flush();
-
-	// 1) Discard any leftover characters on the current line (including '\n'):
+	/* Discard any leftover characters on the current line (including '\n'): */
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-	// 2) Now wait for the user to press ENTER (blocks on the next '\n'):
+	/* Now wait for the user to press ENTER (blocks on the next '\n'): */
 	std::string dummy;
 	std::getline(std::cin, dummy);
-
 	std::cout << "\n";
 }
