@@ -106,6 +106,7 @@ bool Navigator::readCSV(void)
 		while (true) {
 			std::cout << "Enter waypoint CSV path: ";
 			std::cin >> csv_path_;
+			/* Read in waypoints from CSV */
 			if (readCSV()) {
 				break;
 			}
