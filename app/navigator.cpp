@@ -120,11 +120,13 @@ void Navigator::bestPath(void) noexcept
 {
 }
 
+/* Print helper asking user to retry an action */
 void Navigator::retryPrompt(const char *message) noexcept
 {
 	std::cout << message;
 	std::cout << " Press enter to retry.";
 	std::string dummy{};
-	std::getline(std::cin >> std::ws, dummy);
+	/* Discard any leftover characters up to the next newline */
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	std::cout << "\n";
 }
