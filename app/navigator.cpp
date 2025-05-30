@@ -60,7 +60,7 @@ bool Navigator::readCSV(void)
 				std::numeric_limits<double>::quiet_NaN());
 			numWaypoints++;
 			/* Print waypoint that was loaded */
-			std::cout << "Loaded ";
+			std::cout << "(" << numWaypoints << ") ";
 			logFix(GPSFix{
 				std::stod(lat),
 				std::stod(lon),
