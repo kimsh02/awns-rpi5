@@ -126,12 +126,13 @@ void Navigator::retryPrompt(const char *message) noexcept
 	std::cout << message;
 	std::cout << " Press enter to retry.";
 	std::cout.flush();
-	/* Swallow only '\n's that are still in the buffer */
+	/* Discard any leftover '\n's */
 	while (std::cin.peek() == '\n') {
 		std::cin.get();
 	}
-	std::string dummy{};
-	/* Discard any leftover characters up to the next newline */
-	std::getline(std::cin, dummy);
+	/* Block here until we see the next '\n' */
+	while (std::cin.get() != '\n') {
+		/*just keep reading (and discarding) until Enter */
+	}
 	std::cout << "\n";
 }
