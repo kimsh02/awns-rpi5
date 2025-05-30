@@ -3,7 +3,6 @@
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
-#include <limits>
 #include <sstream>
 #include <string>
 
@@ -133,6 +132,6 @@ void Navigator::retryPrompt(const char *message) noexcept
 	}
 	std::string dummy{};
 	/* Discard any leftover characters up to the next newline */
-	std::getline(std::cin, dummy);
+	std::getline(std::cin >> std::ws, dummy);
 	std::cout << "\n";
 }
