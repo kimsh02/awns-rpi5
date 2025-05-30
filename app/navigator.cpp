@@ -33,7 +33,7 @@ bool Navigator::readCSV(void)
 	   that order */
 	std::getline(file, line);
 	size_t lineNo	    = 0;
-	size_t numWaypoints = 1;
+	size_t numWaypoints = 0;
 	/* Read CSV */
 	while (std::getline(file, line)) {
 		lineNo++;
