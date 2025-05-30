@@ -17,7 +17,7 @@ void Navigator::logFix(GPSFix fix) noexcept
 		  << ", Bearing: " << fix.heading << "]\n";
 }
 
-/* Read CSV file for waypoints */
+/* Read CSV file to load in waypoints */
 bool Navigator::readCSV(void)
 {
 	std::ifstream file;
@@ -32,7 +32,8 @@ bool Navigator::readCSV(void)
 	/* Note: CSV must have a header labeling latitude and longitude and in
 	   that order */
 	std::getline(file, line);
-	size_t lineNo = 0;
+	size_t lineNo	    = 0;
+	size_t numWaypoints = 1;
 	/* Read CSV */
 	while (std::getline(file, line)) {
 		lineNo++;
@@ -57,8 +58,9 @@ bool Navigator::readCSV(void)
 				std::stod(lat),
 				std::stod(lon),
 				std::numeric_limits<double>::quiet_NaN());
+			numWaypoints++;
 			/* Print waypoint that was loaded */
-			std::cout << "Loaded waypoint ";
+			std::cout << "Loaded ";
 			logFix(GPSFix{
 				std::stod(lat),
 				std::stod(lon),
@@ -75,6 +77,8 @@ bool Navigator::readCSV(void)
 		std::cerr << "Error: Unable to add any waypoints.\n";
 		return false;
 	}
+	/* Else print number of waypoints and return true */
+	std::cout << numWaypoints << " waypoints loaded.\n\n";
 	return true;
 }
 
