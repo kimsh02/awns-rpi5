@@ -125,6 +125,6 @@ void Navigator::retryPrompt(const char *message) noexcept
 	std::cout << message;
 	std::cout << " Press enter to retry.";
 	std::string dummy{};
-	std::getline(std::cin, dummy);
+	std::getline(std::cin >> std::ws, dummy);
 	std::cout << "\n";
 }
