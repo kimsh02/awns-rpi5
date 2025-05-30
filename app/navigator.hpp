@@ -18,4 +18,5 @@ class Navigator {
 	void logWaypoint(GPSFix) noexcept;
 	bool readCSV(void);
 	void bestPath(void) noexcept;
+	void retryPrompt(const char *) noexcept;
 };

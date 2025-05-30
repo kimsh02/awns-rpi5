@@ -96,11 +96,7 @@ bool Navigator::readCSV(void)
 				break;
 			}
 			/* Else, ask user whether to retry connection */
-			std::cout
-				<< "GPS connection failed. Press enter to retry.";
-			std::string dummy{};
-			std::getline(std::cin, dummy);
-			std::cout << "\n";
+			retryPrompt("GPS connection failed.");
 		}
 		/* Enter waypoint CSV path */
 		while (true) {
@@ -110,6 +106,8 @@ bool Navigator::readCSV(void)
 			if (readCSV()) {
 				break;
 			}
+			/* If reading CSV failed, prompt user to retry */
+			retryPrompt("Reading CSV failed.");
 		}
 
 		/* Placeholder */
@@ -120,4 +118,13 @@ bool Navigator::readCSV(void)
 
 void Navigator::bestPath(void) noexcept
 {
+}
+
+void Navigator::retryPrompt(const char *message) noexcept
+{
+	std::cout << message;
+	std::cout << " Press enter to retry.";
+	std::string dummy{};
+	std::getline(std::cin, dummy);
+	std::cout << "\n";
 }
