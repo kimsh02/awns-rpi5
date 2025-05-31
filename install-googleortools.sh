@@ -10,12 +10,12 @@
 #   chmod +x install-googleortools.sh
 #   ./install-googleortools.sh
 #
-# This script re‐invokes itself under sudo if not already root.
+# This script re-invokes itself under sudo if not already root.
 #===============================================================================
 
 set -euo pipefail
 
-# Re‐exec under sudo if not root
+# Re-exec under sudo if not root
 if [[ "$EUID" -ne 0 ]]; then
   echo "Elevating privileges with sudo..."
   exec sudo bash "$0" "$@"
@@ -71,7 +71,7 @@ install_on_pi5() {
     libatlas-base-dev
     libabsl-dev       # Abseil C++ libraries
     libre2-dev        # RE2 regex library
-    # HiGHS unavailable on Pi OS Bookworm → disable MathOpt/HiGHS
+    # Note: HiGHS/MathOpt support will be disabled below.
   )
   apt-get install -y "${DEPS[@]}"
 
