@@ -151,47 +151,47 @@ Navigator::Navigator(int argc, const char **argv) noexcept : argc_{ argc },
 {
 }
 
-void Navigator::args(void)
-{
-	/* If incorrect number of args passed, default to help */
-	if (argc_ != 2) {
-		help();
-	} else {
-		std::string arg{ argv[1] };
-		if (arg == "play") {
-			if (argc == 3) {
-				std::string userWord{ argv[2] };
-				validateWord(userWord);
-				setUserWordOfDay(userWord);
-			}
-			tileGrid.setWordOfDay(wordOfDay);
-			std::cout
-				<< "-----------------------------------------------------\n";
-			play(true);
-			std::cout
-				<< "\n-----------------------------------------------------\n";
-		} else if (arg == "peek" && argc == 2) {
-			tileGrid.setWordOfDay(wordOfDay);
-			peek();
-		} else if (arg == "bm") {
-			if (argc == 3) {
-				std::string userOpener{ argv[2] };
-				validateWord(userOpener);
-				wordlePlayer.setUserOpener(userOpener);
-			}
-			benchmark(false);
-		} else if (arg == "bmv") {
-			if (argc == 3) {
-				std::string userOpener{ argv[2] };
-				validateWord(userOpener);
-				wordlePlayer.setUserOpener(userOpener);
-			}
-			benchmark(true);
-		} else {
-			help();
-		}
-	}
-}
+// void Navigator::args(void)
+// {
+// 	/* If incorrect number of args passed, default to help */
+// 	if (argc_ != 2) {
+// 		help();
+// 	} else {
+// 		std::string arg{ argv[1] };
+// 		if (arg == "play") {
+// 			if (argc == 3) {
+// 				std::string userWord{ argv[2] };
+// 				validateWord(userWord);
+// 				setUserWordOfDay(userWord);
+// 			}
+// 			tileGrid.setWordOfDay(wordOfDay);
+// 			std::cout
+// 				<< "-----------------------------------------------------\n";
+// 			play(true);
+// 			std::cout
+// 				<< "\n-----------------------------------------------------\n";
+// 		} else if (arg == "peek" && argc == 2) {
+// 			tileGrid.setWordOfDay(wordOfDay);
+// 			peek();
+// 		} else if (arg == "bm") {
+// 			if (argc == 3) {
+// 				std::string userOpener{ argv[2] };
+// 				validateWord(userOpener);
+// 				wordlePlayer.setUserOpener(userOpener);
+// 			}
+// 			benchmark(false);
+// 		} else if (arg == "bmv") {
+// 			if (argc == 3) {
+// 				std::string userOpener{ argv[2] };
+// 				validateWord(userOpener);
+// 				wordlePlayer.setUserOpener(userOpener);
+// 			}
+// 			benchmark(true);
+// 		} else {
+// 			help();
+// 		}
+// 	}
+// }
 
 [[noreturn]] void Navigator::solve(void)
 {
