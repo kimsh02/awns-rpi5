@@ -9,6 +9,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Compiler flags
 set(COMPILER_FLAGS        "-Wall -Wextra -pedantic -Werror")
+# set(COMPILER_FLAGS        "-Wall -Wextra -pedantic ")
 set(ADDRESS_SANITIZER_FL   "-fsanitize=address,undefined -fno-omit-frame-pointer -fno-optimize-sibling-calls")
 set(THREAD_SANITIZER_FL    "-fsanitize=thread,undefined -fno-omit-frame-pointer -fno-optimize-sibling-calls")
 set(DEBUG_FLAGS            "-g")
@@ -49,3 +50,14 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(GPS REQUIRED libgps)
 target_include_directories(awns-rpi5 SYSTEM PRIVATE ${GPS_INCLUDE_DIRS})
 target_link_libraries(awns-rpi5 PRIVATE ${GPS_LDFLAGS})
+
+# Concorde (assumes system-wide install: /usr/local/include, /usr/local/lib)
+find_library(CONCORDE_LIB concorde PATHS /usr/local/lib REQUIRED)
+find_path(CONCORDE_INCLUDE_DIR tsp.h PATHS /usr/local/include REQUIRED)
+
+target_include_directories(awns-rpi5 SYSTEM PRIVATE ${CONCORDE_INCLUDE_DIR})
+target_link_libraries(awns-rpi5 PRIVATE ${CONCORDE_LIB})
+
+# Show final library/header results
+message(STATUS "Concorde library: ${CONCORDE_LIB}")
+message(STATUS "Concorde include: ${CONCORDE_INCLUDE_DIR}")
