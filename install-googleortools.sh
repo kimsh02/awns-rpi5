@@ -2,7 +2,7 @@
 #===============================================================================
 # install-googleortools.sh
 #
-# System-wide installation of Google OR-Tools on:
+# System‐wide installation of Google OR-Tools on:
 #   • macOS (Apple Silicon/M2) via Homebrew
 #   • Raspberry Pi 5 OS Lite (aarch64) by building from source
 #
@@ -75,14 +75,15 @@ install_on_pi5() {
 
   SRC_DIR="/usr/local/src"
   BUILD_DIR="/usr/local/src/ortools-build"
+  ORTOOLS_SRC_DIR="${SRC_DIR}/or-tools"
 
   echo "Ensuring source directory exists and is writable..."
   mkdir -p "$SRC_DIR"
   cd "$SRC_DIR"
 
   echo "Cloning OR-Tools (stable branch)..."
-  rm -rf ortools
-  git clone --depth 1 --branch stable https://github.com/google/or-tools.git
+  rm -rf "$ORTOOLS_SRC_DIR"
+  git clone --depth 1 --branch stable https://github.com/google/or-tools.git "$ORTOOLS_SRC_DIR"
 
   echo "Creating build directory..."
   rm -rf "$BUILD_DIR"
@@ -93,7 +94,7 @@ install_on_pi5() {
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr/local \
-    "$SRC_DIR/ortools"
+    "$ORTOOLS_SRC_DIR"
 
   echo "Building OR-Tools (this may take ~20–30 minutes)..."
   make -j"$(nproc)"
