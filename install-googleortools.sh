@@ -8,11 +8,18 @@
 #
 # Usage:
 #   chmod +x install-googleortools.sh
-#   sudo ./install-googleortools.sh
+#   ./install-googleortools.sh
 #
+# This script will re‐invoke itself under sudo if not already running as root.
 #===============================================================================
 
 set -euo pipefail
+
+# If not running as root, re‐exec under sudo:
+if [[ "$EUID" -ne 0 ]]; then
+  echo "Elevating privileges with sudo..."
+  exec sudo bash "$0" "$@"
+fi
 
 OS="$(uname -s)"
 ARCH="$(uname -m)"
@@ -48,7 +55,7 @@ install_on_pi5() {
   echo
 
   echo "Updating APT repositories..."
-  sudo apt-get update
+  apt-get update
 
   echo "Installing build dependencies..."
   DEPS=(
@@ -64,21 +71,24 @@ install_on_pi5() {
     pkg-config
     libatlas-base-dev
   )
-  sudo apt-get install -y "${DEPS[@]}"
+  apt-get install -y "${DEPS[@]}"
 
   # Choose OR-Tools version (modify tag if needed)
   ORTOOLS_TAG="v9.9.10497"
   SRC_DIR="/usr/local/src"
   BUILD_DIR="/usr/local/src/ortools-build"
 
-  echo "Cloning OR-Tools (tag: $ORTOOLS_TAG)..."
+  echo "Ensuring source directory exists and is writable..."
+  mkdir -p "$SRC_DIR"
   cd "$SRC_DIR"
-  [ -d ortools ] && rm -rf ortools
+
+  echo "Cloning OR-Tools (tag: $ORTOOLS_TAG)..."
+  rm -rf ortools
   git clone --depth 1 --branch "$ORTOOLS_TAG" https://github.com/google/or-tools.git
 
   echo "Creating build directory..."
-  sudo rm -rf "$BUILD_DIR"
-  sudo mkdir -p "$BUILD_DIR"
+  rm -rf "$BUILD_DIR"
+  mkdir -p "$BUILD_DIR"
   cd "$BUILD_DIR"
 
   echo "Configuring with CMake (install prefix: /usr/local)..."
