@@ -127,7 +127,7 @@ bool Navigator::readCSV(void)
 			retryPrompt("Reading CSV failed.");
 		}
 
-		/* Placeholder */
+		/* Stop GPS stream and exit program */
 		gps.stopStream();
 		std::exit(0);
 	}
@@ -171,6 +171,11 @@ void Navigator::start(void) noexcept
 
 [[noreturn]] void Navigator::solve(void)
 {
+	while (true) {
+		std::cout << "Enter CSV waypoint directory: ";
+		std::string csvDir;
+		std::cin >> csvDir;
+	}
 	std::exit(0);
 }
 
