@@ -1,7 +1,5 @@
 # Autonomous Waypoint Navigation System for Raspberry Pi 5 (awns-rpi5)
 
-![Setup](./resources/attachments/IMG_1346.jpeg)
-
 ## About
 
 - This software program enables autonomous waypoint navigation for a mobile
