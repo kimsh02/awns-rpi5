@@ -2,12 +2,18 @@
 #
 # install-concorde.sh
 #
-# Clone, configure, build, and install Concorde TSP solver into /usr/local (or another prefix).
-# This version is intended to run on Raspberry Pi OS (Debian-based Linux).
+# This script builds only the Concorde command-line executable
+# and installs it into /usr/local/bin on a Debian-based system
+# (e.g. Raspberry Pi OS).  It does NOT install Concorde’s libraries
+# or headers—only the CLI binary.
 #
 # Usage:
 #   chmod +x install-concorde.sh
-#   ./install-concorde.sh [<install_prefix>]
+#   ./install-concorde.sh
+#
+# Optional argument:
+#   You may pass a custom install prefix (e.g. "$HOME/.local") as $1.
+#   By default it installs into /usr/local.
 #
 # Example:
 #   ./install-concorde.sh
@@ -17,76 +23,73 @@
 set -euo pipefail
 
 PREFIX="${1:-/usr/local}"
-echo "==> Installing Concorde into prefix: ${PREFIX}"
+BIN_DIR="$PREFIX/bin"
+
+echo "Installing Concorde CLI into: $BIN_DIR"
 echo
 
-# 1) Ensure required tools are present
-if ! command -v gcc >/dev/null 2>&1; then
-  echo "Error: gcc not found. Please install build-essential."
-  exit 1
-fi
+# 1) Ensure build prerequisites are installed
+echo "==> Checking for required build tools..."
+command -v gcc >/dev/null 2>&1 || { echo "Error: gcc not found. Install build-essential."; exit 1; }
+command -v make >/dev/null 2>&1 || { echo "Error: make not found. Install build-essential."; exit 1; }
+command -v git >/dev/null 2>&1 || { echo "Error: git not found. Install git."; exit 1; }
 
-if ! command -v make >/dev/null 2>&1; then
-  echo "Error: make not found. Please install build-essential."
-  exit 1
-fi
+# Optional but strongly recommended dependencies for Concorde
+echo "==> Installing recommended libraries (libgmp-dev, liblapack-dev, libblas-dev, etc.)"
+sudo apt-get update
+sudo apt-get install -y \
+  libgmp-dev \
+  liblapack-dev \
+  libblas-dev \
+  libreadline-dev \
+  libbz2-dev \
+  flex \
+  bison \
+  pkg-config \
+  build-essential \
+  git
 
-# 2) Clone or update the Concorde repository
+# 2) Clone Concorde repository (or update if it already exists)
 if [ ! -d concorde ]; then
-  echo "[1/4] Cloning Concorde repository..."
+  echo "==> Cloning Concorde repository..."
   git clone https://github.com/matthelb/concorde.git
-  echo "[1/4] Clone complete."
 else
-  echo "[1/4] 'concorde' directory exists. Updating to latest master..."
+  echo "==> 'concorde' directory already exists. Updating to latest master..."
   cd concorde
   git fetch origin
   git checkout master
   git pull
   cd ..
-  echo "[1/4] Update complete."
 fi
 echo
 
-# 3) Enter the Concorde directory and make scripts executable
-echo "[2/4] Entering 'concorde' directory..."
+# 3) Enter the Concorde directory and prepare build
 cd concorde
-echo "[2/4] Now in: $(pwd)"
-echo
-
-echo "[2/4] Ensuring configure and related scripts are executable..."
 chmod +x configure
 find . -type f \( -name "config.guess" -o -name "config.sub" \) -exec chmod +x {} \;
-echo "[2/4] chmod step done."
-echo
 
-# 4) Run configure with GCC on Raspberry Pi OS
-echo "[3/4] Running CC=gcc ./configure --prefix=${PREFIX} ..."
-export CC=gcc
-if ! ./configure --prefix="${PREFIX}"; then
-  echo "Error: ./configure failed on Linux. Aborting."
-  exit 1
-fi
-echo "[3/4] ./configure succeeded."
-echo
+# 4) Configure and build only the CLI
+echo "==> Configuring Concorde (prefix=$PREFIX)..."
+./configure --prefix="$PREFIX"
 
-# 5) Build and install
-echo "[4/4] Building Concorde (make -j) and installing into ${PREFIX}..."
+echo "==> Running make to build the Concorde executable..."
 CORES="$(getconf _NPROCESSORS_ONLN 2>/dev/null || echo 1)"
-echo "[4/4] Using ${CORES} core(s) for build."
-make -j"${CORES}"
+make -j"$CORES" utilities/concorde/concorde
 
-if [ -w "${PREFIX}" ]; then
-  make install
-else
-  echo "[4/4] Need sudo to install into ${PREFIX} – prompting for password."
-  sudo make install
-fi
+# 5) Install the binary into $PREFIX/bin
+echo "==> Installing concorde to $BIN_DIR"
+mkdir -p "$BIN_DIR"
+sudo cp utilities/concorde/concorde "$BIN_DIR/concorde"
+sudo chmod 755 "$BIN_DIR/concorde"
 
-echo "[4/4] Installation complete."
 echo
-echo "Concorde headers: ${PREFIX}/include/tsp.h"
-echo "Concorde library: ${PREFIX}/lib/libconcorde.a"
+echo "Concorde CLI has been installed to $BIN_DIR/concorde"
+echo "You can now run: concorde -h"
 echo
 
-# Return to project root
+# 6) (Optional) Clean up build artifacts if desired
+# Uncomment the following lines to remove the source tree:
+# cd ..
+# rm -rf concorde
+
 cd ..
