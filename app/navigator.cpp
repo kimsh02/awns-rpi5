@@ -192,7 +192,7 @@ void Navigator::help(void) noexcept
 		<< "Usage: " << prog_ << " COMMAND\n\n"
 		<< "Autonomous waypoint navigation for a mobile platform using Raspberry Pi 5"
 		<< "Commands:\n"
-		<< "  run            Use GPS data to guide the platform from one location to another along a predefined series of static waypoints and output logs"
+		<< "  run            Use GPS data to guide platform along a predefined series of static waypoints and output logs\n"
 		<< "  solve          Use Concorde TSP to solve directory of CSV waypoint files and output solutions as plotted graphs\n"
 		<< "  help           Show this help message and exit\n"
 		<< "\nExamples:\n"
