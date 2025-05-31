@@ -2,7 +2,7 @@
 #===============================================================================
 # install-googleortools.sh
 #
-# System‐wide installation of Google OR-Tools on:
+# System-wide installation of Google OR-Tools on:
 #   • macOS (Apple Silicon/M2) via Homebrew
 #   • Raspberry Pi 5 OS Lite (aarch64) by building from source
 #
@@ -10,12 +10,12 @@
 #   chmod +x install-googleortools.sh
 #   ./install-googleortools.sh
 #
-# This script will re‐invoke itself under sudo if not already running as root.
+# This script will re-invoke itself under sudo if not already running as root.
 #===============================================================================
 
 set -euo pipefail
 
-# If not running as root, re‐exec under sudo:
+# If not running as root, re-exec under sudo:
 if [[ "$EUID" -ne 0 ]]; then
   echo "Elevating privileges with sudo..."
   exec sudo bash "$0" "$@"
@@ -73,8 +73,6 @@ install_on_pi5() {
   )
   apt-get install -y "${DEPS[@]}"
 
-  # Choose OR-Tools version (modify tag if needed)
-  ORTOOLS_TAG="v9.9.10497"
   SRC_DIR="/usr/local/src"
   BUILD_DIR="/usr/local/src/ortools-build"
 
@@ -82,9 +80,9 @@ install_on_pi5() {
   mkdir -p "$SRC_DIR"
   cd "$SRC_DIR"
 
-  echo "Cloning OR-Tools (tag: $ORTOOLS_TAG)..."
+  echo "Cloning OR-Tools (stable branch)..."
   rm -rf ortools
-  git clone --depth 1 --branch "$ORTOOLS_TAG" https://github.com/google/or-tools.git
+  git clone --depth 1 --branch stable https://github.com/google/or-tools.git
 
   echo "Creating build directory..."
   rm -rf "$BUILD_DIR"
@@ -100,7 +98,7 @@ install_on_pi5() {
   echo "Building OR-Tools (this may take ~20–30 minutes)..."
   make -j"$(nproc)"
 
-  echo "Installing OR-Tools system‐wide..."
+  echo "Installing OR-Tools system-wide..."
   make install
 
   echo
@@ -136,7 +134,7 @@ case "$OS" in
         exit 1
       fi
     else
-      echo "Unsupported architecture or missing device‐tree: $ARCH"
+      echo "Unsupported architecture or missing device-tree: $ARCH"
       echo "This installer is only for Raspberry Pi 5 OS Lite (aarch64)."
       exit 1
     fi
