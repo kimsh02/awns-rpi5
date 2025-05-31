@@ -41,8 +41,8 @@ https://github.com/kimsh02/awns-rpi5.git`.
 
 1. Go into the project directory with `cd awns-rpi5`.
 
-1. Run `./install.sh`. This will install and setup the necessary tools, and then
-build and install the executable to the system.
+1. Run `./scripts/install.sh`. This will install, build, and set up the
+necessary tools, and then build and install the executable system-wide.
 
 ## Usage
 
