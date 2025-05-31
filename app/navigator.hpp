@@ -7,9 +7,13 @@
 
 class Navigator {
     public:
-	void start(void);
+	Navigator(int argc, const char **argv) noexcept;
+	void args(void) noexcept;
 
     private:
+	const int    argc_;
+	const char **argv_;
+
 	std::string	    csv_path_;
 	std::vector<GPSFix> waypoints_;
 

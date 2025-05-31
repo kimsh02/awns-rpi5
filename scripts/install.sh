@@ -7,10 +7,10 @@ sudo systemctl stop gpsd.socket
 sudo gpsd -G /dev/ttyACM0 -F /var/run/gpsd.sock
 
 # Install concorde
-./concorde-debian.sh
+./scripts/concorde-debian.sh
 
 # Go into build directory
-cd ../app/build/
+cd app/build/
 
 # Build and install executable
 cmake -DCMAKE_BUILD_TYPE=release -DENABLE_COVERAGE=OFF ..

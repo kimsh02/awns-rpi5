@@ -1,18 +1,8 @@
-extern "C" {
-#include <tsp.h>
-#include <util.h>
-}
-
 #include "navigator.hpp"
 
-int main()
+int main(int argc, const char **argv)
 {
-	// The Concorde library is intended for CLI use, but this proves you can include headers
-	CCdatagroup dat;
-	dat.x = nullptr;
-	dat.y = nullptr;
-
 	/* Instantiate and start navigator */
-	Navigator nav{};
+	Navigator nav{ argc, argv };
 	nav.start();
 }
