@@ -48,7 +48,7 @@ install_on_pi5() {
   echo
 
   echo "Updating APT repositories..."
-  apt-get update
+  sudo apt-get update
 
   echo "Installing build dependencies..."
   DEPS=(
@@ -64,7 +64,7 @@ install_on_pi5() {
     pkg-config
     libatlas-base-dev
   )
-  apt-get install -y "${DEPS[@]}"
+  sudo apt-get install -y "${DEPS[@]}"
 
   # Choose OR-Tools version (modify tag if needed)
   ORTOOLS_TAG="v9.9.10497"
