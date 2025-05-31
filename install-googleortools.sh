@@ -70,6 +70,8 @@ install_on_pi5() {
     libeigen3-dev
     pkg-config
     libatlas-base-dev
+    libabsl-dev       # Abseil C++ libraries
+    libre2-dev        # RE2 regular expression library
   )
   apt-get install -y "${DEPS[@]}"
 
