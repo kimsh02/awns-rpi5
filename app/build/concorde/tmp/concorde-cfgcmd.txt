@@ -1,0 +1,1 @@
+cmd='bash;-lc;cd <SOURCE_DIR> &&                       ./configure --host=`./config.guess`                                   --prefix=/usr/local'
