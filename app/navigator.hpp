@@ -8,9 +8,10 @@
 class Navigator {
     public:
 	Navigator(int argc, const char **argv) noexcept;
-	void args(void) noexcept;
+	void start(void) noexcept;
 
     private:
+	const char  *prog_;
 	const int    argc_;
 	const char **argv_;
 

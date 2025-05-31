@@ -2,7 +2,7 @@
 
 int main(int argc, const char **argv)
 {
-	/* Instantiate and start navigator */
+	/* Instantiate navigator and start */
 	Navigator nav{ argc, argv };
-	// nav.args();
+	nav.start();
 }

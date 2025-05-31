@@ -146,52 +146,28 @@ void Navigator::retryPrompt(const char *message) noexcept
 	std::cout << "\n";
 }
 
-Navigator::Navigator(int argc, const char **argv) noexcept : argc_{ argc },
+Navigator::Navigator(int argc, const char **argv) noexcept : prog_{ *argv },
+							     argc_{ argc },
 							     argv_{ argv }
 {
 }
 
-// void Navigator::args(void)
-// {
-// 	/* If incorrect number of args passed, default to help */
-// 	if (argc_ != 2) {
-// 		help();
-// 	} else {
-// 		std::string arg{ argv[1] };
-// 		if (arg == "play") {
-// 			if (argc == 3) {
-// 				std::string userWord{ argv[2] };
-// 				validateWord(userWord);
-// 				setUserWordOfDay(userWord);
-// 			}
-// 			tileGrid.setWordOfDay(wordOfDay);
-// 			std::cout
-// 				<< "-----------------------------------------------------\n";
-// 			play(true);
-// 			std::cout
-// 				<< "\n-----------------------------------------------------\n";
-// 		} else if (arg == "peek" && argc == 2) {
-// 			tileGrid.setWordOfDay(wordOfDay);
-// 			peek();
-// 		} else if (arg == "bm") {
-// 			if (argc == 3) {
-// 				std::string userOpener{ argv[2] };
-// 				validateWord(userOpener);
-// 				wordlePlayer.setUserOpener(userOpener);
-// 			}
-// 			benchmark(false);
-// 		} else if (arg == "bmv") {
-// 			if (argc == 3) {
-// 				std::string userOpener{ argv[2] };
-// 				validateWord(userOpener);
-// 				wordlePlayer.setUserOpener(userOpener);
-// 			}
-// 			benchmark(true);
-// 		} else {
-// 			help();
-// 		}
-// 	}
-// }
+void Navigator::start(void) noexcept
+{
+	/* If incorrect number of args passed, default to help */
+	if (argc_ != 2) {
+		help();
+	} else {
+		std::string argStr{ argv_[1] };
+		if (argStr == "run") { /* Go to run */
+			run();
+		} else if (argStr == "solve") { /* Go to solve  */
+			solve();
+		} else { /* Any other string is invalid so default to help */
+			help();
+		}
+	}
+}
 
 [[noreturn]] void Navigator::solve(void)
 {
@@ -212,4 +188,14 @@ void Navigator::readSolution(void)
 
 void Navigator::help(void) noexcept
 {
+	std::cout
+		<< "Usage: " << prog_ << " COMMAND\n\n"
+		<< "Autonomous waypoint navigation for a mobile platform using Raspberry Pi 5"
+		<< "Commands:\n"
+		<< "  run            Use GPS data to guide the platform from one location to another along a predefined series of static waypoints and output logs"
+		<< "  solve          Use Concorde TSP to solve directory of CSV waypoint files and output solutions as plotted graphs\n"
+		<< "  help           Show this help message and exit\n"
+		<< "\nExamples:\n"
+		<< "  " << prog_ << " run\n"
+		<< "  " << prog_ << " solve\n";
 }
