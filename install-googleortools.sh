@@ -2,20 +2,20 @@
 #===============================================================================
 # install-googleortools.sh
 #
-# System-wide installation of Google OR-Tools on:
+# System‐wide installation of Google OR-Tools on:
 #   • macOS (Apple Silicon/M2) via Homebrew
-#   • Raspberry Pi 5 OS Lite (aarch64) by building from source
+#   • Raspberry Pi 5 OS Lite (aarch64) by building from source (HiGHS disabled)
 #
 # Usage:
 #   chmod +x install-googleortools.sh
 #   ./install-googleortools.sh
 #
-# This script will re-invoke itself under sudo if not already root.
+# This script re‐invokes itself under sudo if not already root.
 #===============================================================================
 
 set -euo pipefail
 
-# — If not running as root, re-exec under sudo:
+# Re‐exec under sudo if not root
 if [[ "$EUID" -ne 0 ]]; then
   echo "Elevating privileges with sudo..."
   exec sudo bash "$0" "$@"
@@ -33,8 +33,7 @@ install_on_macos() {
   echo
 
   if ! command -v brew &>/dev/null; then
-    echo "Homebrew not found. Please install Homebrew first:"
-    echo "  https://brew.sh/"
+    echo "Homebrew not found. Install Homebrew first: https://brew.sh/"
     exit 1
   fi
 
@@ -70,9 +69,9 @@ install_on_pi5() {
     libeigen3-dev
     pkg-config
     libatlas-base-dev
-    libabsl-dev        # Abseil C++ libraries
-    libre2-dev         # RE2 regular expression library
-    libhighs-dev       # HiGHS optimization solver ©
+    libabsl-dev       # Abseil C++ libraries
+    libre2-dev        # RE2 regex library
+    # HiGHS unavailable on Pi OS Bookworm → disable below instead of installing libhighs-dev
   )
   apt-get install -y "${DEPS[@]}"
 
@@ -93,10 +92,11 @@ install_on_pi5() {
   mkdir -p "$BUILD_DIR"
   cd "$BUILD_DIR"
 
-  echo "Configuring with CMake (install prefix: /usr/local)…"
+  echo "Configuring with CMake (disable HiGHS)…"
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr/local \
+    -DBUILD_HIGHS=OFF \
     "$ORTOOLS_SRC_DIR"
 
   echo "Building OR-Tools (this may take ~20–30 minutes)…"
@@ -111,34 +111,28 @@ install_on_pi5() {
   echo
 }
 
-#-----------------------------------------------------------------------------
-# Main dispatcher
-#-----------------------------------------------------------------------------
 case "$OS" in
   Darwin)
     if [[ "$ARCH" == "arm64" ]]; then
       install_on_macos
     else
-      echo "Unsupported architecture on macOS: $ARCH"
-      echo "This installer only supports Apple Silicon (arm64)."
+      echo "Unsupported macOS architecture: $ARCH"
       exit 1
     fi
     ;;
 
   Linux)
-    # Check for Raspberry Pi 5 by reading /proc/device-tree/model
+    # Check for Raspberry Pi 5
     if [[ "$ARCH" == "aarch64" && -f /proc/device-tree/model ]]; then
       MODEL="$(tr -d '\0' < /proc/device-tree/model)"
       if [[ "$MODEL" == *"Raspberry Pi 5"* ]]; then
         install_on_pi5
       else
-        echo "Unsupported device model: $MODEL"
-        echo "This installer only supports Raspberry Pi 5."
+        echo "Unsupported device model: $MODEL (only Raspberry Pi 5 supported)"
         exit 1
       fi
     else
-      echo "Unsupported architecture or missing device-tree: $ARCH"
-      echo "This installer is only for Raspberry Pi 5 OS Lite (aarch64)."
+      echo "Unsupported Linux architecture or missing device-tree: $ARCH"
       exit 1
     fi
     ;;
