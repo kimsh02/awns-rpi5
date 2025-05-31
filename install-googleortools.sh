@@ -1,21 +1,20 @@
 #!/usr/bin/env bash
 #===============================================================================
-# install-googleortools.sh
+# install-concorde.sh
 #
-# System‐wide installation of Google OR-Tools on:
-#   • macOS (Apple Silicon/M2) via Homebrew
-#   • Raspberry Pi 5 OS Lite (aarch64) by building from source (HiGHS/MathOpt disabled)
+# System‐wide installation of the Concorde TSP solver on:
+#   • Raspberry Pi 5 OS Lite (aarch64)
 #
 # Usage:
-#   chmod +x install-googleortools.sh
-#   ./install-googleortools.sh
+#   chmod +x install-concorde.sh
+#   ./install-concorde.sh
 #
-# This script re-invokes itself under sudo if not already root.
+# This script will re‐invoke itself under sudo if not already root.
 #===============================================================================
 
 set -euo pipefail
 
-# Re-exec under sudo if not root
+# Re‐exec under sudo if we’re not root
 if [[ "$EUID" -ne 0 ]]; then
   echo "Elevating privileges with sudo..."
   exec sudo bash "$0" "$@"
@@ -28,102 +27,66 @@ echo "Detected OS:   $OS"
 echo "Detected Arch: $ARCH"
 echo
 
-install_on_macos() {
-  echo "=== Installing OR-Tools on macOS (Apple Silicon/M2) ==="
-  echo
-
-  if ! command -v brew &>/dev/null; then
-    echo "Homebrew not found. Install Homebrew first: https://brew.sh/"
-    exit 1
-  fi
-
-  echo "Updating Homebrew..."
-  brew update
-
-  echo "Installing OR-Tools via Homebrew..."
-  brew install or-tools
-
-  echo
-  echo "✅ OR-Tools installed via Homebrew."
-  echo "   Verify with: or-tools-config --version"
-  echo
-}
-
 install_on_pi5() {
-  echo "=== Installing OR-Tools on Raspberry Pi 5 OS Lite ==="
+  echo "=== Installing Concorde TSP Solver on Raspberry Pi 5 OS Lite ==="
   echo
 
+  # 1) Update and install build dependencies
   echo "Updating APT repositories..."
   apt-get update
 
-  echo "Installing build dependencies..."
-  DEPS=(
-    build-essential
-    cmake
-    git
-    python3-dev
-    libgflags-dev
-    libgoogle-glog-dev
-    libprotobuf-dev
-    protobuf-compiler
-    libeigen3-dev
-    pkg-config
-    libatlas-base-dev
-    libabsl-dev       # Abseil C++ libraries
-    libre2-dev        # RE2 regex library
-    # Note: HiGHS/MathOpt support will be disabled below.
-  )
-  apt-get install -y "${DEPS[@]}"
+  echo "Installing build-essential, gfortran, GMP, BLAS/LAPACK, pkg-config..."
+  apt-get install -y \
+    build-essential \
+    gfortran \
+    git \
+    libgmp-dev \
+    liblapack-dev \
+    libblas-dev \
+    pkg-config \
+    autoconf \
+    automake \
+    libtool
 
+  # 2) Clone the Concorde repository
   SRC_DIR="/usr/local/src"
-  BUILD_DIR="/usr/local/src/ortools-build"
-  ORTOOLS_SRC_DIR="${SRC_DIR}/or-tools"
+  CONCORDE_DIR="${SRC_DIR}/Concorde"
+  BUILD_SUBDIR="${CONCORDE_DIR}/CONCORDE"
 
-  echo "Ensuring source directory exists and is writable..."
+  echo "Ensuring source directory exists..."
   mkdir -p "$SRC_DIR"
   cd "$SRC_DIR"
 
-  echo "Cloning OR-Tools (stable branch)…"
-  rm -rf "$ORTOOLS_SRC_DIR"
-  git clone --depth 1 --branch stable https://github.com/google/or-tools.git "$ORTOOLS_SRC_DIR"
+  echo "Cloning Concorde repository (if already exists, it will be removed)..."
+  rm -rf "$CONCORDE_DIR"
+  git clone https://github.com/jvkersch/Concorde.git "$CONCORDE_DIR"
 
-  echo "Creating build directory…"
-  rm -rf "$BUILD_DIR"
-  mkdir -p "$BUILD_DIR"
-  cd "$BUILD_DIR"
+  # 3) Build Concorde
+  echo "Entering Concorde source directory..."
+  cd "$BUILD_SUBDIR"
 
-  echo "Configuring with CMake (disable HiGHS & MathOpt)…"
-  cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr/local \
-    -DBUILD_HIGHS=OFF \
-    -DBUILD_MATH_OPT=OFF \
-    "$ORTOOLS_SRC_DIR"
+  echo "Generating configure script (autoreconf)..."
+  autoreconf -fi
 
-  echo "Building OR-Tools (this may take ~20–30 minutes)…"
-  make -j"$(nproc)"
+  echo "Configuring Concorde build..."
+  ./configure
 
-  echo "Installing OR-Tools system-wide…"
+  echo "Compiling Concorde (this may take ~10–20 minutes)..."
+  make
+
+  # 4) Install the Concorde binary and libraries
+  echo "Installing Concorde system-wide..."
   make install
 
   echo
-  echo "✅ OR-Tools built and installed under /usr/local (HiGHS/MathOpt disabled)."
-  echo "   Verify with: or-tools-config --version"
+  echo "✅ Concorde TSP Solver installed in /usr/local/bin."
+  echo "   Verify by running: concorde --help"
   echo
 }
 
 case "$OS" in
-  Darwin)
-    if [[ "$ARCH" == "arm64" ]]; then
-      install_on_macos
-    else
-      echo "Unsupported macOS architecture: $ARCH"
-      exit 1
-    fi
-    ;;
-
   Linux)
-    # Check for Raspberry Pi 5
+    # Verify Raspberry Pi 5 via /proc/device-tree/model
     if [[ "$ARCH" == "aarch64" && -f /proc/device-tree/model ]]; then
       MODEL="$(tr -d '\0' < /proc/device-tree/model)"
       if [[ "$MODEL" == *"Raspberry Pi 5"* ]]; then
@@ -137,7 +100,6 @@ case "$OS" in
       exit 1
     fi
     ;;
-
   *)
     echo "Unsupported platform: $OS"
     exit 1
