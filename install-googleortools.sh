@@ -2,7 +2,7 @@
 #===============================================================================
 # install-googleortools.sh
 #
-# System‐wide installation of Google OR-Tools on:
+# System-wide installation of Google OR-Tools on:
 #   • macOS (Apple Silicon/M2) via Homebrew
 #   • Raspberry Pi 5 OS Lite (aarch64) by building from source
 #
@@ -10,12 +10,12 @@
 #   chmod +x install-googleortools.sh
 #   ./install-googleortools.sh
 #
-# This script will re-invoke itself under sudo if not already running as root.
+# This script will re-invoke itself under sudo if not already root.
 #===============================================================================
 
 set -euo pipefail
 
-# If not running as root, re-exec under sudo:
+# — If not running as root, re-exec under sudo:
 if [[ "$EUID" -ne 0 ]]; then
   echo "Elevating privileges with sudo..."
   exec sudo bash "$0" "$@"
@@ -24,8 +24,8 @@ fi
 OS="$(uname -s)"
 ARCH="$(uname -m)"
 
-echo "Detected OS:    $OS"
-echo "Detected Arch:  $ARCH"
+echo "Detected OS:   $OS"
+echo "Detected Arch: $ARCH"
 echo
 
 install_on_macos() {
@@ -70,9 +70,9 @@ install_on_pi5() {
     libeigen3-dev
     pkg-config
     libatlas-base-dev
-    libabsl-dev       # Abseil C++ libraries
-    libre2-dev        # RE2 regular expression library
-    libhighs-dev      # HiGHS optimization solver (development files)  [oai_citation:0‡Debian Packages](https://packages.debian.org/sid/source/highs?utm_source=chatgpt.com)
+    libabsl-dev        # Abseil C++ libraries
+    libre2-dev         # RE2 regular expression library
+    libhighs-dev       # HiGHS optimization solver ©
   )
   apt-get install -y "${DEPS[@]}"
 
@@ -84,25 +84,25 @@ install_on_pi5() {
   mkdir -p "$SRC_DIR"
   cd "$SRC_DIR"
 
-  echo "Cloning OR-Tools (stable branch)..."
+  echo "Cloning OR-Tools (stable branch)…"
   rm -rf "$ORTOOLS_SRC_DIR"
-  git clone --depth 1 --branch stable https://github.com/google/or-tools.git "$ORTOOLS_SRC_DIR"  [oai_citation:1‡GitHub](https://github.com/google/or-tools/discussions/4023?utm_source=chatgpt.com)
+  git clone --depth 1 --branch stable https://github.com/google/or-tools.git "$ORTOOLS_SRC_DIR"
 
-  echo "Creating build directory..."
+  echo "Creating build directory…"
   rm -rf "$BUILD_DIR"
   mkdir -p "$BUILD_DIR"
   cd "$BUILD_DIR"
 
-  echo "Configuring with CMake (install prefix: /usr/local)..."
+  echo "Configuring with CMake (install prefix: /usr/local)…"
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr/local \
-    "$ORTOOLS_SRC_DIR"  [oai_citation:2‡GitHub](https://github.com/google/or-tools/blob/stable/cmake/README.md?utm_source=chatgpt.com)
+    "$ORTOOLS_SRC_DIR"
 
-  echo "Building OR-Tools (this may take ~20–30 minutes)..."
+  echo "Building OR-Tools (this may take ~20–30 minutes)…"
   make -j"$(nproc)"
 
-  echo "Installing OR-Tools system-wide..."
+  echo "Installing OR-Tools system-wide…"
   make install
 
   echo
@@ -114,10 +114,9 @@ install_on_pi5() {
 #-----------------------------------------------------------------------------
 # Main dispatcher
 #-----------------------------------------------------------------------------
-
 case "$OS" in
   Darwin)
-    if [ "$ARCH" = "arm64" ]; then
+    if [[ "$ARCH" == "arm64" ]]; then
       install_on_macos
     else
       echo "Unsupported architecture on macOS: $ARCH"
@@ -127,8 +126,8 @@ case "$OS" in
     ;;
 
   Linux)
-    # Verify Raspberry Pi 5 via /proc/device-tree/model
-    if [[ "$ARCH" == "aarch64" ]] && [ -f /proc/device-tree/model ]; then
+    # Check for Raspberry Pi 5 by reading /proc/device-tree/model
+    if [[ "$ARCH" == "aarch64" && -f /proc/device-tree/model ]]; then
       MODEL="$(tr -d '\0' < /proc/device-tree/model)"
       if [[ "$MODEL" == *"Raspberry Pi 5"* ]]; then
         install_on_pi5
@@ -138,7 +137,7 @@ case "$OS" in
         exit 1
       fi
     else
-      echo "Unsupported architecture or missing device‐tree: $ARCH"
+      echo "Unsupported architecture or missing device-tree: $ARCH"
       echo "This installer is only for Raspberry Pi 5 OS Lite (aarch64)."
       exit 1
     fi
