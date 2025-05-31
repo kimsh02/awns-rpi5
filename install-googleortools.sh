@@ -72,6 +72,7 @@ install_on_pi5() {
     libatlas-base-dev
     libabsl-dev       # Abseil C++ libraries
     libre2-dev        # RE2 regular expression library
+    libhighs-dev      # HiGHS optimization solver (development files)  [oai_citation:0‡Debian Packages](https://packages.debian.org/sid/source/highs?utm_source=chatgpt.com)
   )
   apt-get install -y "${DEPS[@]}"
 
@@ -85,7 +86,7 @@ install_on_pi5() {
 
   echo "Cloning OR-Tools (stable branch)..."
   rm -rf "$ORTOOLS_SRC_DIR"
-  git clone --depth 1 --branch stable https://github.com/google/or-tools.git "$ORTOOLS_SRC_DIR"
+  git clone --depth 1 --branch stable https://github.com/google/or-tools.git "$ORTOOLS_SRC_DIR"  [oai_citation:1‡GitHub](https://github.com/google/or-tools/discussions/4023?utm_source=chatgpt.com)
 
   echo "Creating build directory..."
   rm -rf "$BUILD_DIR"
@@ -96,7 +97,7 @@ install_on_pi5() {
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr/local \
-    "$ORTOOLS_SRC_DIR"
+    "$ORTOOLS_SRC_DIR"  [oai_citation:2‡GitHub](https://github.com/google/or-tools/blob/stable/cmake/README.md?utm_source=chatgpt.com)
 
   echo "Building OR-Tools (this may take ~20–30 minutes)..."
   make -j"$(nproc)"
@@ -137,7 +138,7 @@ case "$OS" in
         exit 1
       fi
     else
-      echo "Unsupported architecture or missing device-tree: $ARCH"
+      echo "Unsupported architecture or missing device‐tree: $ARCH"
       echo "This installer is only for Raspberry Pi 5 OS Lite (aarch64)."
       exit 1
     fi
