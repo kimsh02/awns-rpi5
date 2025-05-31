@@ -12,7 +12,7 @@ int main()
 	dat.x = nullptr;
 	dat.y = nullptr;
 
-	/* Instantiate and run navigator */
+	/* Instantiate and start navigator */
 	Navigator nav{};
-	nav.run();
+	nav.start();
 }

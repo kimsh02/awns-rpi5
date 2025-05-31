@@ -20,6 +20,8 @@ void Navigator::logFix(GPSFix fix) noexcept
 /* Read CSV file to load in waypoints */
 bool Navigator::readCSV(void)
 {
+	/* First, clear waypoints_ */
+	waypoints_.clear();
 	std::ifstream file;
 	/* Catch invalid file path */
 	file.open(csv_path_);
@@ -131,10 +133,6 @@ bool Navigator::readCSV(void)
 	}
 }
 
-void Navigator::bestPath(void) noexcept
-{
-}
-
 /* Print helper asking user to retry an action */
 void Navigator::retryPrompt(const char *message) noexcept
 {
@@ -146,4 +144,25 @@ void Navigator::retryPrompt(const char *message) noexcept
 	std::string dummy;
 	std::getline(std::cin, dummy);
 	std::cout << "\n";
+}
+
+void Navigator::start(void)
+{
+}
+
+[[noreturn]] void Navigator::solve(void)
+{
+	std::exit(0);
+}
+
+void Navigator::writeTSPFile(void)
+{
+}
+
+void Navigator::runConcorde(void)
+{
+}
+
+void Navigator::readSolution(void)
+{
 }

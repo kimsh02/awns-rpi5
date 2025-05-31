@@ -7,16 +7,22 @@
 
 class Navigator {
     public:
-	[[noreturn]] void run(void);
+	void start(void);
 
     private:
-	// double		    velocity_;
-	// double		    course_;
 	std::string	    csv_path_;
 	std::vector<GPSFix> waypoints_;
 
+	[[noreturn]] void run(void);
+	[[noreturn]] void solve(void);
+
+	void help(void) noexcept;
+
+	void writeTSPFile(void);
+	void runConcorde(void);
+	void readSolution(void);
+
 	void logFix(GPSFix) noexcept;
 	bool readCSV(void);
-	void bestPath(void) noexcept;
 	void retryPrompt(const char *) noexcept;
 };
