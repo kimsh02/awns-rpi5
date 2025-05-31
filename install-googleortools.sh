@@ -2,15 +2,14 @@
 #===============================================================================
 # install-googleortools.sh
 #
-# System‐wide installation of Google OR-Tools on:
-#   • macOS (Apple Silicon/M2) via Homebrew
-#   • Raspberry Pi 5 OS Lite (aarch64) by building from source (HiGHS/MathOpt disabled)
+# System‐wide installation of Google OR-Tools on Raspberry Pi 5 OS Lite (aarch64),
+# with HiGHS/MathOpt support disabled.
 #
 # Usage:
 #   chmod +x install-googleortools.sh
 #   ./install-googleortools.sh
 #
-# This script re‐invokes itself under sudo if not already root.
+# This script will re‐invoke itself under sudo if not already root.
 #===============================================================================
 
 set -euo pipefail
@@ -28,29 +27,8 @@ echo "Detected OS:   $OS"
 echo "Detected Arch: $ARCH"
 echo
 
-install_on_macos() {
-  echo "=== Installing OR-Tools on macOS (Apple Silicon/M2) ==="
-  echo
-
-  if ! command -v brew &>/dev/null; then
-    echo "Homebrew not found. Install Homebrew first: https://brew.sh/"
-    exit 1
-  fi
-
-  echo "Updating Homebrew..."
-  brew update
-
-  echo "Installing OR-Tools via Homebrew..."
-  brew install or-tools
-
-  echo
-  echo "✅ OR-Tools installed via Homebrew."
-  echo "   Verify with: or-tools-config --version"
-  echo
-}
-
 install_on_pi5() {
-  echo "=== Installing OR-Tools on Raspberry Pi 5 OS Lite ==="
+  echo "=== Installing OR-Tools on Raspberry Pi 5 OS Lite (aarch64) ==="
   echo
 
   echo "Updating APT repositories..."
@@ -71,7 +49,7 @@ install_on_pi5() {
     libatlas-base-dev
     libabsl-dev       # Abseil C++ libraries
     libre2-dev        # RE2 regex library
-    # HiGHS unavailable on Pi OS Bookworm → disable MathOpt/HiGHS
+    # HiGHS unavailable on Pi OS Bookworm → disable below
   )
   apt-get install -y "${DEPS[@]}"
 
@@ -92,7 +70,7 @@ install_on_pi5() {
   mkdir -p "$BUILD_DIR"
   cd "$BUILD_DIR"
 
-  echo "Configuring with CMake (disable MathOpt/HiGHS)…"
+  echo "Configuring with CMake (disable HiGHS & MathOpt)…"
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr/local \
@@ -107,21 +85,12 @@ install_on_pi5() {
   make install
 
   echo
-  echo "✅ OR-Tools built and installed under /usr/local."
+  echo "✅ OR-Tools built and installed under /usr/local (HiGHS/MathOpt disabled)."
   echo "   Verify with: or-tools-config --version"
   echo
 }
 
 case "$OS" in
-  Darwin)
-    if [[ "$ARCH" == "arm64" ]]; then
-      install_on_macos
-    else
-      echo "Unsupported macOS architecture: $ARCH"
-      exit 1
-    fi
-    ;;
-
   Linux)
     # Check for Raspberry Pi 5
     if [[ "$ARCH" == "aarch64" && -f /proc/device-tree/model ]]; then
