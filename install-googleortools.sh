@@ -77,8 +77,8 @@ install_on_pi5() {
   git clone --depth 1 --branch "$ORTOOLS_TAG" https://github.com/google/or-tools.git
 
   echo "Creating build directory..."
-  rm -rf "$BUILD_DIR"
-  mkdir -p "$BUILD_DIR"
+  sudo rm -rf "$BUILD_DIR"
+  sudo mkdir -p "$BUILD_DIR"
   cd "$BUILD_DIR"
 
   echo "Configuring with CMake (install prefix: /usr/local)..."
