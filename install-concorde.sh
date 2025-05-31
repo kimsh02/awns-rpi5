@@ -2,18 +2,17 @@
 #
 # install-concorde.sh
 #
-# This script builds only the Concorde command-line executable
-# and installs it into /usr/local/bin (or a custom prefix) on a
-# Debian-based system (e.g. Raspberry Pi OS).  It does NOT install
-# Concorde’s libraries or headers—only the CLI binary itself.
+# This script clones Concorde (if needed), applies two small patches
+# to avoid conflicts (u_char / gethostname), builds only the Concorde
+# CLI executable, and installs it into /usr/local/bin (or a user‐supplied
+# prefix).  It does NOT install Concorde’s libraries or headers—only
+# the concorde binary itself.
 #
 # Usage:
 #   chmod +x install-concorde.sh
 #   ./install-concorde.sh [<install_prefix>]
 #
-# Example:
-#   ./install-concorde.sh
-#   ./install-concorde.sh "$HOME/.local"
+# If you omit <install_prefix>, it defaults to /usr/local.
 #
 
 set -euo pipefail
@@ -30,21 +29,19 @@ echo
 echo "==> Checking for required build tools..."
 
 command -v gcc >/dev/null 2>&1 || {
-  echo "Error: gcc not found. Please install 'build-essential' first.";
-  exit 1;
+  echo "Error: gcc not found. Please install 'build-essential' first."
+  exit 1
 }
-
 command -v make >/dev/null 2>&1 || {
-  echo "Error: make not found. Please install 'build-essential' first.";
-  exit 1;
+  echo "Error: make not found. Please install 'build-essential' first."
+  exit 1
 }
-
 command -v git >/dev/null 2>&1 || {
-  echo "Error: git not found. Please install git.";
-  exit 1;
+  echo "Error: git not found. Please install git."
+  exit 1
 }
 
-echo "==> Installing recommended libraries (libgmp-dev, liblapack-dev, libblas-dev, etc.)"
+echo "==> Installing recommended libraries (if not already present)..."
 sudo apt-get update
 sudo apt-get install -y \
   libgmp-dev \
@@ -74,60 +71,92 @@ else
   git pull
   cd ..
 fi
+
 echo
 
 # ----------------------------------------------------------------------------–
-# 3) Enter the Concorde directory and prepare build
+# 3) Apply small patches (avoid u_char / gethostname conflicts)
 # ----------------------------------------------------------------------------–
+echo "==> Applying in‐place patches to avoid u_char / gethostname conflicts..."
+
+# Ensure we’re inside the Concorde source directory
 cd concorde
 
-# Ensure configure and Autotools helper scripts are executable
+# 3a) In INCLUDE/config.h, comment out "#define u_char unsigned char"
+if grep -q '^#define u_char unsigned char' INCLUDE/config.h; then
+  sed -i.bak 's|^#define u_char unsigned char|// #define u_char unsigned char|' INCLUDE/config.h
+  echo "    • Commented out u_char in INCLUDE/config.h"
+else
+  echo "    • (Already patched) u_char define not found in INCLUDE/config.h"
+fi
+
+# 3b) In INCLUDE/machdefs.h, comment out any "gethostname(char *, int);" prototype
+#      (the system-provided gethostname in unistd.h expects size_t length).
+if grep -q '^[[:space:]]*gethostname *(char \*, *int);' INCLUDE/machdefs.h; then
+  sed -i.bak -E 's|^[[:space:]]*(gethostname *\( *char \*, *int *\);)|// \1|' INCLUDE/machdefs.h
+  echo "    • Commented out gethostname prototype in INCLUDE/machdefs.h"
+else
+  echo "    • (Already patched) gethostname prototype not found in INCLUDE/machdefs.h"
+fi
+
+echo
+
+# ----------------------------------------------------------------------------–
+# 4) Prepare build scripts
+# ----------------------------------------------------------------------------–
+echo "==> Making configure, config.guess, config.sub executable..."
 chmod +x configure
 find . -type f \( -name "config.guess" -o -name "config.sub" \) -exec chmod +x {} \;
 
+echo
+
 # ----------------------------------------------------------------------------–
-# 4) Configure Concorde (top‐level)
+# 5) Configure Concorde (top‐level)
 # ----------------------------------------------------------------------------–
-echo "==> Configuring Concorde (prefix=$PREFIX)..."
+echo "==> Running ./configure --prefix=$PREFIX"
 ./configure --prefix="$PREFIX"
 echo
 
 # ----------------------------------------------------------------------------–
-# 5) Build Concorde (full 'make', not a single target)
+# 6) Build Concorde (full 'make')—we only need to find the CLI afterward
 # ----------------------------------------------------------------------------–
-echo "==> Building Concorde executable (make -j)..."
+echo "==> Running make -j to compile Concorde"
 CORES="$(getconf _NPROCESSORS_ONLN 2>/dev/null || echo 1)"
 make -j"$CORES"
 echo
 
 # ----------------------------------------------------------------------------–
-# 6) Locate the built 'concorde' binary
+# 7) Locate the built 'concorde' binary
 # ----------------------------------------------------------------------------–
 echo "==> Locating the 'concorde' CLI binary after build..."
 
-# Common places where 'concorde' may appear:
+BUILT_BIN=""
 if [ -x utilities/concorde/concorde ]; then
   BUILT_BIN="utilities/concorde/concorde"
-elif [ -x concorde ]; then
-  BUILT_BIN="concorde"
+elif [ -x utilities/concorde/concorde.exe ]; then
+  BUILT_BIN="utilities/concorde/concorde.exe"
 elif [ -x TSP/concorde ]; then
   BUILT_BIN="TSP/concorde"
+elif [ -x ./concorde ]; then
+  BUILT_BIN="./concorde"
 else
-  # As a fallback, try to find any executable named 'concorde' in subdirs
-  FOUND=$(find . -type f -name concorde -perm /u+x 2>/dev/null | head -n 1)
+  # Fallback: search for any executable named "concorde" under subdirectories
+  FOUND=$(find . -type f -name concorde -perm /u+x 2>/dev/null | head -n 1 || echo "")
   if [ -n "$FOUND" ]; then
     BUILT_BIN="$FOUND"
-  else
-    echo "Error: Cannot locate the built 'concorde' executable."
-    exit 1
   fi
 fi
 
-echo "Found Concorde binary at: $BUILT_BIN"
+if [ -z "$BUILT_BIN" ]; then
+  echo "Error: Cannot locate the built 'concorde' executable."
+  exit 1
+fi
+
+echo "    • Found Concorde binary at: $BUILT_BIN"
 echo
 
 # ----------------------------------------------------------------------------–
-# 7) Install the binary into $PREFIX/bin
+# 8) Install the 'concorde' binary into $PREFIX/bin
 # ----------------------------------------------------------------------------–
 echo "==> Installing 'concorde' to $BIN_DIR"
 mkdir -p "$BIN_DIR"
@@ -135,15 +164,14 @@ sudo cp "$BUILT_BIN" "$BIN_DIR/concorde"
 sudo chmod 755 "$BIN_DIR/concorde"
 
 echo
-echo "Concorde CLI installed to: $BIN_DIR/concorde"
-echo "You can verify by running: concorde -h"
+echo "✔ Concorde CLI installed to: $BIN_DIR/concorde"
+echo "  You can verify with: concorde -h"
 echo
 
 # ----------------------------------------------------------------------------–
-# 8) (Optional) Clean up the source tree
+# 9) (Optional) Clean up Concorde source folder
 # ----------------------------------------------------------------------------–
-# If you want to remove the Concorde source directory after installation,
-# uncomment the following lines:
+# If you prefer to remove the source after installing the binary, uncomment:
 #
 # cd ..
 # rm -rf concorde
