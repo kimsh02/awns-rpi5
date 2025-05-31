@@ -4,7 +4,7 @@
 #
 # System‐wide installation of Google OR-Tools on:
 #   • macOS (Apple Silicon/M2) via Homebrew
-#   • Raspberry Pi 5 OS Lite (aarch64) by building from source (HiGHS disabled)
+#   • Raspberry Pi 5 OS Lite (aarch64) by building from source (HiGHS/MathOpt disabled)
 #
 # Usage:
 #   chmod +x install-googleortools.sh
@@ -71,7 +71,7 @@ install_on_pi5() {
     libatlas-base-dev
     libabsl-dev       # Abseil C++ libraries
     libre2-dev        # RE2 regex library
-    # HiGHS unavailable on Pi OS Bookworm → disable below instead of installing libhighs-dev
+    # HiGHS unavailable on Pi OS Bookworm → disable MathOpt/HiGHS
   )
   apt-get install -y "${DEPS[@]}"
 
@@ -92,11 +92,12 @@ install_on_pi5() {
   mkdir -p "$BUILD_DIR"
   cd "$BUILD_DIR"
 
-  echo "Configuring with CMake (disable HiGHS)…"
+  echo "Configuring with CMake (disable MathOpt/HiGHS)…"
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr/local \
     -DBUILD_HIGHS=OFF \
+    -DBUILD_MATHOPT=OFF \
     "$ORTOOLS_SRC_DIR"
 
   echo "Building OR-Tools (this may take ~20–30 minutes)…"
