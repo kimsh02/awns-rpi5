@@ -44,10 +44,8 @@ https://github.com/kimsh02/awns-rpi5.git`.
 necessary tools, and then build and install the executable system-wide.
 
 1. Copy paste this one-liner if you want to run the shell commands above in one
-   go:
-
-``` sudo apt update && sudo apt upgrade -y && sudo apt install git -y && git
-   clone https://github.com/kimsh02/awns-rpi5.git && cd awns-rpi5 &&
+   go: ``` sudo apt update && sudo apt upgrade -y && sudo apt install git -y &&
+   git clone https://github.com/kimsh02/awns-rpi5.git && cd awns-rpi5 &&
    ./scripts/install.sh ```
 
 ## Usage
