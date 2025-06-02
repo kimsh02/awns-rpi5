@@ -11,23 +11,19 @@ class Navigator {
 	void start(void) noexcept;
 
     private:
-	const char  *prog_;
-	const int    argc_;
-	const char **argv_;
+	const char  *prog_; /* Executable name */
+	const int    argc_; /* User arg count */
+	const char **argv_; /* User arg vector */
 
-	std::string	    csv_path_;
-	std::vector<GPSFix> waypoints_;
+	std::vector<GPSFix> waypoints_; /* Vector of waypoints */
 
 	[[noreturn]] void run(void);
 	[[noreturn]] void solve(void);
+	[[noreturn]] void help(void) noexcept;
 
-	void help(void) noexcept;
+	bool testGPSConnection(GPSClient &);
 
-	void writeTSPFile(void);
-	void runConcorde(void);
-	void readSolution(void);
-
-	void logFix(GPSFix) noexcept;
-	bool readCSV(void);
 	void retryPrompt(const char *) noexcept;
+
+	void logFix(const GPSFix &) noexcept;
 };
