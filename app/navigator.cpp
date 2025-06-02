@@ -1,126 +1,69 @@
 #include "navigator.hpp"
 
 #include <cstdlib>
-#include <fstream>
 #include <iostream>
 #include <limits>
-#include <sstream>
 #include <string>
 
+#include "concorde.hpp"
 #include "gps.hpp"
 
 /* Log waypoint method to print waypoints to stdout */
-void Navigator::logFix(GPSFix fix) noexcept
+void Navigator::logFix(const GPSFix &fix) noexcept
 {
 	std::cout << "[Latitude: " << fix.latitude
 		  << ", Longitude: " << fix.longitude
 		  << ", Bearing: " << fix.heading << "]\n";
 }
 
-/* Read CSV file to load in waypoints */
-bool Navigator::readCSV(void)
+/* Helper method to test GPS connection in hot loop */
+bool Navigator::testGPSConnection(GPSClient &gps)
 {
-	/* First, clear waypoints_ */
-	waypoints_.clear();
-	std::ifstream file;
-	/* Catch invalid file path */
-	file.open(csv_path_);
-	if (!file) {
-		std::cerr << "Error opening file '" << csv_path_ << "'.\n";
-		return false;
-	}
-	std::string line;
-	/* Skip header */
-	/* Note: CSV must have a header labeling latitude and longitude and in
-	   that order */
-	std::getline(file, line);
-	size_t lineNo	    = 0;
-	size_t numWaypoints = 0;
-	/* Read CSV */
-	while (std::getline(file, line)) {
-		lineNo++;
-		std::istringstream ss(line);
-		std::string	   lat, lon;
-		/* Skip malformed lines */
-		if (!std::getline(ss, lat, ',') ||
-		    !std::getline(ss, lon, ',')) {
-			std::cerr << "Error: Line " << lineNo
-				  << " malformed, skipping.\n";
-			continue;
-		}
-		/* Skip blank fields */
-		if (lat.empty() || lon.empty()) {
-			std::cerr << "Error: Line " << lineNo
-				  << " contains blank fields, skipping.\n";
-			continue;
-		}
-		try {
-			/* Add waypoint to waypoints_ */
-			waypoints_.emplace_back(
-				std::stod(lat),
-				std::stod(lon),
-				std::numeric_limits<double>::quiet_NaN());
-			numWaypoints++;
-			/* Print waypoint that was loaded */
-			std::cout << "(" << numWaypoints << ") ";
-			logFix(GPSFix{
-				std::stod(lat),
-				std::stod(lon),
-				std::numeric_limits<double>::quiet_NaN() });
-		} catch (const std::exception &) {
-			/* Catch malformed numbers */
-			std::cerr << "Error: Line " << lineNo
-				  << " contains malformed number, skipping.\n";
-			continue;
+	std::cout << "Testing GPS connection.\n";
+	gps.connect();
+	gps.startStream();
+
+	/* Poll GPS 5 times to ensure connection */
+	for (size_t i = 0; i < 5; i++) {
+		auto optFix{ gps.waitReadFix() };
+		std::cout << "(" << i + 1 << "/5) ";
+		logFix(optFix ? *optFix : GPSFix{ 0, 0, 0 });
+		/* Check that last poll gives a fix */
+		if (i == 4 && optFix) {
+			std::cout << "GPS connection successful.\n\n";
+			return true;
 		}
 	}
-	/* If reader was unable to add any waypoints for whatever reason */
-	if (waypoints_.empty()) {
-		std::cerr << "Error: Unable to add any waypoints.\n";
-		return false;
-	}
-	/* Else print number of waypoints and return true */
-	std::cout << numWaypoints << " waypoints loaded.\n\n";
-	return true;
+	return false;
 }
 
 /* Hot loop to run navigation system */
 [[noreturn]] void Navigator::run(void)
 {
 	while (true) {
+		/* Initialize GPS client */
 		GPSClient gps{};
 		/* Test GPS connection */
 		while (true) {
-			std::cout << "Testing GPS connection.\n";
-			gps.connect();
-			gps.startStream();
-
-			/* Poll GPS 5 times to ensure connection */
-			bool connected = false;
-			for (size_t i = 0; i < 5; i++) {
-				auto optFix{ gps.waitReadFix() };
-				std::cout << "(" << i + 1 << "/5) ";
-				logFix(optFix ? *optFix : GPSFix{ 0, 0, 0 });
-				/* Check that last poll gives a fix */
-				if (i == 4 && optFix) {
-					std::cout
-						<< "GPS connection successful.\n\n";
-					connected = true;
-				}
-			}
 			/* If GPS connection test was successful, proceed */
-			if (connected) {
+			if (testGPSConnection(gps)) {
 				break;
 			}
 			/* Else, ask user whether to retry connection */
 			retryPrompt("GPS connection failed.");
 		}
+		/* Initialize Concorde TSP solver */
+		ConcordeTSPSolver concorde{};
 		/* Enter waypoint CSV path */
 		while (true) {
 			std::cout << "Enter waypoint CSV path: ";
-			std::cin >> csv_path_;
+			std::filesystem::path path{};
+			std::cin >> path;
+			/* Set CSV path */
+			concorde.setCSVFile(std::move(path));
 			/* Read in waypoints from CSV */
-			if (readCSV()) {
+			if (concorde.readCSV()) {
+				/*If read was successful proceed */
 				break;
 			}
 			/* If reading CSV failed, prompt user to retry */
@@ -146,12 +89,14 @@ void Navigator::retryPrompt(const char *message) noexcept
 	std::cout << "\n";
 }
 
+/* Constructor */
 Navigator::Navigator(int argc, const char **argv) noexcept : prog_{ *argv },
 							     argc_{ argc },
 							     argv_{ argv }
 {
 }
 
+/* Starting point of Navigator that parses user args */
 void Navigator::start(void) noexcept
 {
 	/* If incorrect number of args passed, default to help */
@@ -169,29 +114,18 @@ void Navigator::start(void) noexcept
 	}
 }
 
+/* CLI mode to solve directory of waypoints */
 [[noreturn]] void Navigator::solve(void)
 {
-	while (true) {
-		std::cout << "Enter CSV waypoint directory: ";
-		std::string csvDir;
-		std::cin >> csvDir;
-	}
+	std::cout << "Enter CSV waypoint directory: ";
+	std::string csvDir;
+	std::cin >> csvDir;
+
 	std::exit(0);
 }
 
-void Navigator::writeTSPFile(void)
-{
-}
-
-void Navigator::runConcorde(void)
-{
-}
-
-void Navigator::readSolution(void)
-{
-}
-
-void Navigator::help(void) noexcept
+/* User help print */
+[[noreturn]] void Navigator::help(void) noexcept
 {
 	std::cout
 		<< "Usage: " << prog_ << " COMMAND\n\n"
@@ -203,4 +137,5 @@ void Navigator::help(void) noexcept
 		<< "\nExamples:\n"
 		<< "  " << prog_ << " run\n"
 		<< "  " << prog_ << " solve\n";
+	std::exit(0);
 }

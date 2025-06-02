@@ -1,12 +1,10 @@
 #include "gps.hpp"
 
 #include <cerrno>
-#include <chrono>
 #include <cstring>
 #include <ctime>
 #include <iostream>
 #include <optional>
-#include <thread>
 
 /* Constructor */
 GPSClient::GPSClient(const char *host, const char *port, int timeout_us,
@@ -22,7 +20,7 @@ GPSClient::GPSClient(const char *host, const char *port, int timeout_us,
 }
 
 /* Destructor */
-GPSClient::~GPSClient(void) noexcept
+GPSClient::~GPSClient(void)
 {
 	/* If connected, disable GPS stream and deallocate gps_data_t data_ */
 	if (connected_) {
