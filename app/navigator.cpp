@@ -174,7 +174,7 @@ bool Navigator::setSolDir(ConcordeTSPSolver &concorde)
 /* Print path helper method */
 void Navigator::printPath(const std::filesystem::path &p)
 {
-	std::cout << std::filesystem::absolute(p) << "found.\n\n";
+	std::cout << std::filesystem::absolute(p) << " found.\n\n";
 }
 
 /* Helper method to check CSV directory */
