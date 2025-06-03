@@ -30,6 +30,7 @@ class Navigator {
 	void		      solveCSVDir(ConcordeTSPSolver &);
 	bool		      setTSPDir(ConcordeTSPSolver &);
 	bool		      setSolDir(ConcordeTSPSolver &);
+	void		      printPath(const std::filesystem::path &);
 
 	void retryPrompt(const char *) noexcept;
 	void logFix(const GPSFix &) noexcept;

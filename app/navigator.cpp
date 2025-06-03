@@ -145,11 +145,12 @@ std::filesystem::path Navigator::expandTilde(const std::filesystem::path &p)
 bool Navigator::setTSPDir(ConcordeTSPSolver &concorde)
 {
 	std::cout << "Enter TSP directory: ";
-	std::filesystem::path tsvDir{};
-	std::cin >> tsvDir;
-	tsvDir = expandTilde(tsvDir);
-	if (checkValidDir(tsvDir)) {
-		concorde.setTSPDir(std::move(tsvDir));
+	std::filesystem::path tspDir{};
+	std::cin >> tspDir;
+	tspDir = expandTilde(tspDir);
+	if (checkValidDir(tspDir)) {
+		concorde.setTSPDir(std::move(tspDir));
+		printPath(tspDir);
 		return true;
 	}
 	return false;
@@ -164,9 +165,16 @@ bool Navigator::setSolDir(ConcordeTSPSolver &concorde)
 	solDir = expandTilde(solDir);
 	if (checkValidDir(solDir)) {
 		concorde.setSolDir(std::move(solDir));
+		printPath(solDir);
 		return true;
 	}
 	return false;
+}
+
+/* Print path helper method */
+void Navigator::printPath(const std::filesystem::path &p)
+{
+	std::cout << std::filesystem::absolute(p) << "found.\n\n";
 }
 
 /* Helper method to check CSV directory */
@@ -194,6 +202,7 @@ bool Navigator::checkValidDir(std::filesystem::path &p)
 		/* Check for valid directory path */
 		if (checkValidDir(csvDir)) {
 			/* If valid, proceed */
+			printPath(csvDir);
 			break;
 		}
 		/* Else ask user to retry */
