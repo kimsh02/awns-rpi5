@@ -1,6 +1,7 @@
 #include "navigator.hpp"
 
 #include <cstdlib>
+#include <filesystem>
 #include <iostream>
 #include <limits>
 #include <string>
@@ -37,6 +38,23 @@ bool Navigator::testGPSConnection(GPSClient &gps)
 	return false;
 }
 
+/* Helper method to use ConcordeTSPSolver to parse CSV */
+bool Navigator::readCSV(ConcordeTSPSolver &concorde)
+{
+	std::cout << "Enter waypoint CSV path: ";
+	std::filesystem::path path{};
+	std::cin >> path;
+	/* Set CSV path */
+	concorde.setCSVFile(std::move(expandTilde(path)));
+	/* Read in waypoints from CSV */
+	if (concorde.readCSV()) {
+		/* If able to, return true */
+		return true;
+	}
+	/* Else return false */
+	return false;
+}
+
 /* Hot loop to run navigation system */
 [[noreturn]] void Navigator::run(void)
 {
@@ -56,14 +74,8 @@ bool Navigator::testGPSConnection(GPSClient &gps)
 		ConcordeTSPSolver concorde{};
 		/* Enter waypoint CSV path */
 		while (true) {
-			std::cout << "Enter waypoint CSV path: ";
-			std::filesystem::path path{};
-			std::cin >> path;
-			/* Set CSV path */
-			concorde.setCSVFile(std::move(path));
-			/* Read in waypoints from CSV */
-			if (concorde.readCSV()) {
-				/*If read was successful proceed */
+			/* If read was successful proceed */
+			if (readCSV(concorde)) {
 				break;
 			}
 			/* If reading CSV failed, prompt user to retry */
@@ -114,14 +126,102 @@ void Navigator::start(void) noexcept
 	}
 }
 
+/* Helper function helping to expand tilde if user opts to use it in CSV path
+   string */
+std::filesystem::path Navigator::expandTilde(const std::filesystem::path &p)
+{
+	std::string s = p.string();
+	if (!s.empty() && s[0] == '~') {
+		const char *home = std::getenv("HOME");
+		if (home) {
+			s.replace(0, 1, home); // replace ~ with $HOME
+			return std::filesystem::path(s);
+		}
+	}
+	return p; // return as-is if no expansion needed
+}
+
+/* Helper method to set TSP directory for Concorde*/
+bool Navigator::setTSPDir(ConcordeTSPSolver &concorde)
+{
+	std::cout << "Enter TSP directory: ";
+	std::filesystem::path tsvDir{};
+	std::cin >> tsvDir;
+	tsvDir = expandTilde(tsvDir);
+	if (checkValidDir(tsvDir)) {
+		concorde.setTSPDir(std::move(tsvDir));
+		return true;
+	}
+	return false;
+}
+
+/* Helper method to set solution directory for Concorde*/
+bool Navigator::setSolDir(ConcordeTSPSolver &concorde)
+{
+	std::cout << "Enter solution directory: ";
+	std::filesystem::path solDir{};
+	std::cin >> solDir;
+	solDir = expandTilde(solDir);
+	if (checkValidDir(solDir)) {
+		concorde.setSolDir(std::move(solDir));
+		return true;
+	}
+	return false;
+}
+
+/* Helper method to check CSV directory */
+bool Navigator::checkValidDir(std::filesystem::path &p)
+{
+	/* Check for valid directory path */
+	if (std::filesystem::exists(p) && std::filesystem::is_directory(p)) {
+		return true;
+	}
+	return false;
+}
+
 /* CLI mode to solve directory of waypoints */
 [[noreturn]] void Navigator::solve(void)
 {
-	std::cout << "Enter CSV waypoint directory: ";
-	std::string csvDir;
-	std::cin >> csvDir;
+	/* Initialize ConcordeTSPSolver */
+	ConcordeTSPSolver concorde{};
+	/* Initialize CSV directory path */
+	std::filesystem::path csvDir{};
+	/* Get valid CSV directory */
+	while (true) {
+		std::cout << "Enter CSV waypoint directory: ";
+		std::cin >> csvDir;
+		csvDir = expandTilde(csvDir);
+		/* Check for valid directory path */
+		if (checkValidDir(csvDir)) {
+			/* If valid, proceed */
+			break;
+		}
+		/* Else ask user to retry */
+		retryPrompt("CSV directory not valid.");
+	}
+	/* Set TSP directory */
+	while (true) {
+		if (setTSPDir(concorde)) {
+			break;
+		}
+		retryPrompt("TSV directory not valid.");
+	}
+	/* Set solution directory */
+	while (true) {
+		if (setSolDir(concorde)) {
+			break;
+		}
+		retryPrompt("Solution directory not valid.");
+	}
+	/* Helper method to solve CSV dir */
+	solveCSVDir(concorde);
 
 	std::exit(0);
+}
+
+/* Helper method to solve CSV dir */
+void Navigator::solveCSVDir(ConcordeTSPSolver &)
+{
 }
 
 /* User help print */
