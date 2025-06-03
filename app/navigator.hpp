@@ -1,8 +1,9 @@
 #pragma once
 
-#include <string>
+#include <functional>
 #include <vector>
 
+#include "concorde.hpp"
 #include "gps.hpp"
 
 class Navigator {
@@ -22,8 +23,14 @@ class Navigator {
 	[[noreturn]] void help(void) noexcept;
 
 	bool testGPSConnection(GPSClient &);
+	bool readCSV(ConcordeTSPSolver &);
+
+	bool		      checkValidDir(std::filesystem::path &);
+	std::filesystem::path expandTilde(const std::filesystem::path &);
+	void		      solveCSVDir(ConcordeTSPSolver &);
+	bool		      setTSPDir(ConcordeTSPSolver &);
+	bool		      setSolDir(ConcordeTSPSolver &);
 
 	void retryPrompt(const char *) noexcept;
-
 	void logFix(const GPSFix &) noexcept;
 };
