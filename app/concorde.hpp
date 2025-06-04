@@ -38,4 +38,6 @@ class ConcordeTSPSolver {
 
 	std::vector<std::pair<double, double> > waypoints_; /* Lat, lon pairs
 							       from CSV */
+
+	double decimalDegToTSPLIBGEO(double) noexcept;
 };
