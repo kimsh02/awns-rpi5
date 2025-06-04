@@ -190,6 +190,17 @@ bool Navigator::checkValidDir(std::filesystem::path &p)
 /* CLI mode to solve directory of waypoints */
 [[noreturn]] void Navigator::solve(void)
 {
+	/* Initialize GPS client */
+	GPSClient gps{};
+	/* Test GPS connection */
+	while (true) {
+		/* If GPS connection test was successful, proceed */
+		if (testGPSConnection(gps)) {
+			break;
+		}
+		/* Else, ask user whether to retry connection */
+		retryPrompt("GPS connection failed.");
+	}
 	/* Initialize ConcordeTSPSolver */
 	ConcordeTSPSolver concorde{};
 	/* Initialize CSV directory path */
@@ -222,15 +233,44 @@ bool Navigator::checkValidDir(std::filesystem::path &p)
 		}
 		retryPrompt("Solution directory not valid.");
 	}
-	/* Helper method to solve CSV dir */
-	solveCSVDir(concorde);
+	/* Solve CSV dir */
+	/* Iterate through every CSV file in CSV directory */
+	std::size_t solCtr{ 0 };
+	std::size_t iterCtr{ 0 };
+	for (auto const &entry : std::filesystem::directory_iterator(csvDir)) {
+		/* Increment iteration ctr */
+		iterCtr++;
+		/* If not regular file, skip */
+		if (!entry.is_regular_file())
+			continue;
+		auto path = entry.path();
+		/* If file not CSV, skip */
+		if (path.extension() != ".csv")
+			continue;
+		/* Set CSV file in ConcordeTSPSolver */
+		concorde.setCSVFile(std::move(path));
+		/* Read CSV file */
+		if (!concorde.readCSV()) {
+			/* If CSV unreadable, skip */
+			continue;
+		}
+		/* Write TSP file */
+		concorde.writeTSPFile();
+
+		/* Increment solCtr to track number of solutions generated */
+		solCtr++;
+	}
+
+	/* If no solutions created, print notice */
+	if (!solCtr) {
+		std::cerr << "Error: No solutions were able to be created.\n";
+	} else {
+		/* Else print number solved */
+		std::cout << solCtr << "/" << iterCtr
+			  << " CSV files read and solved.\n";
+	}
 
 	std::exit(0);
-}
-
-/* Helper method to solve CSV dir */
-void Navigator::solveCSVDir(ConcordeTSPSolver &)
-{
 }
 
 /* User help print */

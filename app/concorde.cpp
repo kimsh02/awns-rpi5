@@ -4,10 +4,38 @@
 #include <iostream>
 #include <sstream>
 
+/* Helper method to convert decimal degrees to TSPLIB "GEO" format */
+/* (deg*100 + min) */
+double ConcordeTSPSolver::decimalDegToTSPLIBGEO(double x) noexcept
+{
+	int    deg     = static_cast<int>(std::floor(x));
+	double minutes = (x - deg) * 60.0;
+	return deg * 100.0 + minutes;
+}
+
 /* Writes out TSP file from waypoints to be used by Concorde executable*/
 void ConcordeTSPSolver::writeTSPFile(void)
 {
-	std::string base{ csvFile_.stem().string() };
+	/* Create TSP file path string */
+	std::string basename{ csvFile_.stem().string() };
+	std::string tspPath = tspDir_ / (basename + ".tsp");
+	/* Write .tsp file in TSPLIB "GEO" format for Concorde */
+	std::ofstream tspOut(tspPath);
+	tspOut << "NAME: " << basename << "\n";
+	tspOut << "TYPE: TSP\n";
+	tspOut << "COMMENT: generated from " << csvFile_.filename().string()
+	       << "\n";
+	tspOut << "DIMENSION: " << waypoints_.size() << "\n";
+	tspOut << "EDGE_WEIGHT_TYPE: GEO\n";
+	tspOut << "NODE_COORD_SECTION\n";
+	for (size_t i = 0; i < waypoints_.size(); ++i) {
+		double xx = decimalDegToTSPLIBGEO(waypoints_[i].first);
+		double yy = decimalDegToTSPLIBGEO(waypoints_[i].second);
+		tspOut << (i + 1) << " " << xx << " " << yy << "\n";
+	}
+	tspOut << "EOF\n";
+	tspOut.close();
+	std::cout << "Wrote TSP file: " << tspPath << "\n";
 }
 
 /* Calls on Concorde to solve the TSP file and write out solution file */
@@ -63,6 +91,7 @@ bool ConcordeTSPSolver::readCSV(void)
 			continue;
 		}
 	}
+	file.close();
 	/* If reader was unable to add any waypoints for whatever reason */
 	if (waypoints_.empty()) {
 		std::cerr << "Error: Unable to add any waypoints.\n";

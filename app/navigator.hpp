@@ -27,7 +27,6 @@ class Navigator {
 
 	bool		      checkValidDir(std::filesystem::path &);
 	std::filesystem::path expandTilde(const std::filesystem::path &);
-	void		      solveCSVDir(ConcordeTSPSolver &);
 	bool		      setTSPDir(ConcordeTSPSolver &);
 	bool		      setSolDir(ConcordeTSPSolver &);
 	void		      printPath(const std::filesystem::path &);
