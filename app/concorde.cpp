@@ -41,7 +41,9 @@ void ConcordeTSPSolver::writeTSPFile(void)
 	for (size_t i = 0; i < waypoints_.size(); ++i) {
 		double xx = decimalDegToTSPLIBGEO(waypoints_[i].first);
 		double yy = decimalDegToTSPLIBGEO(waypoints_[i].second);
-		tspOut << (i + 1) << " " << xx << " " << yy << "\n";
+		tspOut << std::setprecision(
+				  std::numeric_limits<double>::max_digits10)
+		       << (i + 1) << " " << xx << " " << yy << "\n";
 	}
 	tspOut << "EOF\n";
 	tspOut.close();
