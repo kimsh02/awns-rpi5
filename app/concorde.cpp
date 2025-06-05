@@ -45,7 +45,7 @@ void ConcordeTSPSolver::writeTSPFile(void)
 	}
 	tspOut << "EOF\n";
 	tspOut.close();
-	std::cout << "Wrote TSP file: " << tspFile_ << ".\n\n";
+	std::cout << "Wrote TSP file: " << tspFile_ << ".\n";
 }
 
 /* Calls on Concorde to solve the TSP file and write out solution file */
