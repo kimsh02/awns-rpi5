@@ -11,7 +11,7 @@
 /* Log waypoint method to print waypoints to stdout */
 void Navigator::logFix(const GPSFix &fix) noexcept
 {
-	std::cout << "[Latitude: " << fix.latitude
+	std::cout << std::setprecision(10) << "[Latitude: " << fix.latitude
 		  << ", Longitude: " << fix.longitude
 		  << ", Bearing: " << fix.heading << "]\n";
 }

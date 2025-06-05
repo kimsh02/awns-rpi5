@@ -49,6 +49,10 @@ class ConcordeTSPSolver {
 
 	std::vector<std::pair<double, double> > waypoints_; /* Lat, lon pairs
 							       from CSV */
+	std::vector<int> tourOrder_; /* Order that waypoints should be
+					visited */
+	std::vector<std::pair<double, double> > tour_; /* Lat, lon pairs of
+							       tour */
 
 	double decimalDegToTSPLIBGEO(double) noexcept;
 };
