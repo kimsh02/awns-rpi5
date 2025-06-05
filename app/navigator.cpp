@@ -83,9 +83,6 @@ void Navigator::stop(void)
 /* Print helper asking user to retry an action */
 void Navigator::retryPrompt(const char *message) noexcept
 {
-	// /* Discard any leftover characters on the current line (including '\n'): */
-	// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
 	// Grab the stream buffer for cin:
 	auto *buf = std::cin.rdbuf();
 
@@ -97,16 +94,7 @@ void Navigator::retryPrompt(const char *message) noexcept
 
 	std::cout << message << " Press Enter to retry.";
 	std::cout.flush();
-	// // If the *next* character in cin is '\n', discard it.
-	// if (std::cin.peek() == '\n') {
-	// 	std::cin.ignore(1, '\n');
-	// }
 
-	// Grab the stream buffer for cin:
-	// auto *buf = std::cin.rdbuf();
-
-	// As long as there is at least one character already buffered,
-	// and that character is '\n', consume it:
 	while (buf->in_avail() > 0 && std::cin.peek() == '\n') {
 		std::cin.get(); // discard exactly one '\n'
 	}
