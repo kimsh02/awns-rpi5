@@ -83,18 +83,13 @@ void Navigator::stop(void)
 /* Print helper asking user to retry an action */
 void Navigator::retryPrompt(const char *message) noexcept
 {
-	// Grab the stream buffer for cin:
-	auto *buf = std::cin.rdbuf();
-
-	// As long as there is at least one character already buffered,
-	// and that character is '\n', consume it:
-	while (buf->in_avail() > 0 && std::cin.peek() == '\n') {
-		std::cin.get(); // discard exactly one '\n'
-	}
-
 	std::cout << message << " Press Enter to retry.";
 	std::cout.flush();
 
+	// Grab the stream buffer for cin:
+	auto *buf = std::cin.rdbuf();
+	// As long as there is at least one character already buffered,
+	// and that character is '\n', consume it:
 	while (buf->in_avail() > 0 && std::cin.peek() == '\n') {
 		std::cin.get(); // discard exactly one '\n'
 	}
