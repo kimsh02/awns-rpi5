@@ -1,5 +1,6 @@
 #include "concorde.hpp"
 
+#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <sstream>
