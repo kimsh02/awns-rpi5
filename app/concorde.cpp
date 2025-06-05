@@ -39,7 +39,7 @@ void ConcordeTSPSolver::writeTSPFile(void)
 	for (size_t i = 0; i < waypoints_.size(); ++i) {
 		double xx = decimalDegToTSPLIBGEO(waypoints_[i].first);
 		double yy = decimalDegToTSPLIBGEO(waypoints_[i].second);
-		tspOut << std::setprecision(4) << (i + 1) << " " << xx << " "
+		tspOut << std::setprecision(6) << (i + 1) << " " << xx << " "
 		       << yy << "\n";
 	}
 	tspOut << "EOF\n";
@@ -63,6 +63,55 @@ void ConcordeTSPSolver::solveTSP(void)
 	} else {
 		std::cout << "Concorde wrote solution: " << solFile_ << "\n";
 	}
+}
+
+/* Reads TSP solution in route order vector */
+/* If reading solution fails for whatever reason, returns waypoints in original
+   order of CSV, else return the solved tour */
+const std::vector<std::pair<double, double> > &
+ConcordeTSPSolver::readTSPSolution(void)
+{
+	/* Try to open solution file */
+	std::ifstream solIn(solFile_);
+	if (!solIn) {
+		std::cerr << "Cannot open solution: " << solFile_ << "\n";
+		return waypoints_;
+	}
+	std::size_t dim;
+	solIn >> dim;
+	/* Check that Concorde has generated valid solution file */
+	if (!solIn) {
+		std::cerr << "Malformed .sol (no dimension): " << solFile_
+			  << "\n";
+		return waypoints_;
+	}
+	/* Read in tour order */
+	tourOrder_.resize(dim);
+	for (std::size_t i = 0; i < dim; ++i) {
+		solIn >> tourOrder_[i];
+		if (!solIn) {
+			std::cerr << "Malformed .sol (too few indices): "
+				  << solFile_ << "\n";
+			break;
+		}
+	}
+	solIn.close();
+	/* Print out tour order */
+	std::cout << "Solution for " << solFile_ << ": ";
+	for (int idx : tourOrder_) {
+		std::cout << idx << " ";
+	}
+	std::cout << "\n";
+	/* Reorder initial waypoints_ into tour_ */
+	for (std::size_t i = 0; i < dim; i++) {
+		tour_[i] = waypoints_[tourOrder_[i]];
+	}
+	return tour_;
+}
+
+/* Calls Python script to plot solved route for visulization */
+void ConcordeTSPSolver::plotTSPSolution(void)
+{
 }
 
 /* Getter for CSV directory */

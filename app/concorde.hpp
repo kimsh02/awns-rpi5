@@ -29,11 +29,11 @@ class ConcordeTSPSolver {
 
 	const std::filesystem::path &getCSVDir(void) noexcept;
 
-	bool readCSV(void);
-	void writeTSPFile(void);
-	void solveTSP(void);
-	void readTSPSolution(void);
-	void plotTSPSolution(void);
+	bool					       readCSV(void);
+	void					       writeTSPFile(void);
+	void					       solveTSP(void);
+	const std::vector<std::pair<double, double> > &readTSPSolution(void);
+	void					       plotTSPSolution(void);
 
     private:
 	std::filesystem::path csvFile_; /* Path string to CSV of waypoints*/

@@ -11,5 +11,6 @@ int main(int argc, const char **argv)
 
 	/* Spit out downstream controller directions */
 
-	/* nav.stop(); */
+	/* Close GPS stream */
+	nav.stop();
 }

@@ -1,5 +1,6 @@
 #include "navigator.hpp"
 
+#include <chrono>
 #include <cstdlib>
 #include <filesystem>
 #include <iostream>
@@ -11,7 +12,7 @@
 /* Log waypoint method to print waypoints to stdout */
 void Navigator::logFix(const GPSFix &fix) noexcept
 {
-	std::cout << std::setprecision(10) << "[Latitude: " << fix.latitude
+	std::cout << std::setprecision(6) << "[Latitude: " << fix.latitude
 		  << ", Longitude: " << fix.longitude
 		  << ", Bearing: " << fix.heading << "]\n";
 }
@@ -222,7 +223,7 @@ bool Navigator::checkValidDir(std::filesystem::path &p)
 }
 
 /* Helper method to generate solutions from CSV directory */
-std::size_t Navigator::makeSolutions(void)
+void Navigator::makeSolutions(void)
 {
 	/* Iterate through every CSV file in CSV directory */
 	std::size_t solCtr{ 0 };
@@ -248,12 +249,19 @@ std::size_t Navigator::makeSolutions(void)
 		/* Write TSP file */
 		concorde_.writeTSPFile();
 		/* Run Concorde on TSP file */
+		/* Measure time it takes to solve TSP file */
+		auto start = std::chrono::steady_clock::now();
+		/* Invoke Concorde to solve TSP file */
 		concorde_.solveTSP();
+		auto end = std::chrono::steady_clock::now();
+		auto duration =
+			std::chrono::duration_cast<std::chrono::microseconds>(
+				end - start);
+		std::cout << "Solved in " << duration << " microseonds.\n";
 
 		/* Increment solCtr to track number of solutions generated */
 		solCtr++;
 	}
-
 	/* If no solution files created, print notice */
 	if (!solCtr) {
 		std::cerr
@@ -262,7 +270,6 @@ std::size_t Navigator::makeSolutions(void)
 		/* Else print number of CSVs solved */
 		std::cout << solCtr << "/" << iterCtr << " CSV files solved.\n";
 	}
-	return solCtr;
 }
 
 /* CLI mode to solve directory of waypoints */
