@@ -3,7 +3,6 @@
 #include <cstdlib>
 #include <filesystem>
 #include <iostream>
-#include <limits>
 #include <string>
 
 #include "concorde.hpp"
@@ -248,17 +247,20 @@ std::size_t Navigator::makeSolutions(void)
 		}
 		/* Write TSP file */
 		concorde_.writeTSPFile();
+		/* Run Concorde on TSP file */
+		concorde_.solveTSP();
+
 		/* Increment solCtr to track number of solutions generated */
 		solCtr++;
 	}
 
-	/* If no TSP files created, print notice */
+	/* If no solution files created, print notice */
 	if (!solCtr) {
-		std::cerr << "Error: No TSP files were able to be created.\n";
+		std::cerr
+			<< "Error: No solution files were able to be created.\n";
 	} else {
-		/* Else print number solved */
-		std::cout << iterCtr << " CSV files parsed. " << solCtr
-			  << " TSP files created.\n\n";
+		/* Else print number of CSVs solved */
+		std::cout << solCtr << "/" << iterCtr << " CSV files solved.\n";
 	}
 	return solCtr;
 }
@@ -291,7 +293,6 @@ std::size_t Navigator::makeSolutions(void)
 	}
 	/* Make solutions from CSV files */
 	makeSolutions();
-
 	std::exit(0);
 }
 

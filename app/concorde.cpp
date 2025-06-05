@@ -27,8 +27,6 @@ void ConcordeTSPSolver::writeTSPFile(void)
 	/* Create TSP file path string */
 	std::string basename{ csvFile_.stem().string() };
 	tspFile_ = tspDir_ / (basename + ".tsp");
-	/* Set tspFile_ */
-
 	/* Write .tsp file in TSPLIB "GEO" format for Concorde */
 	std::ofstream tspOut(tspFile_);
 	tspOut << "NAME: " << basename << "\n";
@@ -41,9 +39,8 @@ void ConcordeTSPSolver::writeTSPFile(void)
 	for (size_t i = 0; i < waypoints_.size(); ++i) {
 		double xx = decimalDegToTSPLIBGEO(waypoints_[i].first);
 		double yy = decimalDegToTSPLIBGEO(waypoints_[i].second);
-		tspOut << std::setprecision(
-				  std::numeric_limits<double>::max_digits10)
-		       << (i + 1) << " " << xx << " " << yy << "\n";
+		tspOut << std::setprecision(4) << (i + 1) << " " << xx << " "
+		       << yy << "\n";
 	}
 	tspOut << "EOF\n";
 	tspOut.close();
@@ -53,12 +50,19 @@ void ConcordeTSPSolver::writeTSPFile(void)
 /* Calls on Concorde to solve the TSP file and write out solution file */
 void ConcordeTSPSolver::solveTSP(void)
 {
-	/* TODO: Record time performance */
-
 	/* Create solution file path string */
 	std::string basename{ tspFile_.stem().string() };
 	solFile_ = solDir_ / (basename + ".sol");
 	/* Run Concorde executable to get optimal solution */
+	std::ostringstream cmd;
+	cmd << "concorde -o " << solFile_ << " " << tspFile_
+	    << " > /dev/null 2>&1";
+	int ret = std::system(cmd.str().c_str());
+	if (ret != 0) {
+		std::cerr << "Concorde failed on: " << tspFile_ << "\n";
+	} else {
+		std::cout << "Concorde wrote solution: " << solFile_ << "\n";
+	}
 }
 
 /* Getter for CSV directory */
