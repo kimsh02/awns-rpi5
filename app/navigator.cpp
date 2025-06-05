@@ -257,7 +257,7 @@ std::size_t Navigator::makeSolutions(void)
 		std::cerr << "Error: No TSP files were able to be created.\n";
 	} else {
 		/* Else print number solved */
-		std::cout << iterCtr << "CSV files parsed." << solCtr
+		std::cout << iterCtr << " CSV files parsed. " << solCtr
 			  << " TSP files created.\n\n";
 	}
 	return solCtr;
