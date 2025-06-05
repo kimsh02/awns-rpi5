@@ -12,16 +12,22 @@ class ConcordeTSPSolver {
 		csvFile_ = std::forward<decltype(csvFile)>(csvFile);
 	}
 
-	/* These have defaults but can be overridden */
-	void setTSPDir(const auto &&tspDir = "~/.awns-rpi5/tsp")
+	void setCSVDir(const auto &&csvDir)
+	{
+		csvDir_ = std::forward<decltype(csvDir)>(csvDir);
+	}
+
+	void setTSPDir(const auto &&tspDir)
 	{
 		tspDir_ = std::forward<decltype(tspDir)>(tspDir);
 	}
 
-	void setSolDir(const auto &&solDir = "~/.awns-rpi5/sol")
+	void setSolDir(const auto &&solDir)
 	{
 		solDir_ = std::forward<decltype(solDir)>(solDir);
 	}
+
+	const std::filesystem::path &getCSVDir(void) noexcept;
 
 	bool readCSV(void);
 	void writeTSPFile(void);
@@ -31,6 +37,11 @@ class ConcordeTSPSolver {
 
     private:
 	std::filesystem::path csvFile_; /* Path string to CSV of waypoints*/
+	std::filesystem::path tspFile_; /* Path string to concorde TSP file */
+	std::filesystem::path solFile_; /* Path string to concorde solution
+					   file */
+	std::filesystem::path csvDir_;	/* Path string to directory of CSV
+					   files */
 	std::filesystem::path tspDir_;	/* Path string to directory of TSP
 					  files */
 	std::filesystem::path solDir_;	/* Path string to directory of solution

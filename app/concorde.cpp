@@ -19,9 +19,11 @@ void ConcordeTSPSolver::writeTSPFile(void)
 {
 	/* Create TSP file path string */
 	std::string basename{ csvFile_.stem().string() };
-	std::string tspPath = tspDir_ / (basename + ".tsp");
+	tspFile_ = tspDir_ / (basename + ".tsp");
+	/* Set tspFile_ */
+
 	/* Write .tsp file in TSPLIB "GEO" format for Concorde */
-	std::ofstream tspOut(tspPath);
+	std::ofstream tspOut(tspFile_);
 	tspOut << "NAME: " << basename << "\n";
 	tspOut << "TYPE: TSP\n";
 	tspOut << "COMMENT: generated from " << csvFile_.filename().string()
@@ -36,12 +38,24 @@ void ConcordeTSPSolver::writeTSPFile(void)
 	}
 	tspOut << "EOF\n";
 	tspOut.close();
-	std::cout << "Wrote TSP file: " << tspPath << "\n";
+	std::cout << "Wrote TSP file: " << tspFile_ << ".\n\n";
 }
 
 /* Calls on Concorde to solve the TSP file and write out solution file */
 void ConcordeTSPSolver::solveTSP(void)
 {
+	/* TODO: Record time performance */
+
+	/* Create solution file path string */
+	std::string basename{ tspFile_.stem().string() };
+	solFile_ = solDir_ / (basename + ".sol");
+	/* Run Concorde executable to get optimal solution */
+}
+
+/* Getter for CSV directory */
+const std::filesystem::path &ConcordeTSPSolver::getCSVDir(void) noexcept
+{
+	return csvDir_;
 }
 
 /* Read CSV file to load in waypoints */
