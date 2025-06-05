@@ -257,7 +257,9 @@ void Navigator::makeSolutions(void)
 		auto duration =
 			std::chrono::duration_cast<std::chrono::microseconds>(
 				end - start);
-		std::cout << "Solved in " << duration << " microseonds.\n";
+		std::cout << "Solved optimal tour order in " << duration
+			  << ".\n\n";
+		/* TODO: python graph */
 
 		/* Increment solCtr to track number of solutions generated */
 		solCtr++;
