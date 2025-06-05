@@ -9,9 +9,16 @@
 /* (deg*100 + min) */
 double ConcordeTSPSolver::decimalDegToTSPLIBGEO(double x) noexcept
 {
-	int    deg     = static_cast<int>(std::floor(x));
-	double minutes = (x - deg) * 60.0;
-	return deg * 100.0 + minutes;
+	// 1) Remember the sign (+1 or -1)
+	double sign = (x < 0.0) ? -1.0 : 1.0;
+	// 2) Work with the absolute value
+	double abs_val = std::abs(x);
+	// 3) Integer degrees from the absolute value
+	int deg = static_cast<int>(std::floor(abs_val));
+	// 4) Fractional part → minutes
+	double minutes = (abs_val - deg) * 60.0;
+	// 5) Combine as (degrees * 100 + minutes), then reapply sign
+	return sign * (deg * 100.0 + minutes);
 }
 
 /* Writes out TSP file from waypoints to be used by Concorde executable*/
