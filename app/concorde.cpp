@@ -99,6 +99,7 @@ bool ConcordeTSPSolver::readCSV(void)
 		return false;
 	}
 	/* Else print number of waypoints and return true */
-	std::cout << numWaypoints << "/" << lineNo << " waypoints loaded.\n\n";
+	std::cout << numWaypoints << "/" << lineNo << " waypoints loaded for "
+		  << csvFile_ << ".\n\n";
 	return true;
 }
