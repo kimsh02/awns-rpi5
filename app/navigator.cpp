@@ -25,13 +25,13 @@ bool Navigator::testGPSConnection(void)
 		return false;
 	}
 	gps_.startStream();
-	/* Poll GPS 5 times to ensure connection */
-	for (size_t i = 0; i < 5; i++) {
+	/* Poll GPS 6 times to ensure connection */
+	for (size_t i = 0; i < 6; i++) {
 		auto optFix{ gps_.waitReadFix() };
-		std::cout << "(" << i + 1 << "/5) ";
+		std::cout << "(" << i + 1 << "/6) ";
 		logFix(optFix ? *optFix : GPSFix{ 0, 0, 0 });
 		/* Check that last poll gives a fix */
-		if (i == 4 && optFix) {
+		if (i == 5 && optFix) {
 			std::cout << "GPS connection successful.\n\n";
 			return true;
 		}
