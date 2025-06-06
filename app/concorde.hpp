@@ -27,6 +27,11 @@ class ConcordeTSPSolver {
 		solDir_ = std::forward<decltype(solDir)>(solDir);
 	}
 
+	void setGraphDir(const auto &&graphDir)
+	{
+		graphDir_ = std::forward<decltype(graphDir)>(graphDir);
+	}
+
 	const std::filesystem::path &getCSVDir(void) noexcept;
 
 	bool					       readCSV(void);
@@ -36,16 +41,19 @@ class ConcordeTSPSolver {
 	void					       plotTSPSolution(void);
 
     private:
-	std::filesystem::path csvFile_; /* Path string to CSV of waypoints*/
-	std::filesystem::path tspFile_; /* Path string to concorde TSP file */
-	std::filesystem::path solFile_; /* Path string to concorde solution
+	std::filesystem::path csvFile_;	  /* Path string to CSV of waypoints*/
+	std::filesystem::path tspFile_;	  /* Path string to concorde TSP file */
+	std::filesystem::path solFile_;	  /* Path string to concorde solution
 					   file */
-	std::filesystem::path csvDir_;	/* Path string to directory of CSV
+	std::filesystem::path graphFile_; /* Path string to graph of tour */
+	std::filesystem::path csvDir_;	  /* Path string to directory of CSV
 					   files */
-	std::filesystem::path tspDir_;	/* Path string to directory of TSP
+	std::filesystem::path tspDir_;	  /* Path string to directory of TSP
 					  files */
-	std::filesystem::path solDir_;	/* Path string to directory of solution
+	std::filesystem::path solDir_;	 /* Path string to directory of solution
 					  files */
+	std::filesystem::path graphDir_; /* Path string to directory of graph
+					    files */
 
 	std::vector<std::pair<double, double> > waypoints_; /* Lat, lon pairs
 							       from CSV */
