@@ -11,23 +11,23 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-# 2. Ensure sudo apt cache is up to date
-sudo apt update
+# 2. Ensure apt cache is up to date
+apt update
 
 # 3. Install python3 if missing
 if ! command -v python3 >/dev/null 2>&1; then
-    sudo apt install -y python3
+    apt install -y python3
 fi
 
 # 4. Install pip3 if missing
 if ! command -v pip3 >/dev/null 2>&1; then
-    sudo apt install -y python3-pip
+    apt install -y python3-pip
 fi
 
 # 5. Install matplotlib via APT if not already present
 #    (python3-matplotlib is the Debian package for system-wide install)
 if ! python3 -c "import matplotlib" >/dev/null 2>&1; then
-    sudo apt install -y python3-matplotlib
+    apt install -y python3-matplotlib
 fi
 
 # 6. Verify that visualize.py exists in current directory
@@ -40,7 +40,7 @@ fi
 
 # 7. Install visualize.py to /usr/local/bin as “visualize”
 DEST="/usr/local/bin/visualize"
-sudo install -m 0755 "$SCRIPT_SRC" "$DEST"
+install -m 0755 "$SCRIPT_SRC" "$DEST"
 
 echo "✓ Installed visualize to $DEST"
 echo "✓ Ensure /usr/local/bin is in your PATH to run it as: visualize <coords.csv> <solution.sol> <output.png>"
