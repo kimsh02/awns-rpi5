@@ -207,6 +207,21 @@ bool Navigator::setSolDir(void)
 	return false;
 }
 
+/* Helper method to set graph directory for Concorde*/
+bool Navigator::setGraphDir(void)
+{
+	std::cout << "Enter graph directory: ";
+	std::filesystem::path graphDir{};
+	std::cin >> graphDir;
+	graphDir = expandTilde(graphDir);
+	if (checkValidDir(graphDir)) {
+		concorde_.setGraphDir(std::move(graphDir));
+		printPath(graphDir);
+		return true;
+	}
+	return false;
+}
+
 /* Print path helper method */
 void Navigator::printPath(const std::filesystem::path &p)
 {
@@ -271,7 +286,8 @@ void Navigator::makeSolutions(void)
 			<< "Error: No solution files were able to be created.\n";
 	} else {
 		/* Else print number of CSVs solved */
-		std::cout << solCtr << "/" << iterCtr << " CSV files solved.\n";
+		std::cout << solCtr << "/" << iterCtr
+			  << " CSV files solved total.\n";
 	}
 }
 
@@ -300,6 +316,13 @@ void Navigator::makeSolutions(void)
 			break;
 		}
 		retryPrompt("Solution directory not valid.");
+	}
+	/* Set graph directory */
+	while (true) {
+		if (setGraphDir()) {
+			break;
+		}
+		retryPrompt("Graph directory not valid.");
 	}
 	/* Make solutions from CSV files */
 	makeSolutions();

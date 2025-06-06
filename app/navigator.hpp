@@ -32,6 +32,7 @@ class Navigator {
 	bool		      setCSVDir(void);
 	bool		      setTSPDir(void);
 	bool		      setSolDir(void);
+	bool		      setGraphDir(void);
 	void		      printPath(const std::filesystem::path &);
 	void		      makeSolutions(void);
 	void		      retryPrompt(const char *) noexcept;

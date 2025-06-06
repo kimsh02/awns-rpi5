@@ -71,6 +71,9 @@ void ConcordeTSPSolver::solveTSP(void)
 const std::vector<std::pair<double, double> > &
 ConcordeTSPSolver::readTSPSolution(void)
 {
+	/* Create path to graph file */
+	std::string basename{ solFile_.stem() };
+	graphFile_ = graphDir_ / (basename + ".png");
 	/* Try to open solution file */
 	std::ifstream solIn(solFile_);
 	if (!solIn) {
