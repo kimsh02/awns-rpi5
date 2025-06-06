@@ -238,6 +238,19 @@ bool Navigator::checkValidDir(std::filesystem::path &p)
 	return false;
 }
 
+/* Helper method to invoke and time Concorde solving TSP */
+void Navigator::solveTSP(void)
+{
+	/* Measure time it takes to solve TSP file */
+	auto start = std::chrono::steady_clock::now();
+	/* Invoke Concorde to solve TSP file */
+	concorde_.solveTSP();
+	auto end      = std::chrono::steady_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(
+		end - start);
+	std::cout << "Solved optimal tour order in " << duration << ".\n";
+}
+
 /* Helper method to generate solutions from CSV directory */
 void Navigator::makeSolutions(void)
 {
@@ -265,20 +278,14 @@ void Navigator::makeSolutions(void)
 		/* Write TSP file */
 		concorde_.writeTSPFile();
 		/* Run Concorde on TSP file */
-		/* Measure time it takes to solve TSP file */
-		auto start = std::chrono::steady_clock::now();
-		/* Invoke Concorde to solve TSP file */
-		concorde_.solveTSP();
-		auto end = std::chrono::steady_clock::now();
-		auto duration =
-			std::chrono::duration_cast<std::chrono::microseconds>(
-				end - start);
-		std::cout << "Solved optimal tour order in " << duration
-			  << ".\n\n";
-		/* TODO: python graph */
-
+		solveTSP();
+		/* Read in TSP solution back into memory */
+		concorde_.readTSPSolution();
+		/* Plot graph in Python */
+		concorde_.plotTSPSolution();
 		/* Increment solCtr to track number of solutions generated */
 		solCtr++;
+		std::cout << "\n";
 	}
 	/* If no solution files created, print notice */
 	if (!solCtr) {
@@ -294,8 +301,6 @@ void Navigator::makeSolutions(void)
 /* CLI mode to solve directory of waypoints */
 [[noreturn]] void Navigator::solve(void)
 {
-	/* Test GPS connection */
-	gpspoll(false);
 	/* Set valid CSV directory */
 	while (true) {
 		if (setCSVDir()) {

@@ -19,6 +19,8 @@ class Navigator {
 
 	// std::pair<double, double> currPos;  /* Current position of system */
 	// std::size_t		  nextDest; /* Next waypoint to visit */
+	// std::vector<std::pair<double, double> > &tour_; /* Referenced tour from
+	// 						   Concorde */
 
 	void		  run(void);
 	void		  gpspoll(bool);
@@ -35,6 +37,7 @@ class Navigator {
 	bool		      setGraphDir(void);
 	void		      printPath(const std::filesystem::path &);
 	void		      makeSolutions(void);
+	void		      solveTSP(void);
 	void		      retryPrompt(const char *) noexcept;
 	void		      logFix(const GPSFix &) noexcept;
 };
