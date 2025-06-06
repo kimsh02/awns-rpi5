@@ -30,8 +30,8 @@ if ! python3 -c "import matplotlib" >/dev/null 2>&1; then
     apt install -y python3-matplotlib
 fi
 
-# 6. Verify that visualize.py exists in current directory
-SCRIPT_SRC="visualize.py"
+# 6. Verify that visualize.py exists
+SCRIPT_SRC="app/python/visualize.py"
 if [[ ! -f "$SCRIPT_SRC" ]]; then
     echo "Error: $SCRIPT_SRC not found in $(pwd)."
     echo "Please place visualize.py in this directory and re-run."
