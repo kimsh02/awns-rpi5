@@ -6,54 +6,77 @@ import matplotlib.pyplot as plt
 
 def main():
     if len(sys.argv) != 4:
-        print(
-            f"Usage: {sys.argv[0]} <path/to/coords.csv> <path/to/solution.sol> <path/to/output.png>")
+        print(f"Usage: {sys.argv[0]} <coords.csv> <solution.sol> <output.png>")
         sys.exit(1)
 
-    csv_path = sys.argv[1]
-    sol_path = sys.argv[2]
-    out_path = sys.argv[3]
+    csv_path, sol_path, out_path = sys.argv[1], sys.argv[2], sys.argv[3]
 
-    # Read coordinates (expects header "latitude,longitude")
+    # --- load coordinates ---
     coords = []
     with open(csv_path, newline='') as f:
         reader = csv.reader(f)
-        next(reader)
+        next(reader)  # skip header
         for row in reader:
-            lat = float(row[0])
-            lon = float(row[1])
-            coords.append((lat, lon))
+            coords.append((float(row[0]), float(row[1])))
 
-    # Read Concorde solution (first line = number of nodes, second line = tour
-    # order)
+    # --- load tour order ---
     with open(sol_path) as f:
-        lines = [line.strip() for line in f if line.strip()]
-        tour_indices = [int(idx) for idx in lines[1].split()]
+        lines = [l.strip() for l in f if l.strip()]
+        tour = [int(i) for i in lines[1].split()]
+        tour.append(tour[0])  # close loop
 
-    # Close the tour loop
-    tour_indices.append(tour_indices[0])
+    # --- prepare data ---
+    lats = [coords[i][0] for i in tour]
+    lons = [coords[i][1] for i in tour]
 
-    # Collect lat/lon in tour order
-    tour_lats = [coords[i][0] for i in tour_indices]
-    tour_lons = [coords[i][1] for i in tour_indices]
+    # --- plot setup ---
+    fig, ax = plt.subplots(figsize=(10, 8), dpi=300)
 
-    # Plot
-    plt.figure()
-    plt.plot(tour_lons, tour_lats, marker='o', linestyle='-')
-    plt.title("TSP Tour Order")
-    plt.xlabel("Longitude")
-    plt.ylabel("Latitude")
-    plt.grid(True)
+    # draw arrows between each consecutive pair
+    for i in range(len(tour) - 1):
+        ax.annotate(
+            "",
+            xy=(lons[i+1], lats[i+1]),
+            xytext=(lons[i],   lats[i]),
+            arrowprops=dict(
+                arrowstyle="->",
+                lw=2,
+                mutation_scale=20,  # bigger heads
+                shrinkA=0, shrinkB=0
+            )
+        )
 
-    # Annotate each point (skip duplicate at end)
-    for i in tour_indices[:-1]:
-        lat, lon = coords[i]
-        plt.text(lon, lat, str(i), fontsize=9, ha='right', va='bottom')
+    # draw the points
+    ax.scatter(lons, lats, s=30, zorder=3)
 
-    plt.tight_layout()
-    plt.savefig(out_path)
-    plt.close()
-    print(f"Tour plot saved to {out_path}")
+    # label each point with a small offset so labels never touch the edge
+    for idx in tour[:-1]:
+        lat, lon = coords[idx]
+        ax.annotate(
+            str(idx),
+            xy=(lon, lat),
+            xytext=(5, 5),                # offset in points
+            textcoords="offset points",
+            ha="right", va="bottom",
+            fontsize=9,                   # fixed here
+            clip_on=False
+        )
+
+    ax.set_xlabel("Longitude")
+    ax.set_ylabel("Latitude")
+    ax.set_title("TSP Tour Order")
+    ax.grid(True)
+
+    # add a little margin so even offset labels show up
+    ax.margins(0.1)
+
+    # save high-res with tight bounding box
+    fig.savefig(out_path,
+                bbox_inches="tight",
+                pad_inches=0.1,
+                dpi=300)
+    plt.close(fig)
+    print(f"Saved tour plot to {out_path}")
 
 
 if __name__ == "__main__":

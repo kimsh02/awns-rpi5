@@ -106,6 +106,7 @@ ConcordeTSPSolver::readTSPSolution(void)
 	}
 	std::cout << "\n";
 	/* Reorder initial waypoints_ into tour_ */
+	tour_.resize(dim);
 	for (std::size_t i = 0; i < dim; i++) {
 		tour_[i] = waypoints_[tourOrder_[i]];
 	}
@@ -115,6 +116,12 @@ ConcordeTSPSolver::readTSPSolution(void)
 /* Calls Python script to plot solved route for visulization */
 void ConcordeTSPSolver::plotTSPSolution(void)
 {
+	std::ostringstream cmd{};
+	cmd << "visualize " << csvFile_ << " " << solFile_ << " " << graphFile_;
+	int ret = std::system(cmd.str().c_str());
+	if (ret != 0) {
+		std::cerr << "Graphing failed on: " << graphFile_ << "\n";
+	}
 }
 
 /* Getter for CSV directory */
