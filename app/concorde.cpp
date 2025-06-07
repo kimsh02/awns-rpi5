@@ -57,7 +57,7 @@ void ConcordeTSPSolver::solveTSP(void)
 	solFile_ = solDir_ / (basename + ".sol");
 	/* Run Concorde executable to get optimal solution */
 	std::ostringstream cmd;
-	cmd << "concorde -o " << solFile_ << " " << tspFile_
+	cmd << "linkern -o " << solFile_ << " " << tspFile_
 	    << " > /dev/null 2>&1";
 	int ret = std::system(cmd.str().c_str());
 	if (ret != 0) {
@@ -79,10 +79,9 @@ void ConcordeTSPSolver::readTSPSolution(void)
 		std::cerr << "Cannot open solution: " << solFile_ << "\n";
 		return;
 	}
-	std::size_t dim;
-	solIn >> dim;
+	std::size_t dim, cnt;
 	/* Check that Concorde has generated valid solution file */
-	if (!solIn) {
+	if (!(solIn >> dim >> cnt)) {
 		std::cerr << "Malformed .sol (no dimension): " << solFile_
 			  << "\n";
 		return;
@@ -90,8 +89,8 @@ void ConcordeTSPSolver::readTSPSolution(void)
 	/* Read in tour order */
 	tourOrder_.resize(dim);
 	for (std::size_t i = 0; i < dim; ++i) {
-		solIn >> tourOrder_[i];
-		if (!solIn) {
+		std::size_t dummy{};
+		if (!(solIn >> tourOrder_[i] >> dummy >> dummy)) {
 			std::cerr << "Malformed .sol (too few indices): "
 				  << solFile_ << "\n";
 			break;
