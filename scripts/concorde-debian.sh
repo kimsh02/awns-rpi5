@@ -11,7 +11,7 @@
 #
 # Usage:
 #   chmod +x install-concorde.sh
-#   sudo ./install-concorde.sh [<install_prefix>]
+#   ./install-concorde.sh [<install_prefix>]
 #
 # If you omit <install_prefix>, it defaults to /usr/local.
 #
@@ -44,8 +44,8 @@ command -v git >/dev/null 2>&1 || {
 }
 
 echo "==> Installing recommended libraries (if not already present)…"
-sudo apt-get update
-sudo apt-get install -y \
+apt-get update
+apt-get install -y \
   libgmp-dev \
   liblapack-dev \
   libblas-dev \
@@ -188,28 +188,28 @@ echo "    • Creating directories:"
 echo "         bin → $BIN_DIR"
 echo "         lib → $LIB_DIR"
 echo "       include → $INCLUDE_DIR"
-sudo mkdir -p "$BIN_DIR" "$LIB_DIR" "$INCLUDE_DIR"
+mkdir -p "$BIN_DIR" "$LIB_DIR" "$INCLUDE_DIR"
 
 # 9a) Install the CLI:
 echo "    • Installing CLI: $BUILT_CLI → $BIN_DIR/concorde"
-sudo cp "$BUILT_CLI" "$BIN_DIR/concorde"
-sudo chmod 755 "$BIN_DIR/concorde"
+cp "$BUILT_CLI" "$BIN_DIR/concorde"
+chmod 755 "$BIN_DIR/concorde"
 
 # 9b) Install the static library:
 #     Rename to libconcorde.a if needed.
 echo "    • Installing static library: $BUILT_LIB → $LIB_DIR/libconcorde.a"
-sudo cp "$BUILT_LIB" "$LIB_DIR/libconcorde.a"
-sudo chmod 644 "$LIB_DIR/libconcorde.a"
+cp "$BUILT_LIB" "$LIB_DIR/libconcorde.a"
+chmod 644 "$LIB_DIR/libconcorde.a"
 
 # 9c) Install header files (everything under INCLUDE/)
 #     We’ll copy all *.h files into $INCLUDE_DIR so you can do #include <config.h> etc.
 echo "    • Installing header files into $INCLUDE_DIR/"
-sudo cp -r INCLUDE/* "$INCLUDE_DIR/"
+cp -r INCLUDE/* "$INCLUDE_DIR/"
 # Also install any top‐level generated header (e.g. concorde.h if present)
 if [ -f concorde.h ]; then
   echo "    • Installing top‐level header: concorde.h → $INCLUDE_DIR/"
-  sudo cp concorde.h "$INCLUDE_DIR/"
-  sudo chmod 644 "$INCLUDE_DIR/concorde.h"
+  cp concorde.h "$INCLUDE_DIR/"
+  chmod 644 "$INCLUDE_DIR/concorde.h"
 fi
 
 echo
@@ -219,7 +219,7 @@ echo
 # ──────────────────────────────────────────────────────────────────────────────
 if command -v ldconfig >/dev/null 2>&1; then
   echo "==> Running ldconfig to update linker cache"
-  sudo ldconfig
+  ldconfig
   echo
 fi
 
@@ -237,7 +237,7 @@ echo
 #
 # cd ..
 # echo "==> Removing Concorde source directory…"
-# sudo rm -rf concorde
+# rm -rf concorde
 #
 # ──────────────────────────────────────────────────────────────────────────────
 

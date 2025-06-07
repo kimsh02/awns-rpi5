@@ -7,7 +7,7 @@ sudo systemctl stop gpsd.socket
 sudo gpsd -G /dev/ttyACM0 -F /var/run/gpsd.sock
 
 # Install concorde
-./scripts/concorde-debian.sh
+sudo ./scripts/concorde-debian.sh
 
 # Install python libraries
 sudo ./scripts/python-plot.sh
