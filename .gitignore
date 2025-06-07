@@ -1,5 +1,6 @@
 awns-rpi5
 concorde
+qsopt-ex
 tests/tsp/*
 tests/sol/*
 tests/graph/*
