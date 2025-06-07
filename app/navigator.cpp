@@ -72,7 +72,10 @@ void Navigator::run(void)
 			/* If reading CSV failed, prompt user to retry */
 			retryPrompt("Reading CSV failed.");
 		}
-		/* TODO */
+		/* Set directories for Concorde */
+		setDirectories(false);
+		/* Read and generate solution from TSP file */
+		concordeTSP();
 	}
 }
 
@@ -87,7 +90,6 @@ void Navigator::retryPrompt(const char *message) noexcept
 {
 	std::cout << message << " Press Enter to retry.";
 	std::cout.flush();
-
 	// Grab the stream buffer for cin:
 	auto *buf = std::cin.rdbuf();
 	// As long as there is at least one character already buffered,
@@ -95,7 +97,6 @@ void Navigator::retryPrompt(const char *message) noexcept
 	while (buf->in_avail() > 0 && std::cin.peek() == '\n') {
 		std::cin.get(); // discard exactly one '\n'
 	}
-
 	/* Now wait for the user to press ENTER (blocks on the next '\n'): */
 	std::string dummy;
 	std::getline(std::cin, dummy);
@@ -103,9 +104,11 @@ void Navigator::retryPrompt(const char *message) noexcept
 }
 
 /* Constructor */
-Navigator::Navigator(int argc, const char **argv) noexcept : prog_{ *argv },
-							     argc_{ argc },
-							     argv_{ argv }
+Navigator::Navigator(int argc, const char **argv) noexcept
+	: prog_{ *argv },
+	  argc_{ argc },
+	  argv_{ argv },
+	  tour_{ concorde_.getTour() }
 {
 }
 
@@ -240,7 +243,7 @@ bool Navigator::checkValidDir(std::filesystem::path &p)
 }
 
 /* Helper method to invoke and time Concorde solving TSP */
-void Navigator::solveTSP(void)
+void Navigator::solveTSPMeasureTime(void)
 {
 	/* Measure time it takes to solve TSP file */
 	auto start = std::chrono::steady_clock::now();
@@ -250,6 +253,19 @@ void Navigator::solveTSP(void)
 	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(
 		end - start);
 	std::cout << "Solved optimal tour order in " << duration << ".\n";
+}
+
+/* Helper method to read and generate solution from CSV file */
+void Navigator::concordeTSP(void)
+{
+	/* Write TSP file */
+	concorde_.writeTSPFile();
+	/* Run Concorde on TSP file */
+	solveTSPMeasureTime();
+	/* Read in TSP solution back into memory and set tour_ */
+	concorde_.readTSPSolution();
+	/* Plot graph in Python */
+	concorde_.plotTSPSolution();
 }
 
 /* Helper method to generate solutions from CSV directory */
@@ -276,14 +292,8 @@ void Navigator::makeSolutions(void)
 			/* If CSV unreadable, skip */
 			continue;
 		}
-		/* Write TSP file */
-		concorde_.writeTSPFile();
-		/* Run Concorde on TSP file */
-		solveTSP();
-		/* Read in TSP solution back into memory */
-		concorde_.readTSPSolution();
-		/* Plot graph in Python */
-		concorde_.plotTSPSolution();
+		/* Helper method to read and generate solution from CSV file */
+		concordeTSP();
 		/* Increment solCtr to track number of solutions generated */
 		solCtr++;
 		std::cout << "\n";
@@ -299,15 +309,18 @@ void Navigator::makeSolutions(void)
 	}
 }
 
-/* CLI mode to solve directory of waypoints */
-[[noreturn]] void Navigator::solve(void)
+/* Helper method to set necessary directories for Concorde */
+/* Pass true if asking for CSV directory, false otherwise */
+void Navigator::setDirectories(bool csvDir)
 {
-	/* Set valid CSV directory */
-	while (true) {
-		if (setCSVDir()) {
-			break;
+	if (csvDir) {
+		/* Set valid CSV directory */
+		while (true) {
+			if (setCSVDir()) {
+				break;
+			}
+			retryPrompt("CSV directory not valid.");
 		}
-		retryPrompt("CSV directory not valid.");
 	}
 	/* Set TSP directory */
 	while (true) {
@@ -330,6 +343,13 @@ void Navigator::makeSolutions(void)
 		}
 		retryPrompt("Graph directory not valid.");
 	}
+}
+
+/* CLI mode to solve directory of waypoints */
+[[noreturn]] void Navigator::solve(void)
+{
+	/* Set directories for Concorde */
+	setDirectories(true);
 	/* Make solutions from CSV files */
 	makeSolutions();
 	std::exit(0);

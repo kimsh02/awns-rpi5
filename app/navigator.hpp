@@ -10,17 +10,16 @@ class Navigator {
 	void stop(void);
 
     private:
-	const char  *prog_; /* Executable name */
-	const int    argc_; /* User arg count */
-	const char **argv_; /* User arg vector */
-
 	GPSClient	  gps_;	     /* GPS client */
 	ConcordeTSPSolver concorde_; /* Concorde TSP solver */
+	const char	 *prog_;     /* Executable name */
+	const int	  argc_;     /* User arg count */
+	const char	**argv_;     /* User arg vector */
+	const std::vector<std::pair<double, double> >
+		&tour_; /* Referenced tour from Concorde */
 
 	// std::pair<double, double> currPos;  /* Current position of system */
 	// std::size_t		  nextDest; /* Next waypoint to visit */
-	// std::vector<std::pair<double, double> > &tour_; /* Referenced tour from
-	// 						   Concorde */
 
 	void		  run(void);
 	void		  gpspoll(bool);
@@ -37,7 +36,9 @@ class Navigator {
 	bool		      setGraphDir(void);
 	void		      printPath(const std::filesystem::path &);
 	void		      makeSolutions(void);
-	void		      solveTSP(void);
+	void		      solveTSPMeasureTime(void);
+	void		      concordeTSP(void);
+	void		      setDirectories(bool);
 	void		      retryPrompt(const char *) noexcept;
 	void		      logFix(const GPSFix &) noexcept;
 };

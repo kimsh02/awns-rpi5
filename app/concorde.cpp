@@ -4,6 +4,8 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <utility>
+#include <vector>
 
 /* Helper method to convert decimal degrees to TSPLIB "GEO" format */
 /* (deg*100 + min) */
@@ -66,10 +68,7 @@ void ConcordeTSPSolver::solveTSP(void)
 }
 
 /* Reads TSP solution in route order vector */
-/* If reading solution fails for whatever reason, returns waypoints in original
-   order of CSV, else return the solved tour */
-const std::vector<std::pair<double, double> > &
-ConcordeTSPSolver::readTSPSolution(void)
+void ConcordeTSPSolver::readTSPSolution(void)
 {
 	/* Create path to graph file */
 	std::string basename{ solFile_.stem() };
@@ -78,7 +77,7 @@ ConcordeTSPSolver::readTSPSolution(void)
 	std::ifstream solIn(solFile_);
 	if (!solIn) {
 		std::cerr << "Cannot open solution: " << solFile_ << "\n";
-		return waypoints_;
+		return;
 	}
 	std::size_t dim;
 	solIn >> dim;
@@ -86,7 +85,7 @@ ConcordeTSPSolver::readTSPSolution(void)
 	if (!solIn) {
 		std::cerr << "Malformed .sol (no dimension): " << solFile_
 			  << "\n";
-		return waypoints_;
+		return;
 	}
 	/* Read in tour order */
 	tourOrder_.resize(dim);
@@ -110,7 +109,6 @@ ConcordeTSPSolver::readTSPSolution(void)
 	for (std::size_t i = 0; i < dim; i++) {
 		tour_[i] = waypoints_[tourOrder_[i]];
 	}
-	return tour_;
 }
 
 /* Calls Python script to plot solved route for visulization */
@@ -128,6 +126,13 @@ void ConcordeTSPSolver::plotTSPSolution(void)
 const std::filesystem::path &ConcordeTSPSolver::getCSVDir(void) noexcept
 {
 	return csvDir_;
+}
+
+/* Getter for tour_ */
+const std::vector<std::pair<double, double> > &
+ConcordeTSPSolver::getTour(void) noexcept
+{
+	return tour_;
 }
 
 /* Read CSV file to load in waypoints */

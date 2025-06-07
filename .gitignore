@@ -1,6 +1,5 @@
 awns-rpi5
 concorde
-concorde-macos-arm.sh
 tests/tsp/*
 tests/sol/*
 tests/graph/*
