@@ -79,7 +79,9 @@ void Navigator::run(void)
 	concordeTSP();
 	/* End of program */
 	std::cout
-		<< "Optimal tour has been calculated. System is now ready to provide navigation output.\n";
+		<< "\033[1;32m"
+		<< "Optimal tour has been calculated. Ready to provide navigation output.\n"
+		<< "\033[0m";
 }
 
 /* Stop GPS stream connection */
