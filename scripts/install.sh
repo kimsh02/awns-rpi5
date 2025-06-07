@@ -18,4 +18,4 @@ cd app/build/
 # Build and install executable
 cmake -DCMAKE_BUILD_TYPE=release -DENABLE_COVERAGE=OFF ..
 cmake --build .
-mv awns-rpi5 /usr/local/bin/
+cp awns-rpi5 /usr/local/bin/
