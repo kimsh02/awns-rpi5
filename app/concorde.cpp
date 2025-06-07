@@ -57,7 +57,7 @@ void ConcordeTSPSolver::solveTSP(void)
 	solFile_ = solDir_ / (basename + ".sol");
 	/* Run Concorde executable to get optimal solution */
 	std::ostringstream cmd;
-	cmd << "concorde -o -x " << solFile_ << " " << tspFile_
+	cmd << "concorde -o " << solFile_ << " " << tspFile_
 	    << " > /dev/null 2>&1";
 	int ret = std::system(cmd.str().c_str());
 	if (ret != 0) {
