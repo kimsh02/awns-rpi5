@@ -11,7 +11,7 @@
 #
 # Usage:
 #   chmod +x install-concorde.sh
-#   ./install-concorde.sh [<install_prefix>]
+#   sudo ./install-concorde.sh [<install_prefix>]
 #
 # If you omit <install_prefix>, it defaults to /usr/local.
 #
