@@ -278,11 +278,8 @@ void Navigator::makeSolutions(void)
 {
 	/* Iterate through every CSV file in CSV directory */
 	std::size_t solCtr{ 0 };
-	std::size_t iterCtr{ 0 };
 	for (auto const &entry :
 	     std::filesystem::directory_iterator(concorde_.getCSVDir())) {
-		/* Increment iteration ctr */
-		iterCtr++;
 		/* If not regular file, skip */
 		if (!entry.is_regular_file())
 			continue;
@@ -309,8 +306,7 @@ void Navigator::makeSolutions(void)
 			<< "Error: No solution files were able to be created.\n";
 	} else {
 		/* Else print number of CSVs solved */
-		std::cout << "\033[1;32m" << solCtr << "/" << iterCtr
-			  << " routes solved total.\n"
+		std::cout << "\033[1;32m" << solCtr << " routes solved total.\n"
 			  << "\033[0m";
 	}
 }
