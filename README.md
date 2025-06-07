@@ -32,22 +32,22 @@ Raspberry Pi Imager.
 1. Ssh into your Raspberry Pi and update the OS using `sudo apt update && sudo
 apt upgrade -y`.
 
-1. Install git using `sudo apt install git -y` so that we can clone this software
-project through git.
+1. Install git using `sudo apt install git -y` so that we can clone this
+software project through git.
 
 1. Clone this project using `git clone
 https://github.com/kimsh02/awns-rpi5.git`.
 
 1. Go into the project directory with `cd awns-rpi5`.
 
-1. Run `./scripts/install.sh`. This will install, build, and set up the
+1. Run `sudo ./scripts/install.sh`. This will install, build, and set up the
 necessary tools, and then build and install the executable system-wide.
 
 1. Copy paste this one-liner if you want to run the shell commands above in one
    go:
    ```
    sudo apt update && sudo apt upgrade -y && sudo apt install git -y &&
-   git clone https://github.com/kimsh02/awns-rpi5.git && cd awns-rpi5 &&
+   git clone https://github.com/kimsh02/awns-rpi5.git && cd awns-rpi5 && sudo
    ./scripts/install.sh
    ```
 

@@ -1,16 +1,16 @@
 # Install CMake to build executable
-sudo apt install cmake -y
+apt install cmake git -y
 
 # Install and set up GPS drivers/libraries
-sudo apt install gpsd gpsd-clients libgps-dev chafa -y
-sudo systemctl stop gpsd.socket
-sudo gpsd -G /dev/ttyACM0 -F /var/run/gpsd.sock
+apt install gpsd gpsd-clients libgps-dev chafa -y
+systemctl stop gpsd.socket
+gpsd -G /dev/ttyACM0 -F /var/run/gpsd.sock
 
 # Install concorde
-sudo ./scripts/concorde-debian.sh
+./scripts/concorde-debian.sh
 
 # Install python libraries
-sudo ./scripts/python-plot.sh
+./scripts/python-plot.sh
 
 # Go into build directory
 cd app/build/
@@ -18,4 +18,4 @@ cd app/build/
 # Build and install executable
 cmake -DCMAKE_BUILD_TYPE=release -DENABLE_COVERAGE=OFF ..
 cmake --build .
-sudo mv awns-rpi5 /usr/local/bin/
+mv awns-rpi5 /usr/local/bin/
