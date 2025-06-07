@@ -309,8 +309,9 @@ void Navigator::makeSolutions(void)
 			<< "Error: No solution files were able to be created.\n";
 	} else {
 		/* Else print number of CSVs solved */
-		std::cout << solCtr << "/" << iterCtr
-			  << " CSV files solved total.\n";
+		std::cout << "\033[1;32m" << solCtr << "/" << iterCtr
+			  << " routes solved total.\n"
+			  << "\033[0m";
 	}
 }
 
