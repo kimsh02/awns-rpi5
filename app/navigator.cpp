@@ -51,6 +51,7 @@ bool Navigator::readCSV(void)
 	/* Read in waypoints from CSV */
 	if (concorde_.readCSV()) {
 		/* If able to, return true */
+		std::cout << "\n";
 		return true;
 	}
 	/* Else return false */
