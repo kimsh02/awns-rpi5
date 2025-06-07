@@ -30,7 +30,7 @@ bool Navigator::testGPSConnection(void)
 	std::size_t tries = 5;
 	for (size_t i = 0; i < tries; i++) {
 		auto optFix{ gps_.waitReadFix() };
-		std::cout << "(" << i + 1 << "/" << tries << ")";
+		std::cout << "(" << i + 1 << "/" << tries << ") ";
 		logFix(optFix ? *optFix : GPSFix{ 0, 0, 0 });
 		/* Check that last poll gives a fix */
 		if (i == tries - 1 && optFix) {
@@ -62,23 +62,24 @@ bool Navigator::readCSV(void)
 /* Hot loop to run navigation system */
 void Navigator::run(void)
 {
+	/* Test GPS connection */
+	gpspoll(false);
+	/* Enter waypoint CSV path */
 	while (true) {
-		/* Test GPS connection */
-		gpspoll(false);
-		/* Enter waypoint CSV path */
-		while (true) {
-			/* If read was successful proceed */
-			if (readCSV()) {
-				break;
-			}
-			/* If reading CSV failed, prompt user to retry */
-			retryPrompt("Reading CSV failed.");
+		/* If read was successful proceed */
+		if (readCSV()) {
+			break;
 		}
-		/* Set directories for Concorde */
-		setDirectories(false);
-		/* Read and generate solution from TSP file */
-		concordeTSP();
+		/* If reading CSV failed, prompt user to retry */
+		retryPrompt("Reading CSV failed.");
 	}
+	/* Set directories for Concorde */
+	setDirectories(false);
+	/* Read and generate solution from TSP file */
+	concordeTSP();
+	/* End of program */
+	std::cout
+		<< "Optimal tour has been calculated. System is now ready to provide navigation output.\n";
 }
 
 /* Stop GPS stream connection */
