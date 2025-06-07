@@ -241,6 +241,21 @@ echo
 #
 # ──────────────────────────────────────────────────────────────────────────────
 
+# This script must be run from the top-level Concorde directory.
+# It builds and installs the 'linkern' executable into /usr/local/bin.
+
+PREFIX=/usr/local
+BIN_DIR="$PREFIX/bin"
+
+echo "==> Building linkern"
+cd LINKERN
+make -j"$(nproc)"
+
+echo "==> Installing linkern to $BIN_DIR"
+install -m755 linkern "$BIN_DIR/"
+
+echo "✔ linkern has been installed to $BIN_DIR/linkern"
+
 cd ..
 
 echo "All done!"
