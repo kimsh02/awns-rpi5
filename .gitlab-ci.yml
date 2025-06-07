@@ -12,8 +12,8 @@ before_script:
 build:
   stage: build
   script:
-    - sudo ./scripts/concorde-debian.sh
-    - sudo ./scripts/python-plot.sh
+    - ./scripts/concorde-debian.sh
+    - ./scripts/python-plot.sh
     - cd app/build
     - cmake -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE ..
     - cmake --build .
