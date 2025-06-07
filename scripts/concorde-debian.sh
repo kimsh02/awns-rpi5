@@ -1,246 +1,125 @@
 #!/usr/bin/env bash
 #
-# install-concorde.sh
+# install-concorde-raspberrypi.sh
 #
-# This script clones (or updates) the Concorde repository, applies small patches
-# to avoid u_char / gethostname conflicts, builds Concorde’s static library
-# and the “concorde” CLI, and installs them into:
-#   <PREFIX>/bin/concorde
-#   <PREFIX>/lib/libconcorde.a
-#   <PREFIX>/include/  (all Concorde header files)
+# Builds and installs QSopt-ex LP solver and Concorde TSP solver
+# on Raspberry Pi OS (ARM64). Installs into <PREFIX> (/usr/local by default).
 #
 # Usage:
-#   chmod +x install-concorde.sh
-#   sudo ./install-concorde.sh [<install_prefix>]
-#
-# If you omit <install_prefix>, it defaults to /usr/local.
+#   chmod +x install-concorde-raspberrypi.sh
+#   sudo ./install-concorde-raspberrypi.sh [<install_prefix>]
 #
 
 set -euo pipefail
 
 PREFIX="${1:-/usr/local}"
+QSOPT_PREFIX="$PREFIX/qsoptex"
 BIN_DIR="$PREFIX/bin"
 LIB_DIR="$PREFIX/lib"
 INCLUDE_DIR="$PREFIX/include"
 
-echo "Installing Concorde (CLI, library, headers) into prefix: $PREFIX"
+echo "Prefix:       $PREFIX"
+echo "QSopt-ex at:  $QSOPT_PREFIX"
 echo
 
-# ──────────────────────────────────────────────────────────────────────────────
-# 1) Ensure build prerequisites are installed
-# ──────────────────────────────────────────────────────────────────────────────
-echo "==> Verifying build tools (gcc, make, git)…"
-command -v gcc >/dev/null 2>&1 || {
-  echo "Error: gcc not found. Please install 'build-essential' first."
-  exit 1
-}
-command -v make >/dev/null 2>&1 || {
-  echo "Error: make not found. Please install 'build-essential' first."
-  exit 1
-}
-command -v git >/dev/null 2>&1 || {
-  echo "Error: git not found. Please install git."
-  exit 1
-}
+CORES="$(nproc || echo 1)"
 
-echo "==> Installing recommended libraries (if not already present)…"
+# 1) Install system prerequisites
+echo "==> Installing apt packages..."
 apt-get update
 apt-get install -y \
-  libgmp-dev \
-  liblapack-dev \
-  libblas-dev \
-  libreadline-dev \
-  libbz2-dev \
-  flex \
-  bison \
-  pkg-config \
-  build-essential \
-  git
-
+    build-essential git autoconf automake libtool pkg-config \
+    gcc g++ make wget curl \
+    libgmp-dev liblapack-dev libblas-dev libreadline-dev \
+    libbz2-dev zlib1g-dev flex bison
 echo
 
-# ──────────────────────────────────────────────────────────────────────────────
-# 2) Clone or update the Concorde repository
-# ──────────────────────────────────────────────────────────────────────────────
+# 2) Clone & build QSopt-ex
+if [ ! -d qsopt-ex ]; then
+  echo "==> Cloning QSopt-ex..."
+  git clone https://github.com/jonls/qsopt-ex.git
+else
+  echo "==> Updating QSopt-ex..."
+  cd qsopt-ex && git pull && cd ..
+fi
+
+echo "==> Building QSopt-ex..."
+cd qsopt-ex
+./bootstrap
+mkdir -p build && cd build
+../configure --prefix="$QSOPT_PREFIX"
+make -j"$CORES"
+make install
+cd ../..
+echo
+
+# 3) Clone & patch Concorde
 if [ ! -d concorde ]; then
-  echo "==> Cloning Concorde repository…"
+  echo "==> Cloning Concorde..."
   git clone https://github.com/matthelb/concorde.git
 else
-  echo "==> 'concorde' directory already exists. Pulling latest changes…"
-  cd concorde
-  git fetch origin
-  git checkout master
-  git pull
-  cd ..
+  echo "==> Updating Concorde..."
+  cd concorde && git fetch origin && git checkout master && git pull && cd ..
 fi
 
-echo
-
-# ──────────────────────────────────────────────────────────────────────────────
-# 3) Apply in‐place patches (avoid u_char / gethostname conflicts)
-# ──────────────────────────────────────────────────────────────────────────────
-echo "==> Applying patches to avoid u_char/gethostname conflicts…"
+echo "==> Applying u_char/gethostname patches..."
 cd concorde
 
-# 3a) In INCLUDE/config.h, comment out "#define u_char unsigned char"
+# comment out u_char in config.h
 if grep -q '^#define u_char unsigned char' INCLUDE/config.h; then
-  sed -i.bak \
-    's|^#define u_char unsigned char|// #define u_char unsigned char|' \
+  sed -i.bak 's|^#define u_char unsigned char|// #define u_char unsigned char|' \
     INCLUDE/config.h
-  echo "    • Commented out u_char in INCLUDE/config.h"
-else
-  echo "    • (Already patched) u_char define not found in INCLUDE/config.h"
 fi
 
-# 3b) In INCLUDE/machdefs.h, comment out "gethostname(char *, int);"
+# comment out gethostname prototype
 if grep -q '^[[:space:]]*gethostname *(char \*, *int);' INCLUDE/machdefs.h; then
-  sed -i.bak -E \
-    's|^[[:space:]]*(gethostname *\( *char \*, *int *\);)|// \1|' \
+  sed -i.bak -E 's|^[[:space:]]*(gethostname *\( *char \*, *int *\);)|// \1|' \
     INCLUDE/machdefs.h
-  echo "    • Commented out gethostname prototype in INCLUDE/machdefs.h"
-else
-  echo "    • (Already patched) gethostname prototype not found in INCLUDE/machdefs.h"
 fi
 
+# refresh config.guess/config.sub for ARM
+echo "==> Refreshing config.guess/config.sub..."
+curl -fsSL https://git.savannah.gnu.org/cgit/config.git/plain/config.guess \
+     -o config.guess
+curl -fsSL https://git.savannah.gnu.org/cgit/config.git/plain/config.sub \
+     -o config.sub
+chmod +x config.guess config.sub
+find . -type f \( -name config.guess -o -name config.sub \) -exec chmod +x {} \;
+
+cd ..
 echo
 
-# ──────────────────────────────────────────────────────────────────────────────
-# 4) Make configure, config.guess, config.sub executable
-# ──────────────────────────────────────────────────────────────────────────────
-echo "==> Making configure, config.guess, config.sub executable…"
-chmod +x configure
-find . -type f \( -name "config.guess" -o -name "config.sub" \) \
-     -exec chmod +x {} \;
-
+# 4) Configure Concorde with QSopt-ex
+echo "==> Configuring Concorde with QSopt-ex..."
+cd concorde
+export CC=gcc
+export CXX=g++
+# tell configure where to find qsopt library & headers
+./configure --prefix="$PREFIX" \
+            --with-qsopt="$QSOPT_PREFIX" \
+            --with-blas="" --with-lapack=""
 echo
 
-# ──────────────────────────────────────────────────────────────────────────────
-# 5) Configure Concorde (top‐level)
-# ──────────────────────────────────────────────────────────────────────────────
-echo "==> Running ./configure --prefix=$PREFIX"
-./configure --prefix="$PREFIX"
-echo
-
-# ──────────────────────────────────────────────────────────────────────────────
-# 6) Build Concorde (static library + CLI)
-# ──────────────────────────────────────────────────────────────────────────────
-echo "==> Running make -j to compile Concorde"
-CORES="$(getconf _NPROCESSORS_ONLN 2>/dev/null || echo 1)"
+# 5) Build & install Concorde
+echo "==> Building Concorde..."
 make -j"$CORES"
 echo
 
-# ──────────────────────────────────────────────────────────────────────────────
-# 7) Locate the built 'concorde' CLI binary
-# ──────────────────────────────────────────────────────────────────────────────
-echo "==> Locating the 'concorde' CLI binary…"
-BUILT_CLI=""
-if [ -x utilities/concorde/concorde ]; then
-  BUILT_CLI="utilities/concorde/concorde"
-elif [ -x utilities/concorde/concorde.exe ]; then
-  BUILT_CLI="utilities/concorde/concorde.exe"
-elif [ -x TSP/concorde ]; then
-  BUILT_CLI="TSP/concorde"
-elif [ -x ./concorde ]; then
-  BUILT_CLI="./concorde"
-else
-  # Fallback: search for any executable named "concorde"
-  FOUND=$(find . -type f -name concorde -perm /u+x 2>/dev/null | head -n 1 || echo "")
-  if [ -n "$FOUND" ]; then
-    BUILT_CLI="$FOUND"
-  fi
-fi
-
-if [ -z "$BUILT_CLI" ]; then
-  echo "Error: Cannot locate the built 'concorde' executable."
-  exit 1
-fi
-
-echo "    • Found Concorde CLI at: $BUILT_CLI"
-echo
-
-# ──────────────────────────────────────────────────────────────────────────────
-# 8) Locate the built static library (concorde.a)
-# ──────────────────────────────────────────────────────────────────────────────
-echo "==> Locating the Concorde static library…"
-if [ -f concorde.a ]; then
-  BUILT_LIB="concorde.a"
-elif [ -f libconcorde.a ]; then
-  BUILT_LIB="libconcorde.a"
-else
-  # Fallback: look for "concorde.a" under subdirectories
-  FOUNDLIB=$(find . -type f -name "concorde.a" 2>/dev/null | head -n 1 || echo "")
-  if [ -n "$FOUNDLIB" ]; then
-    BUILT_LIB="$FOUNDLIB"
-  else
-    echo "Error: Cannot locate the Concorde static library (concorde.a)."
-    exit 1
-  fi
-fi
-
-echo "    • Found Concorde static library at: $BUILT_LIB"
-echo
-
-# ──────────────────────────────────────────────────────────────────────────────
-# 9) Install CLI, library, and headers
-# ──────────────────────────────────────────────────────────────────────────────
-echo "==> Installing Concorde components…"
-echo "    • Creating directories:"
-echo "         bin → $BIN_DIR"
-echo "         lib → $LIB_DIR"
-echo "       include → $INCLUDE_DIR"
+echo "==> Installing Concorde CLI, lib, headers..."
 mkdir -p "$BIN_DIR" "$LIB_DIR" "$INCLUDE_DIR"
 
-# 9a) Install the CLI:
-echo "    • Installing CLI: $BUILT_CLI → $BIN_DIR/concorde"
-cp "$BUILT_CLI" "$BIN_DIR/concorde"
-chmod 755 "$BIN_DIR/concorde"
+# CLI
+install -m 755 utilities/concorde/concorde "$BIN_DIR/concorde"
 
-# 9b) Install the static library:
-#     Rename to libconcorde.a if needed.
-echo "    • Installing static library: $BUILT_LIB → $LIB_DIR/libconcorde.a"
-cp "$BUILT_LIB" "$LIB_DIR/libconcorde.a"
-chmod 644 "$LIB_DIR/libconcorde.a"
+# static library
+install -m 644 concorde.a "$LIB_DIR/libconcorde.a"
 
-# 9c) Install header files (everything under INCLUDE/)
-#     We’ll copy all *.h files into $INCLUDE_DIR so you can do #include <config.h> etc.
-echo "    • Installing header files into $INCLUDE_DIR/"
+# headers
 cp -r INCLUDE/* "$INCLUDE_DIR/"
-# Also install any top‐level generated header (e.g. concorde.h if present)
-if [ -f concorde.h ]; then
-  echo "    • Installing top‐level header: concorde.h → $INCLUDE_DIR/"
-  cp concorde.h "$INCLUDE_DIR/"
-  chmod 644 "$INCLUDE_DIR/concorde.h"
-fi
+[ -f concorde.h ] && install -m 644 concorde.h "$INCLUDE_DIR/"
 
 echo
-
-# ──────────────────────────────────────────────────────────────────────────────
-# 10) Update shared‐library cache (for completeness, though we installed a static .a)
-# ──────────────────────────────────────────────────────────────────────────────
-if command -v ldconfig >/dev/null 2>&1; then
-  echo "==> Running ldconfig to update linker cache"
-  ldconfig
-  echo
-fi
-
-echo "✔ Concorde CLI, library, and headers installed under: $PREFIX"
-echo "  - CLI:    $BIN_DIR/concorde"
-echo "  - Static library: $LIB_DIR/libconcorde.a"
-echo "  - Headers: $INCLUDE_DIR/{*.h,...}"
-echo
-
-# ──────────────────────────────────────────────────────────────────────────────
-# 11) (Optional) Clean up Concorde source folder
-# ──────────────────────────────────────────────────────────────────────────────
-# If you prefer to remove the entire source directory after installation,
-# uncomment the following lines:
-#
-# cd ..
-# echo "==> Removing Concorde source directory…"
-# rm -rf concorde
-#
-# ──────────────────────────────────────────────────────────────────────────────
-
-cd ..
-
-echo "All done!"
+echo "✔ Done."
+echo "  - Concorde CLI: $BIN_DIR/concorde"
+echo "  - lib:           $LIB_DIR/libconcorde.a"
+echo "  - headers:       $INCLUDE_DIR/*.h"
