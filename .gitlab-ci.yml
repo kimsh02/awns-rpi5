@@ -12,6 +12,7 @@ before_script:
 build:
   stage: build
   script:
+    - ./scripts/concorde-debian.sh
     - cd app/build
     - cmake -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE ..
     - cmake --build .
