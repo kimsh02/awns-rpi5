@@ -267,4 +267,17 @@ echo
 
 cd ..
 
+cd concorde
+# (re-run configure & make if you haven’t already)
+./configure --prefix=/usr/local \
+            --with-blas="-L$(brew --prefix openblas)/lib -lopenblas" \
+            --with-lapack="-L$(brew --prefix lapack)/lib -llapack"
+make -j"$(sysctl -n hw.ncpu 2>/dev/null || echo 1)"
+
+# now build just linkern:
+sudo make -C LINKERN linkern
+sudo install -Dm755 LINKERN/linkern "/usr/local/bin/linkern"
+echo "✔ linkern installed to /usr/local/bin/linkern"
+
+
 exit 0
