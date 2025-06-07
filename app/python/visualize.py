@@ -20,10 +20,20 @@ def main():
             coords.append((float(row[0]), float(row[1])))
 
     # --- load tour order ---
+    # with open(sol_path) as f:
+    #     lines = [l.strip() for l in f if l.strip()]
+    #     tour = [int(i) for i in lines[1].split()]
+    #     tour.append(tour[0])  # close loop
+
+    # --- load tour order ---
     with open(sol_path) as f:
+        # strip out empty lines
         lines = [l.strip() for l in f if l.strip()]
-        tour = [int(i) for i in lines[1].split()]
-        tour.append(tour[0])  # close loop
+
+    # skip the header (lines[0]), then for each remaining line grab the first
+    # field
+    tour = [int(line.split()[0]) for line in lines[1:]]
+    tour.append(tour[0])  # close loop
 
     # --- prepare data ---
     lats = [coords[i][0] for i in tour]
