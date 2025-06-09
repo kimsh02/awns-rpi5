@@ -1,5 +1,7 @@
 #include "navigator.hpp"
 
+#include <nlohmann/json.hpp>
+
 #include <chrono>
 #include <cstdlib>
 #include <filesystem>
@@ -10,8 +12,15 @@
 #include "concorde.hpp"
 #include "gps.hpp"
 
-/*  */
-// std::optional<>
+using json = nlohmann::json;
+
+/* Get navigation output for downstream controller  */
+/* If navigator is not ready from start(), or navigation has completed, this
+   returns null */
+std::optional<json> Navigator::getOutput(void)
+{
+	if (!ready_) {}
+}
 
 /* Log waypoint method to print waypoints to stdout */
 void Navigator::logFix(const GPSFix &fix) noexcept
