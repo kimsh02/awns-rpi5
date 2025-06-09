@@ -4,12 +4,14 @@
 #include <cstdlib>
 #include <filesystem>
 #include <iostream>
+#include <optional>
 #include <string>
 
 #include "concorde.hpp"
 #include "gps.hpp"
 
 /*  */
+// std::optional<>
 
 /* Log waypoint method to print waypoints to stdout */
 void Navigator::logFix(const GPSFix &fix) noexcept
