@@ -9,6 +9,8 @@
 #include "concorde.hpp"
 #include "gps.hpp"
 
+/*  */
+
 /* Log waypoint method to print waypoints to stdout */
 void Navigator::logFix(const GPSFix &fix) noexcept
 {
@@ -77,7 +79,8 @@ void Navigator::run(void)
 	setDirectories(false);
 	/* Read and generate solution from TSP file */
 	concordeTSP();
-	/* End of program */
+	/* Navigator is ready */
+	ready_ = true;
 	std::cout
 		<< "\033[1;32m"
 		<< "Optimal tour has been calculated. Ready to provide navigation output.\n"
@@ -113,6 +116,7 @@ Navigator::Navigator(int argc, const char **argv) noexcept
 	: prog_{ *argv },
 	  argc_{ argc },
 	  argv_{ argv },
+	  ready_{ false },
 	  tour_{ concorde_.getTour() }
 {
 }
