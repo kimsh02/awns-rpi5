@@ -15,6 +15,8 @@ class Navigator {
 	const char	 *prog_;     /* Executable name */
 	const int	  argc_;     /* User arg count */
 	const char	**argv_;     /* User arg vector */
+	bool ready_; /* Flag to mark weather navigator is ready to output
+		       instructions */
 	const std::vector<std::pair<double, double> >
 		&tour_; /* Referenced tour from Concorde */
 
