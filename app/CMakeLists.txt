@@ -54,10 +54,14 @@ target_link_libraries(awns-rpi5 PRIVATE ${GPS_LDFLAGS})
 # Concorde (assumes system-wide install: /usr/local/include, /usr/local/lib)
 find_library(CONCORDE_LIB concorde PATHS /usr/local/lib REQUIRED)
 find_path(CONCORDE_INCLUDE_DIR tsp.h PATHS /usr/local/include REQUIRED)
-
 target_include_directories(awns-rpi5 SYSTEM PRIVATE ${CONCORDE_INCLUDE_DIR})
 target_link_libraries(awns-rpi5 PRIVATE ${CONCORDE_LIB})
+
+# nlohmann_json (header-only JSON library)
+find_package(nlohmann_json REQUIRED)
+target_link_libraries(awns-rpi5 PRIVATE nlohmann_json::nlohmann_json)
 
 # Show final library/header results
 message(STATUS "Concorde library: ${CONCORDE_LIB}")
 message(STATUS "Concorde include: ${CONCORDE_INCLUDE_DIR}")
+message(STATUS "nlohmann_json version: ${nlohmann_json_VERSION}")
