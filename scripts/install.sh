@@ -2,7 +2,7 @@
 apt install cmake git -y
 
 # Install and set up GPS drivers/libraries
-apt install gpsd gpsd-clients libgps-dev chafa -y
+apt install gpsd gpsd-clients libgps-dev nlohmann-json3-dev -y
 systemctl stop gpsd.socket
 gpsd -G /dev/ttyACM0 -F /var/run/gpsd.sock
 
