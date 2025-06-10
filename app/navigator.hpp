@@ -1,13 +1,21 @@
 #pragma once
 
+#include <nlohmann/json.hpp>
+
 #include "concorde.hpp"
 #include "gps.hpp"
+
+using json = nlohmann::json;
 
 class Navigator {
     public:
 	Navigator(int argc, const char **argv) noexcept;
-	void start(void) noexcept;
-	void stop(void);
+	void		    start(void) noexcept;
+	void		    setProximityRadius(double) noexcept;
+	void		    setControllerVelocity(double) noexcept;
+	std::optional<json> getOutput(void);
+	std::optional<json> getOutput(double);
+	void		    stop(void);
 
     private:
 	GPSClient	  gps_;	     /* GPS client */
@@ -21,7 +29,14 @@ class Navigator {
 		&tour_; /* Referenced tour from Concorde */
 
 	// std::pair<double, double> currPos;  /* Current position of system */
-	// std::size_t		  nextDest; /* Next waypoint to visit */
+	std::size_t nextDest_; /* Index of next waypoint to visit */
+	bool	    inMotion_; /* Flag to mark whether system is in motion */
+	std::size_t bearing_;  /* Direction of movement of system */
+	double	    proximityRadius_;	 /* Proximity radius threshold for
+					 determining if system has arrived at
+					 waypoint */
+	double	    controllerVelocity_; /* Velocity of downstream motor
+					    controller */
 
 	void		  run(void);
 	void		  gpspoll(bool);
@@ -41,6 +56,7 @@ class Navigator {
 	void		      solveTSPMeasureTime(void);
 	void		      concordeTSP(void);
 	void		      setDirectories(bool);
+	std::size_t	      nextDest(void);
 	void		      retryPrompt(const char *) noexcept;
 	void		      logFix(const GPSFix &) noexcept;
 };
