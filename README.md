@@ -54,3 +54,7 @@ necessary tools, and then build and install the executable system-wide.
 ## Usage
 
 - You should now be able to invoke the program with the command `awns-rpi5`.
+
+## Development Notes
+
+- This project is compiled using CMake.

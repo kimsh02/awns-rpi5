@@ -12,14 +12,86 @@
 #include "concorde.hpp"
 #include "gps.hpp"
 
-using json = nlohmann::json;
+/* Get navigation output based on simulated downstream motor controller */
+/* Takes as input the velocity of simulated motor */
+/* If navigator is not ready from start(), or navigation has completed, this
+   returns null, else return JSON of navigation output */
+std::optional<json> Navigator::getOutput(double velocity)
+{
+	/* Get and time GPS reading */
+	auto start{ std::chrono::steady_clock::now() };
+	auto optFix{ gps_.waitReadFix() };
+	auto end{ std::chrono::steady_clock::now() };
+	auto elapsed{ std::chrono::duration_cast<std::chrono::microseconds>(
+		end - start) };
+
+	/* TODO: Get predicted position */
+	std::pair<double, double> predictedLoc{};
+}
 
 /* Get navigation output for downstream controller  */
 /* If navigator is not ready from start(), or navigation has completed, this
-   returns null */
+   returns null, else return JSON of navigation output */
 std::optional<json> Navigator::getOutput(void)
 {
-	if (!ready_) {}
+	/* If navigator not ready, return null */
+	if (!ready_) {
+		return std::nullopt;
+	}
+	/* Get GPS reading */
+	auto optFix{ gps_.waitReadFix() };
+	/* If can't get GPS reading, return null */
+	if (!optFix) {
+		return std::nullopt;
+	}
+	/* Get current position */
+	GPSFix			  currFix{ *optFix };
+	std::pair<double, double> gpsLoc{ currFix.latitude, currFix.longitude };
+	/* Get destination */
+	std::pair<double, double> dest{ tour_[nextDest()] };
+	/* Check whether destination has been reached */
+
+	/* Compute direction to head */
+
+	/* speed, direction */
+}
+
+/* Helper method to check whether destination has been reached */
+bool Navigator::waypointReached(std::pair<double, double> curr,
+				std::pair<double, double> dest)
+{
+	double latDiff{ std::abs(curr.first) - std::abs(dest.first) };
+	double lonDiff{ std::abs(curr.second) - std::abs(dest.second) };
+	return
+}
+
+/* Helper method to get predicted location of system */
+// std::pair<double, double> Navigator::getPredictedLoc(void)
+// {
+// 	if (!(speed || direction))
+// }
+
+/* Setter for proximity radius threshold for waypont arrival */
+void Navigator::setProximityRadius(double r) noexcept
+{
+	proximityRadius_ = r;
+}
+
+/* Setter for velocity of downstream controller */
+void Navigator::setControllerVelocity(double v) noexcept
+{
+	controllerVelocity_ = v;
+}
+
+/* Helper method to get index of next destination */
+std::size_t Navigator::nextDest(void)
+{
+	/* If nextDest_ is index 0, then tour is over and keep returning 0 */
+	if (!nextDest_) {
+		return nextDest_;
+	}
+	/* Else, return index of next destination */
+	return nextDest_++ % tour_.size();
 }
 
 /* Log waypoint method to print waypoints to stdout */
@@ -128,7 +200,10 @@ Navigator::Navigator(int argc, const char **argv) noexcept
 	  argc_{ argc },
 	  argv_{ argv },
 	  ready_{ false },
-	  tour_{ concorde_.getTour() }
+	  tour_{ concorde_.getTour() },
+	  nextDest_{ 1 },
+	  inMotion_{ false },
+	  bearing_{ 0 }
 {
 }
 
@@ -266,12 +341,12 @@ bool Navigator::checkValidDir(std::filesystem::path &p)
 void Navigator::solveTSPMeasureTime(void)
 {
 	/* Measure time it takes to solve TSP file */
-	auto start = std::chrono::steady_clock::now();
+	auto start{ std::chrono::steady_clock::now() };
 	/* Invoke Concorde to solve TSP file */
 	concorde_.solveTSP();
-	auto end      = std::chrono::steady_clock::now();
-	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(
-		end - start);
+	auto end{ std::chrono::steady_clock::now() };
+	auto duration{ std::chrono::duration_cast<std::chrono::microseconds>(
+		end - start) };
 	std::cout << "Solved optimal tour order in " << duration << ".\n";
 }
 
