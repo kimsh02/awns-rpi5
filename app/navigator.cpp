@@ -12,57 +12,67 @@
 #include "concorde.hpp"
 #include "gps.hpp"
 
-/* Get navigation output based on simulated downstream motor controller */
-/* Takes as input the velocity of simulated motor */
-/* If navigator is not ready from start(), or navigation has completed, this
-   returns null, else return JSON of navigation output */
-std::optional<json> Navigator::getOutput(double velocity)
-{
-	/* Get and time GPS reading */
-	auto start{ std::chrono::steady_clock::now() };
-	auto optFix{ gps_.waitReadFix() };
-	auto end{ std::chrono::steady_clock::now() };
-	auto elapsed{ std::chrono::duration_cast<std::chrono::microseconds>(
-		end - start) };
+// /* Get navigation output based on simulated downstream motor controller */
+// /* Takes as input the velocity of simulated motor */
+// /* If navigator is not ready from start(), or navigation has completed, this
+//    returns null, else return JSON of navigation output */
+// std::optional<json> Navigator::getOutput(double velocity)
+// {
+// 	/* Get and time GPS reading */
+// 	auto start{ std::chrono::steady_clock::now() };
+// 	auto optFix{ gps_.waitReadFix() };
+// 	auto end{ std::chrono::steady_clock::now() };
+// 	auto elapsed{ std::chrono::duration_cast<std::chrono::microseconds>(
+// 		end - start) };
 
-	/* TODO: Get predicted position */
-	std::pair<double, double> predictedLoc{};
-}
+// 	/* TODO: Get predicted position */
+// 	std::pair<double, double> predictedLoc{};
+// }
 
-/* Get navigation output for downstream controller  */
-/* If navigator is not ready from start(), or navigation has completed, this
-   returns null, else return JSON of navigation output */
-std::optional<json> Navigator::getOutput(void)
-{
-	/* If navigator not ready, return null */
-	if (!ready_) {
-		return std::nullopt;
-	}
-	/* Get GPS reading */
-	auto optFix{ gps_.waitReadFix() };
-	/* If can't get GPS reading, return null */
-	if (!optFix) {
-		return std::nullopt;
-	}
-	/* Get current position */
-	GPSFix			  currFix{ *optFix };
-	std::pair<double, double> gpsLoc{ currFix.latitude, currFix.longitude };
-	/* Get destination */
-	std::pair<double, double> dest{ tour_[nextDest()] };
-	/* Check whether destination has been reached */
+// /* Get navigation output for downstream controller  */
+// /* If navigator is not ready from start(), or proximity radius has not been set,
+//    or the navigation has successfully completed the tour, this returns null,
+//    else return JSON of navigation output */
+// std::optional<json> Navigator::getOutput(void)
+// {
+// 	/* If navigator not ready, or proximity radius not set, return null */
+// 	if (!ready_) {
+// 		std::cerr << "Error: please invoke start() first.\n";
+// 		return std::nullopt;
+// 	} else if (!proximityradius_) {
+// 		std::cerr << "error: please set proximity radius.\n";
+// 		return std::nullopt;
+// 	}
+// 	/* Get GPS reading */
+// 	auto optFix{ gps_.waitReadFix() };
+// 	/* If can't get GPS reading, return null */
+// 	if (!optFix) {
+// 		return std::nullopt;
+// 	}
+// 	/* If simulation velocity is set, get */
+// 	if (simulationVelocity_) {
 
-	/* Compute direction to head */
+// 	}
+// 	/* Get current position */
+// 	GPSFix			  currFix{ *optFix };
+// 	std::pair<double, double> gpsLoc{ currFix.latitude, currFix.longitude };
+// 	/* Get destination */
+// 	std::pair<double, double> dest{ tour_[nextDest()] };
+// 	/* Check whether destination has been reached */
 
-	/* speed, direction */
-}
+// 	/* Compute direction to head */
+
+// 	/* speed, direction */
+// /* If logDir_ set */
+// }
 
 /* Helper method to check whether destination has been reached */
 bool Navigator::waypointReached(std::pair<double, double> curr,
-				std::pair<double, double> dest)
+				std::pair<double, double> dest) noexcept
 {
 	double latDiff{ std::abs(curr.first) - std::abs(dest.first) };
 	double lonDiff{ std::abs(curr.second) - std::abs(dest.second) };
-	return
+	return (latDiff <= proximityRadius_) && (lonDiff <= proximityRadius_);
 }
 
 /* Helper method to get predicted location of system */
@@ -72,15 +82,25 @@ bool Navigator::waypointReached(std::pair<double, double> curr,
 // }
 
 /* Setter for proximity radius threshold for waypont arrival */
+/* Cannot be set to less than 1.0 */
 void Navigator::setProximityRadius(double r) noexcept
 {
-	proximityRadius_ = r;
+	if (r < 1.0) {
+		proximityRadius_ = 1.0;
+	} else {
+		proximityRadius_ = r;
+	}
 }
 
-/* Setter for velocity of downstream controller */
-void Navigator::setControllerVelocity(double v) noexcept
+/* Setter for velocity of simulated downstream controller */
+/* Cannot be set to a negative value */
+void Navigator::setSimulationVelocity(double v) noexcept
 {
-	controllerVelocity_ = v;
+	if (v < 0.0) {
+		simulationVelocity_ = 0.0;
+	} else {
+		simulationVelocity_ = v;
+	}
 }
 
 /* Helper method to get index of next destination */
@@ -159,7 +179,7 @@ void Navigator::run(void)
 		retryPrompt("Reading CSV failed.");
 	}
 	/* Set directories for Concorde */
-	setDirectories(false);
+	setDirectories(false, true);
 	/* Read and generate solution from TSP file */
 	concordeTSP();
 	/* Navigator is ready */
@@ -202,8 +222,8 @@ Navigator::Navigator(int argc, const char **argv) noexcept
 	  ready_{ false },
 	  tour_{ concorde_.getTour() },
 	  nextDest_{ 1 },
-	  inMotion_{ false },
-	  bearing_{ 0 }
+	  proximityRadius_{ 0 },
+	  simulationVelocity_{ 0 }
 {
 }
 
@@ -306,6 +326,40 @@ bool Navigator::setSolDir(void)
 	return false;
 }
 
+/* Helper for setLogDir */
+bool Navigator::setLogDirHelper(void)
+{
+	std::cout << "Enter log directory: ";
+	std::cin >> logDir_;
+	logDir_ = expandTilde(logDir_);
+	if (checkValidDir(logDir_)) {
+		printPath(logDir_);
+		return true;
+	}
+	return false;
+}
+
+/* Helper method to set log directory for Navigator */
+void Navigator::setLogDir(void)
+{
+	while (true) {
+		std::cout << "Log controller output to file? [y/n]: ";
+		std::string res{};
+		std::cin >> res;
+		char r{ static_cast<char>(std::tolower(res.at(0))) };
+		if (r == 'y') {
+			while (true) {
+				if (setLogDirHelper()) {
+					break;
+				}
+				retryPrompt("Log directory not valid.");
+			}
+		} else if (r == 'n') {
+			break;
+		}
+	}
+}
+
 /* Helper method to set graph directory for Concorde*/
 bool Navigator::setGraphDir(void)
 {
@@ -381,10 +435,10 @@ void Navigator::makeSolutions(void)
 		concorde_.setCSVFile(std::move(path));
 		/* Read CSV file */
 		if (!concorde_.readCSV()) {
-			/* If CSV unreadable, skip */
+			/* if csv unreadable, skip */
 			continue;
 		}
-		/* Helper method to read and generate solution from CSV file */
+		/* helper method to read and generate solution from CSV file */
 		concordeTSP();
 		/* Increment solCtr to track number of solutions generated */
 		solCtr++;
@@ -402,8 +456,10 @@ void Navigator::makeSolutions(void)
 }
 
 /* Helper method to set necessary directories for Concorde */
-/* Pass true if asking for CSV directory, false otherwise */
-void Navigator::setDirectories(bool csvDir)
+/* First param pass true if asking for CSV directory, false otherwise */
+/* Second param pass tue if navigator should log controller output, false
+   otherwise */
+void Navigator::setDirectories(bool csvDir, bool logDir)
 {
 	if (csvDir) {
 		/* Set valid CSV directory */
@@ -435,13 +491,17 @@ void Navigator::setDirectories(bool csvDir)
 		}
 		retryPrompt("Graph directory not valid.");
 	}
+	/* Optional: set log directory */
+	if (logDir) {
+		setLogDir();
+	}
 }
 
 /* CLI mode to solve directory of waypoints */
 [[noreturn]] void Navigator::solve(void)
 {
 	/* Set directories for Concorde */
-	setDirectories(true);
+	setDirectories(true, false);
 	/* Make solutions from CSV files */
 	makeSolutions();
 	std::exit(0);
