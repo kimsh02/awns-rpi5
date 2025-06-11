@@ -62,6 +62,6 @@ class Navigator {
 	std::size_t	      nextDest(void);
 	void		      retryPrompt(const char *) noexcept;
 	void		      logFix(const GPSFix &) noexcept;
-	bool		      waypointReached(std::pair<double, double> curr,
-					      std::pair<double, double> dest) noexcept;
+	bool waypointReached(const std::pair<double, double> &curr,
+			     const std::pair<double, double> &dest) noexcept;
 };
