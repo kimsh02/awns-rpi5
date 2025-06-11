@@ -186,7 +186,8 @@ bool ConcordeTSPSolver::readCSV(void)
 	/* If reader was unable to add at least two waypoints (including the
 	   starting position) */
 	if (waypoints_.size() < 2) {
-		std::cerr << "Error: Unable to add at least two waypoints.\n";
+		std::cerr
+			<< "Error: Unable to add at least two waypoints from specified CSV file.\n";
 		return false;
 	}
 	/* Else print number of waypoints and return true */
