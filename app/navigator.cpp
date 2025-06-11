@@ -67,8 +67,8 @@
 // }
 
 /* Helper method to check whether destination has been reached */
-bool Navigator::waypointReached(std::pair<double, double> curr,
-				std::pair<double, double> dest) noexcept
+bool Navigator::waypointReached(const std::pair<double, double> &curr,
+				const std::pair<double, double> &dest) noexcept
 {
 	double latDiff{ std::abs(curr.first) - std::abs(dest.first) };
 	double lonDiff{ std::abs(curr.second) - std::abs(dest.second) };
