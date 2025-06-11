@@ -201,16 +201,10 @@ void Navigator::retryPrompt(const char *message) noexcept
 {
 	std::cout << message << " Press Enter to retry.";
 	std::cout.flush();
-	// Grab the stream buffer for cin:
-	auto *buf = std::cin.rdbuf();
-	// As long as there is at least one character already buffered,
-	// and that character is '\n', consume it:
-	while (buf->in_avail() > 0 && std::cin.peek() == '\n') {
-		std::cin.get(); // discard exactly one '\n'
-	}
-	/* Now wait for the user to press ENTER (blocks on the next '\n'): */
-	std::string dummy;
-	std::getline(std::cin, dummy);
+	// 1) Discard everything up to and including the next '\n':
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	// 2) Now wait for the user to press Enter:
+	std::cin.get(); // blocks until one more '\n' arrives
 	std::cout << "\n";
 }
 
@@ -356,6 +350,7 @@ void Navigator::setLogDir(void)
 			}
 			break;
 		} else if (r == 'n') {
+			std::cout << "\n";
 			break;
 		}
 	}
