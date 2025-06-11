@@ -46,7 +46,7 @@ class Navigator {
 
 	bool		      testGPSConnection(void);
 	bool		      readCSV(void);
-	bool		      checkValidDir(std::filesystem::path &);
+	bool		      checkValidDir(const std::filesystem::path &);
 	std::filesystem::path expandTilde(const std::filesystem::path &);
 	bool		      setCSVDir(void);
 	bool		      setTSPDir(void);

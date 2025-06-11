@@ -354,6 +354,7 @@ void Navigator::setLogDir(void)
 				}
 				retryPrompt("Log directory not valid.");
 			}
+			break;
 		} else if (r == 'n') {
 			break;
 		}
@@ -382,7 +383,7 @@ void Navigator::printPath(const std::filesystem::path &p)
 }
 
 /* Helper method to check CSV directory */
-bool Navigator::checkValidDir(std::filesystem::path &p)
+bool Navigator::checkValidDir(const std::filesystem::path &p)
 {
 	/* Check for valid directory path */
 	if (std::filesystem::exists(p) && std::filesystem::is_directory(p)) {
