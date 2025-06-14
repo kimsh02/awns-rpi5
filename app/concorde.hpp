@@ -7,27 +7,27 @@
 class ConcordeTSPSolver {
     public:
 	/* Allow setting via any string-like or path-like type */
-	void setCSVFile(const auto &&csvFile)
+	void setCSVFile(auto &&csvFile)
 	{
 		csvFile_ = std::forward<decltype(csvFile)>(csvFile);
 	}
 
-	void setCSVDir(const auto &&csvDir)
+	void setCSVDir(auto &&csvDir)
 	{
 		csvDir_ = std::forward<decltype(csvDir)>(csvDir);
 	}
 
-	void setTSPDir(const auto &&tspDir)
+	void setTSPDir(auto &&tspDir)
 	{
 		tspDir_ = std::forward<decltype(tspDir)>(tspDir);
 	}
 
-	void setSolDir(const auto &&solDir)
+	void setSolDir(auto &&solDir)
 	{
 		solDir_ = std::forward<decltype(solDir)>(solDir);
 	}
 
-	void setGraphDir(const auto &&graphDir)
+	void setGraphDir(auto &&graphDir)
 	{
 		graphDir_ = std::forward<decltype(graphDir)>(graphDir);
 	}

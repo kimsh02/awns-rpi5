@@ -27,8 +27,8 @@ int main(int argc, const char **argv)
 	/* Spit out downstream controller output */
 	/* Pass true if writing to log file, false otherwise */
 	/* Must invoke start and set proximity radius beforehand */
-	// for (auto output{ nav.getOutput(true) }; output;
-	//      output = nav.getOutput(true)) {}
+	for (auto output{ nav.getOutput() }; output; output = nav.getOutput()) {
+	}
 
 	/* Properly stop navigator before exiting */
 	nav.stop();
