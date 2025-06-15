@@ -54,7 +54,7 @@ class Navigator {
 	std::optional<json>   gpsOutput(void);
 	std::optional<json>   simulationVelocityOutput(void);
 	std::tm		      localTime(void);
-	std::string	      logWithTimestamp(const std::string &);
+	std::string	      getTimestamp(void);
 	void		      logPrint(const std::string &, bool);
 	std::string	      logCoordinates(const std::pair<double, double> &);
 	void		      setupForNavOutput(void);
