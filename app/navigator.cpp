@@ -72,12 +72,12 @@ std::optional<json> Navigator::gpsOutput(void)
 	json j{
 		{ "gps_position",
 		  { { "latitude", fix.latitude },
-		    { "longitude", fix.longitude } }     },
+		    { "longitude", fix.longitude } }   },
 		{	  "bearing",	     bearing_ },
 		{  "destination",
 		  { { "latitude", dest_.first },
-		    { "longitude", dest_.second } }	    },
-		{	  "timestamp", logWithTimestamp("") }
+		    { "longitude", dest_.second } }    },
+		{	  "timestamp",     getTimestamp() }
 	};
 	/* Print JSON and return */
 	logPrint(j.dump(2), false);
@@ -128,7 +128,7 @@ std::optional<json> Navigator::simulationVelocityOutput(void)
 		{  "destination",
 		  { { "latitude", dest_.first },
 		    { "longitude", dest_.second } }	    },
-		{	  "timestamp", logWithTimestamp("") }
+		{	  "timestamp",       getTimestamp() }
 	};
 	/* Print JSON and return */
 	logPrint(j.dump(2), false);
@@ -269,11 +269,11 @@ std::tm Navigator::localTime(void)
 }
 
 /* Helper method to add timestamp to print */
-std::string Navigator::logWithTimestamp(const std::string &message)
+std::string Navigator::getTimestamp(void)
 {
 	auto		   tm{ localTime() };
 	std::ostringstream oss{};
-	oss << "[" << std::put_time(&tm, "%Y-%m-%d %H:%M:%S") << "]" << message;
+	oss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
 	return oss.str();
 }
 
@@ -282,13 +282,14 @@ void Navigator::logPrint(const std::string &message, bool timeStamp)
 {
 	if (logFile_.is_open()) { /* If log enabled */
 		if (timeStamp) {
-			logFile_ << logWithTimestamp(message) << "\n";
+			logFile_ << "[" << getTimestamp() << "] " << message
+				 << "\n";
 		} else {
 			logFile_ << message << "\n";
 		}
 	}
 	if (timeStamp) {
-		std::cout << logWithTimestamp(message) << "\n";
+		std::cout << "[" << getTimestamp() << "] " << message << "\n";
 	} else {
 		std::cout << message << "\n";
 	}
