@@ -87,7 +87,7 @@ std::optional<json> Navigator::gpsOutput(void)
 		    { "second", tm.tm_sec } }	      }
 	};
 	/* Print JSON and return */
-	logPrint(j, false);
+	logPrint(j.dump(), false);
 	return j;
 }
 
@@ -145,7 +145,7 @@ std::optional<json> Navigator::simulationVelocityOutput(void)
 		    { "second", tm.tm_sec } }	      }
 	};
 	/* Print JSON and return */
-	logPrint(j, false);
+	logPrint(j.dump(), false);
 	return j;
 }
 
@@ -393,7 +393,7 @@ void Navigator::run(void)
 	/* Print ready output */
 	std::cout
 		<< "\033[1;32m"
-		<< "Optimal tour has been calculated. Ready to provide navigation output.\n"
+		<< "Optimal tour has been calculated. Ready to provide navigation output.\n\n"
 		<< "\033[0m";
 }
 
