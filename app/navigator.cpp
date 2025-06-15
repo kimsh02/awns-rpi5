@@ -514,7 +514,7 @@ bool Navigator::setCSVDir(void)
 	csvDir = expandTilde(csvDir);
 	/* Check for valid directory path */
 	if (checkValidDir(csvDir)) {
-		concorde_.setCSVDir(std::move(csvDir));
+		concorde_.setCSVDir(csvDir);
 		printPath(csvDir);
 		return true;
 	}
@@ -529,7 +529,7 @@ bool Navigator::setTSPDir(void)
 	std::cin >> tspDir;
 	tspDir = expandTilde(tspDir);
 	if (checkValidDir(tspDir)) {
-		concorde_.setTSPDir(std::move(tspDir));
+		concorde_.setTSPDir((tspDir));
 		printPath(tspDir);
 		return true;
 	}
@@ -544,7 +544,7 @@ bool Navigator::setSolDir(void)
 	std::cin >> solDir;
 	solDir = expandTilde(solDir);
 	if (checkValidDir(solDir)) {
-		concorde_.setSolDir(std::move(solDir));
+		concorde_.setSolDir(solDir);
 		printPath(solDir);
 		return true;
 	}
@@ -595,7 +595,7 @@ bool Navigator::setGraphDir(void)
 	std::cin >> graphDir;
 	graphDir = expandTilde(graphDir);
 	if (checkValidDir(graphDir)) {
-		concorde_.setGraphDir(std::move(graphDir));
+		concorde_.setGraphDir(graphDir);
 		printPath(graphDir);
 		return true;
 	}
