@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Compiler flags
-set(COMPILER_FLAGS        "-Wall -Wextra -pedantic -Werror -Wunsequenced")
+set(COMPILER_FLAGS        "-Wall -Wextra -pedantic -Werror")
 # set(COMPILER_FLAGS        "-Wall -Wextra -pedantic ")
 set(ADDRESS_SANITIZER_FL   "-fsanitize=address,undefined -fno-omit-frame-pointer -fno-optimize-sibling-calls")
 set(THREAD_SANITIZER_FL    "-fsanitize=thread,undefined -fno-omit-frame-pointer -fno-optimize-sibling-calls")
