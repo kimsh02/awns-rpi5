@@ -87,7 +87,7 @@ std::optional<json> Navigator::gpsOutput(void)
 		    { "second", tm.tm_sec } }	      }
 	};
 	/* Print JSON and return */
-	logPrint(j.dump(), false);
+	logPrint(j.dump(2), false);
 	return j;
 }
 
@@ -145,7 +145,7 @@ std::optional<json> Navigator::simulationVelocityOutput(void)
 		    { "second", tm.tm_sec } }	      }
 	};
 	/* Print JSON and return */
-	logPrint(j.dump(), false);
+	logPrint(j.dump(2), false);
 	return j;
 }
 
