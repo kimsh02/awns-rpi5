@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "navigator.hpp"
 
 int main(int argc, const char **argv)
@@ -25,9 +27,9 @@ int main(int argc, const char **argv)
 	nav.setSimulationVelocity(1.0);
 
 	/* Spit out downstream controller output */
-	/* Pass true if writing to log file, false otherwise */
 	/* Must invoke start and set proximity radius beforehand */
 	for (auto output{ nav.getOutput() }; output; output = nav.getOutput()) {
+		std::cout << (*output).dump();
 	}
 
 	/* Properly stop navigator before exiting */
