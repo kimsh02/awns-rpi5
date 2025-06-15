@@ -267,7 +267,7 @@ std::optional<std::pair<double, double> > Navigator::getDest(void)
 			return std::nullopt;
 		}
 		/* Else, return next dest */
-		nextDest_ = ++nextDest_ % tour_.size();
+		nextDest_ = (nextDest_ + 1) % tour_.size();
 		return tour_[nextDest_];
 	}
 }
