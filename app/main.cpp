@@ -30,7 +30,7 @@ int main(int argc, const char **argv)
 	/* Must invoke start and set proximity radius beforehand */
 	for (auto output{ nav.getOutput() }; output; output = nav.getOutput()) {
 		/* Print JSON to stdout */
-		std::cout << (*output).dump(4);
+		std::cout << (*output).dump(2);
 	}
 
 	/* Properly stop navigator before exiting */
