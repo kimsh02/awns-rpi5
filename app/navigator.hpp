@@ -51,9 +51,11 @@ class Navigator {
 	[[noreturn]] void solve(void);
 	[[noreturn]] void help(void) noexcept;
 
+	std::optional<json>   gpsOutput(void);
+	std::optional<json>   simulationVelocityOutput(void);
 	std::tm		      localTime(void);
 	std::string	      logWithTimestamp(const std::string &);
-	void		      logPrint(const std::string &);
+	void		      logPrint(const std::string &, bool);
 	std::string	      logCoordinates(const std::pair<double, double> &);
 	void		      setupForNavOutput(void);
 	bool		      testGPSConnection(void);
@@ -75,7 +77,7 @@ class Navigator {
 	void   retryPrompt(const char *) noexcept;
 	void   logFix(const GPSFix &) noexcept;
 	bool   waypointReached(const std::pair<double, double> &,
-			       const std::pair<double, double> &) noexcept;
+			       const std::pair<double, double> &) const noexcept;
 	double calculateBearing(const std::pair<double, double> &,
 				const std::pair<double, double> &) noexcept;
 	std::pair<double, double>
