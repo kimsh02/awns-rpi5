@@ -69,22 +69,15 @@ std::optional<json> Navigator::gpsOutput(void)
 	/* Calculate direction to start heading */
 	bearing_ = calculateBearing(currPos_, dest_);
 	/* Return JSON ouput */
-	auto tm{ localTime() };
 	json j{
 		{ "gps_position",
 		  { { "latitude", fix.latitude },
-		    { "longitude", fix.longitude } }   },
+		    { "longitude", fix.longitude } }     },
 		{	  "bearing",	     bearing_ },
 		{  "destination",
 		  { { "latitude", dest_.first },
-		    { "longitude", dest_.second } }    },
-		{	  "timestamp",
-		  { { "year", tm.tm_year },
-		    { "month", tm.tm_mon + 1 },
-		    { "day", tm.tm_mday },
-		    { "hour", tm.tm_hour },
-		    { "minute", tm.tm_min },
-		    { "second", tm.tm_sec } }	      }
+		    { "longitude", dest_.second } }	    },
+		{	  "timestamp", logWithTimestamp("") }
 	};
 	/* Print JSON and return */
 	logPrint(j.dump(2), false);
@@ -123,7 +116,6 @@ std::optional<json> Navigator::simulationVelocityOutput(void)
 	/* Calculate direction to start heading */
 	bearing_ = calculateBearing(currPos_, dest_);
 	/* Return JSON ouput */
-	auto tm{ localTime() };
 	json j{
 		{ "sim_position",
 		  { { "latitude", currPos_.first },
@@ -136,13 +128,7 @@ std::optional<json> Navigator::simulationVelocityOutput(void)
 		{  "destination",
 		  { { "latitude", dest_.first },
 		    { "longitude", dest_.second } }	    },
-		{	  "timestamp",
-		  { { "year", tm.tm_year },
-		    { "month", tm.tm_mon + 1 },
-		    { "day", tm.tm_mday },
-		    { "hour", tm.tm_hour },
-		    { "minute", tm.tm_min },
-		    { "second", tm.tm_sec } }	      }
+		{	  "timestamp", logWithTimestamp("") }
 	};
 	/* Print JSON and return */
 	logPrint(j.dump(2), false);
@@ -258,11 +244,13 @@ std::optional<std::pair<double, double> > Navigator::getDest(void)
 	} else { /* Else get next dest */
 		/* Print destination has been reached */
 		std::ostringstream oss{};
-		oss << "Waypoint reached: " << logCoordinates(tour_[nextDest_]);
+		oss << "(System Message) Waypoint reached: "
+		    << logCoordinates(tour_[nextDest_]);
 		logPrint(oss.str(), true);
 		/* If nextDest_ is 0, then tour is over and return null */
 		if (!nextDest_) {
-			logPrint("Navigation has completed.", true);
+			logPrint("(System Message) Navigation has completed.",
+				 true);
 			return std::nullopt;
 		}
 		/* Else, return next dest */
@@ -285,8 +273,7 @@ std::string Navigator::logWithTimestamp(const std::string &message)
 {
 	auto		   tm{ localTime() };
 	std::ostringstream oss{};
-	oss << "[" << std::put_time(&tm, "%Y-%m-%d %H:%M:%S")
-	    << "] (System Message) " << message;
+	oss << "[" << std::put_time(&tm, "%Y-%m-%d %H:%M:%S") << "]" << message;
 	return oss.str();
 }
 
