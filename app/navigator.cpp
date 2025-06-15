@@ -91,8 +91,7 @@ std::optional<json> Navigator::simulationVelocityOutput(void)
 	auto start{ std::chrono::steady_clock::now() };
 	auto optFix{ gps_.waitReadFix() };
 	auto end{ std::chrono::steady_clock::now() };
-	auto elapsed{ std::chrono::duration_cast<std::chrono::microseconds>(
-		end - start) };
+	auto elapsed{ std::chrono::duration<double>(end - start) };
 	/* If can't get GPS reading, return null */
 	if (!optFix) {
 		return std::nullopt;
@@ -102,8 +101,7 @@ std::optional<json> Navigator::simulationVelocityOutput(void)
 	/* If vehicle is in motion, calculate predicted position */
 	if (inMotion_) {
 		/* Update currPos */
-		currPos_ =
-			computeNewPosition(dest_, elapsed.count() / 1000000.0);
+		currPos_ = computeNewPosition(dest_, elapsed.count());
 	} else { /* Set vehicle starting point and simulated motion */
 		/* Set 'currPos_' to current GPS position */
 		currPos_.first	= fix.latitude;
