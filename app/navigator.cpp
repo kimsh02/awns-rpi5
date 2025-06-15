@@ -287,7 +287,7 @@ std::string Navigator::logWithTimestamp(const std::string &message)
 	auto		   tm{ localTime() };
 	std::ostringstream oss{};
 	oss << "[" << std::put_time(&tm, "%Y-%m-%d %H:%M:%S")
-	    << "] (System Message) " << message << "\n";
+	    << "] (System Message) " << message;
 	return oss.str();
 }
 
