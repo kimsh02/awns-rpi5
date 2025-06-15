@@ -28,10 +28,8 @@ int main(int argc, const char **argv)
 
 	/* Spit out downstream controller output */
 	/* Must invoke start and set proximity radius beforehand */
-	for (auto output{ nav.getOutput() }; output; output = nav.getOutput()) {
-		/* Print JSON to stdout */
-		std::cout << (*output).dump(2);
-	}
+	for (auto output{ nav.getOutput() }; output; output = nav.getOutput())
+		;
 
 	/* Properly stop navigator before exiting */
 	nav.stop();
