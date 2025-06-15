@@ -8,6 +8,7 @@
 #include <iomanip>
 #include <ios>
 #include <iostream>
+#include <numbers>
 #include <optional>
 #include <sstream>
 #include <stdexcept>
@@ -15,17 +16,6 @@
 
 #include "concorde.hpp"
 #include "gps.hpp"
-
-// /* Get navigation output based on simulated downstream motor controller */
-// /* Takes as input the velocity of simulated motor */
-// /* If navigator is not ready from start(), or navigation has completed, this
-//    returns null, else return JSON of navigation output */
-// std::optional<json> Navigator::getOutput(double velocity)
-// {
-
-// 	/* TODO: Get predicted position */
-// 	std::pair<double, double> predictedLoc{};
-// }
 
 /* Get navigation output for downstream controller  */
 /* If
@@ -48,85 +38,115 @@ std::optional<json> Navigator::getOutput(void)
 	}
 	/* If simulation velocity is set, predict system position */
 	if (simulationVelocity_) {
-		/* Time GPS reading */
-		auto start{ std::chrono::steady_clock::now() };
-		auto optFix{ gps_.waitReadFix() };
-		auto end{ std::chrono::steady_clock::now() };
-		auto elapsed{
-			std::chrono::duration_cast<std::chrono::microseconds>(
-				end - start)
-		};
-		/* If can't get GPS reading, return null */
-		if (!optFix) {
-			return std::nullopt;
-		}
-		/* Init GPS fix */
-		auto fix{ *optFix };
-		/* If vehicle is in motion, calculate predicted position */
-		if (inMotion_) {
-			/* Update currPos */
-			currPos_ = computeNewPosition(
-				dest_, elapsed.count() / 1000000.0);
-			/* Get next destination */
-			auto optDest{ getDest() };
-			if (!optDest) { /* If route finished, return null */
-				return std::nullopt;
-			}
-			dest_ = *optDest;
-		} else { /* Else get bearing based on starting position */
-			/* Get next destination */
-			auto optDest{ getDest() };
-			if (!optDest) { /* If route finished, return null */
-				return std::nullopt;
-			}
-			dest_ = *optDest;
-			/* Calculate direction to start heading */
-			bearing_ = calculateBearing(currPos_, dest_);
-			/* Vehicle is set to start moving */
-			inMotion_ = true;
-		}
-		/* Return JSON ouput */
-		auto tm{ localTime() };
-		json j{
-			{ "sim_position",
-			  { { "latitude", currPos_.first },
-			    { "longitude", currPos_.second } }   },
-			{ "gps_position",
-			  { { "latitude", fix.latitude },
-			    { "longitude", fix.longitude } }     },
-			{	  "velocity",  simulationVelocity_ },
-			{	  "bearing",	     bearing_ },
-			{  "destination",
-			  { { "latitude", dest_.first },
-			    { "longitude", dest_.second } }	    },
-			{	  "timestamp",
-			  { { "year", tm.tm_year },
-			    { "month", tm.tm_mon + 1 },
-			    { "day", tm.tm_mday },
-			    { "hour", tm.tm_hour },
-			    { "minute", tm.tm_min },
-			    { "second", tm.tm_sec } }	      }
-		};
-	} else { /* Just get GPS reading */
-		/* Get GPS reading */
-		auto optFix{ gps_.waitReadFix() };
-		/* If can't get GPS reading, return null */
-		if (!optFix) {
-			return std::nullopt;
-		}
-		/* Get current position */
-		GPSFix			  currFix{ *optFix };
-		std::pair<double, double> currPos{ currFix.latitude,
-						   currFix.longitude };
+		/* Call helper method for simulation velocity output */
+		return simulationVelocityOutput();
+	} else { /* Generate output based on GPS reading */
+		 /* Call helper method for GPS reading output */
+		return gpsOutput();
 	}
+}
 
-	/* Check whether destination has been reached */
+/* Helper method for GPS output */
+std::optional<json> Navigator::gpsOutput(void)
+{
+	/* Get GPS reading */
+	auto optFix{ gps_.waitReadFix() };
+	/* If can't get GPS reading, return null */
+	if (!optFix) {
+		return std::nullopt;
+	}
+	/* Get current position */
+	GPSFix fix{ *optFix };
+	/* Update 'currPos_' */
+	currPos_.first	= fix.latitude;
+	currPos_.second = fix.longitude;
+	/* Get next destination */
+	auto optDest{ getDest() };
+	if (!optDest) { /* If route finished, return null */
+		return std::nullopt;
+	}
+	dest_ = *optDest;
+	/* Calculate direction to start heading */
+	bearing_ = calculateBearing(currPos_, dest_);
+	/* Return JSON ouput */
+	auto tm{ localTime() };
+	json j{
+		{ "gps_position",
+		  { { "latitude", fix.latitude },
+		    { "longitude", fix.longitude } }   },
+		{	  "bearing",	     bearing_ },
+		{  "destination",
+		  { { "latitude", dest_.first },
+		    { "longitude", dest_.second } }    },
+		{	  "timestamp",
+		  { { "year", tm.tm_year },
+		    { "month", tm.tm_mon + 1 },
+		    { "day", tm.tm_mday },
+		    { "hour", tm.tm_hour },
+		    { "minute", tm.tm_min },
+		    { "second", tm.tm_sec } }	      }
+	};
+	/* Print JSON and return */
+	logPrint(j, false);
+	return j;
+}
 
-	/* Compute direction to head */
-
-	/* speed, direction */
-	/* If logDir_ set */
-	/* print that log file was written if set */
+/* Helper method for simulation velocity output */
+std::optional<json> Navigator::simulationVelocityOutput(void)
+{
+	/* Time GPS reading */
+	auto start{ std::chrono::steady_clock::now() };
+	auto optFix{ gps_.waitReadFix() };
+	auto end{ std::chrono::steady_clock::now() };
+	auto elapsed{ std::chrono::duration_cast<std::chrono::microseconds>(
+		end - start) };
+	/* If can't get GPS reading, return null */
+	if (!optFix) {
+		return std::nullopt;
+	}
+	/* Init GPS fix */
+	auto fix{ *optFix };
+	/* If vehicle is in motion, calculate predicted position */
+	if (inMotion_) {
+		/* Update currPos */
+		currPos_ =
+			computeNewPosition(dest_, elapsed.count() / 1000000.0);
+	} else { /* Vehicle is set to start moving */
+		inMotion_ = true;
+	}
+	/* Get next destination */
+	auto optDest{ getDest() };
+	if (!optDest) { /* If route finished, return null */
+		return std::nullopt;
+	}
+	dest_ = *optDest;
+	/* Calculate direction to start heading */
+	bearing_ = calculateBearing(currPos_, dest_);
+	/* Return JSON ouput */
+	auto tm{ localTime() };
+	json j{
+		{ "sim_position",
+		  { { "latitude", currPos_.first },
+		    { "longitude", currPos_.second } }   },
+		{ "gps_position",
+		  { { "latitude", fix.latitude },
+		    { "longitude", fix.longitude } }     },
+		{	  "velocity",  simulationVelocity_ },
+		{	  "bearing",	     bearing_ },
+		{  "destination",
+		  { { "latitude", dest_.first },
+		    { "longitude", dest_.second } }	    },
+		{	  "timestamp",
+		  { { "year", tm.tm_year },
+		    { "month", tm.tm_mon + 1 },
+		    { "day", tm.tm_mday },
+		    { "hour", tm.tm_hour },
+		    { "minute", tm.tm_min },
+		    { "second", tm.tm_sec } }	      }
+	};
+	/* Print JSON and return */
+	logPrint(j, false);
+	return j;
 }
 
 /* Helper method to calculate bearing */
@@ -178,14 +198,33 @@ Navigator::computeNewPosition(const std::pair<double, double> &initial,
 	return { lat2, lon2 };
 }
 
-/* TODO: fix */
 /* Helper method to check whether destination has been reached */
-bool Navigator::waypointReached(const std::pair<double, double> &curr,
-				const std::pair<double, double> &dest) noexcept
+/// Returns true if 'current' is within proximityRadius_ of 'destination'.
+/// current      {latitude, longitude} in degrees
+/// destination  {latitude, longitude} in degrees
+/// return true if distance ≤ proximityRadius_
+bool Navigator::waypointReached(
+	const std::pair<double, double> &current,
+	const std::pair<double, double> &destination) const noexcept
 {
-	double latDiff{ std::abs(curr.first) - std::abs(dest.first) };
-	double lonDiff{ std::abs(curr.second) - std::abs(dest.second) };
-	return (latDiff <= proximityRadius_) && (lonDiff <= proximityRadius_);
+	// 1. Convert degrees → radians
+	constexpr double degToRad = std::numbers::pi / 180.0;
+	const double	 lat1	  = current.first * degToRad;
+	const double	 lon1	  = current.second * degToRad;
+	const double	 lat2	  = destination.first * degToRad;
+	const double	 lon2	  = destination.second * degToRad;
+	// 2. Haversine formula
+	const double dLat     = lat2 - lat1;
+	const double dLon     = lon2 - lon1;
+	const double sinDLat2 = std::sin(dLat / 2);
+	const double sinDLon2 = std::sin(dLon / 2);
+	const double a	      = sinDLat2 * sinDLat2 +
+			 std::cos(lat1) * std::cos(lat2) * sinDLon2 * sinDLon2;
+	const double c = 2 * std::asin(std::sqrt(a));
+	// 3. Distance in meters
+	const double distance = earthRadius_ * c;
+	// 4. Compare against your proximity radius
+	return distance <= proximityRadius_;
 }
 
 /* Setter for proximity radius threshold for waypont arrival */
@@ -221,10 +260,10 @@ std::optional<std::pair<double, double> > Navigator::getDest(void)
 		std::ostringstream oss{};
 		oss << "Waypoint reached: " << logCoordinates(tour_[nextDest_])
 		    << "\n";
-		logPrint(oss.str());
+		logPrint(oss.str(), true);
 		/* If nextDest_ is 0, then tour is over and return null */
 		if (!nextDest_) {
-			logPrint("Navigation has completed.\n");
+			logPrint("Navigation has completed.\n", true);
 			return std::nullopt;
 		}
 		/* Else, return next dest */
@@ -247,18 +286,26 @@ std::string Navigator::logWithTimestamp(const std::string &message)
 {
 	auto		   tm{ localTime() };
 	std::ostringstream oss{};
-	oss << "[" << std::put_time(&tm, "%Y-%m-%d %H:%M:%S") << "] " << message
-	    << "\n";
+	oss << "[" << std::put_time(&tm, "%Y-%m-%d %H:%M:%S")
+	    << "] (System Message) " << message << "\n";
 	return oss.str();
 }
 
 /* Helper method to print to stdout and log file */
-void Navigator::logPrint(const std::string &message)
+void Navigator::logPrint(const std::string &message, bool timeStamp)
 {
 	if (logFile_.is_open()) { /* If log enabled */
-		logFile_ << logWithTimestamp(message);
+		if (timeStamp) {
+			logFile_ << logWithTimestamp(message);
+		} else {
+			logFile_ << message;
+		}
 	}
-	std::cout << logWithTimestamp(message);
+	if (timeStamp) {
+		std::cout << logWithTimestamp(message);
+	} else {
+		std::cout << message;
+	}
 }
 
 /* Helper method to log coordinates */
