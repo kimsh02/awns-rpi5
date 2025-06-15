@@ -296,13 +296,13 @@ void Navigator::logPrint(const std::string &message, bool timeStamp)
 {
 	if (logFile_.is_open()) { /* If log enabled */
 		if (timeStamp) {
-			logFile_ << logWithTimestamp(message) << "\n";
+			logFile_ << logWithTimestamp(message);
 		} else {
 			logFile_ << message << "\n";
 		}
 	}
 	if (timeStamp) {
-		std::cout << logWithTimestamp(message) << "\n";
+		std::cout << logWithTimestamp(message);
 	} else {
 		std::cout << message << "\n";
 	}
