@@ -104,7 +104,11 @@ std::optional<json> Navigator::simulationVelocityOutput(void)
 		/* Update currPos */
 		currPos_ =
 			computeNewPosition(dest_, elapsed.count() / 1000000.0);
-	} else { /* Vehicle is set to start moving */
+	} else { /* Set vehicle starting point and simulated motion */
+		/* Set 'currPos_' to current GPS position */
+		currPos_.first	= fix.latitude;
+		currPos_.second = fix.longitude;
+		/* Vehicle is set to start moving */
 		inMotion_ = true;
 	}
 	/* Get next destination */
