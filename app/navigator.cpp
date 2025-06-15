@@ -438,6 +438,7 @@ Navigator::Navigator(int argc, const char **argv) noexcept
 	  ready_{ false },
 	  tour_{ concorde_.getTour() },
 	  nextDest_{ 1 },
+	  inMotion_{ false },
 	  proximityRadius_{ 0 },
 	  simulationVelocity_{ 0 }
 {
