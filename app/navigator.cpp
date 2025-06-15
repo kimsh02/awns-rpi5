@@ -258,12 +258,11 @@ std::optional<std::pair<double, double> > Navigator::getDest(void)
 	} else { /* Else get next dest */
 		/* Print destination has been reached */
 		std::ostringstream oss{};
-		oss << "Waypoint reached: " << logCoordinates(tour_[nextDest_])
-		    << "\n";
+		oss << "Waypoint reached: " << logCoordinates(tour_[nextDest_]);
 		logPrint(oss.str(), true);
 		/* If nextDest_ is 0, then tour is over and return null */
 		if (!nextDest_) {
-			logPrint("Navigation has completed.\n", true);
+			logPrint("Navigation has completed.", true);
 			return std::nullopt;
 		}
 		/* Else, return next dest */
@@ -296,13 +295,13 @@ void Navigator::logPrint(const std::string &message, bool timeStamp)
 {
 	if (logFile_.is_open()) { /* If log enabled */
 		if (timeStamp) {
-			logFile_ << logWithTimestamp(message);
+			logFile_ << logWithTimestamp(message) << "\n";
 		} else {
 			logFile_ << message << "\n";
 		}
 	}
 	if (timeStamp) {
-		std::cout << logWithTimestamp(message);
+		std::cout << logWithTimestamp(message) << "\n";
 	} else {
 		std::cout << message << "\n";
 	}
