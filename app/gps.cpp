@@ -5,6 +5,7 @@
 #include <ctime>
 #include <iostream>
 #include <optional>
+#include <thread>
 
 /* Constructor */
 GPSClient::GPSClient(const char *host, const char *port, int timeout_us,
@@ -111,6 +112,8 @@ std::optional<GPSFix> GPSClient::waitReadFix(void)
 			return optFix;
 		}
 		tries--;
+		/* Rate limit tries */
+		std::this_thread::sleep_for(std::chrono::seconds(1));
 	}
 	/* If we don't get any 2D fix max_tries_, return nullopt */
 	return std::nullopt;
