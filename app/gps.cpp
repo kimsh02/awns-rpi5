@@ -81,7 +81,7 @@ std::optional<GPSFix> GPSClient::readFix(void)
 			double	 fix_ts = static_cast<double>(t.tv_sec) +
 					static_cast<double>(t.tv_nsec) * 1.0e-9;
 			/* If stale fix, return nullopt */
-			if (fix_ts <= last_ts_) {
+			if (fix_ts <= last_ts_ + 0.5) {
 				return std::nullopt;
 			}
 			last_ts_ = fix_ts;
