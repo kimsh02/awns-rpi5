@@ -75,7 +75,8 @@ std::optional<json> Navigator::gpsOutput(void)
 		    { "longitude", fix.longitude } }   },
 		{	  "bearing",	     bearing_ },
 		{  "destination",
-		  { { "latitude", dest_.first },
+		  { { "waypoint", nextDest_ },
+		    { "latitude", dest_.first },
 		    { "longitude", dest_.second } }    },
 		{	  "timestamp",     getTimestamp() }
 	};
@@ -128,7 +129,8 @@ std::optional<json> Navigator::simulationVelocityOutput(void)
 		{	  "velocity",  simulationVelocity_ },
 		{	  "bearing",	     bearing_ },
 		{  "destination",
-		  { { "latitude", dest_.first },
+		  { { "waypoint", nextDest_ },
+		    { "latitude", dest_.first },
 		    { "longitude", dest_.second } }	    },
 		{	  "timestamp",       getTimestamp() }
 	};
