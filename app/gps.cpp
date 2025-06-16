@@ -1,6 +1,7 @@
 #include "gps.hpp"
 
 #include <cerrno>
+#include <chrono>
 #include <cstring>
 #include <ctime>
 #include <iostream>
@@ -113,7 +114,7 @@ std::optional<GPSFix> GPSClient::waitReadFix(void)
 		}
 		tries--;
 		/* Rate limit tries */
-		std::this_thread::sleep_for(std::chrono::seconds(1));
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	}
 	/* If we don't get any 2D fix max_tries_, return nullopt */
 	return std::nullopt;
