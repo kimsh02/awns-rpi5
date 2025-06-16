@@ -83,7 +83,7 @@ std::optional<GPSFix> GPSClient::readFix(void)
 			double	 fix_ts = static_cast<double>(t.tv_sec) +
 					static_cast<double>(t.tv_nsec) * 1.0e-9;
 			/* If stale fix, return nullopt */
-			if (fix_ts <= last_ts_ + 0.7) {
+			if (fix_ts <= last_ts_) {
 				return std::nullopt;
 			}
 			last_ts_ = fix_ts;
@@ -114,7 +114,7 @@ std::optional<GPSFix> GPSClient::waitReadFix(void)
 		}
 		tries--;
 		/* Rate limit tries */
-		std::this_thread::sleep_for(std::chrono::milliseconds(700));
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	}
 	/* If we don't get any 2D fix max_tries_, return nullopt */
 	return std::nullopt;
