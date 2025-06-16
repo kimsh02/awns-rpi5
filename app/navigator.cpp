@@ -75,7 +75,7 @@ std::optional<json> Navigator::gpsOutput(void)
 		    { "longitude", fix.longitude } }   },
 		{	  "bearing",	     bearing_ },
 		{  "destination",
-		  { { "waypoint", nextDest_ },
+		  { { "waypoint", tourOrder_[nextDest_] },
 		    { "latitude", dest_.first },
 		    { "longitude", dest_.second } }    },
 		{	  "timestamp",     getTimestamp() }
@@ -129,7 +129,7 @@ std::optional<json> Navigator::simulationVelocityOutput(void)
 		{	  "velocity",  simulationVelocity_ },
 		{	  "bearing",	     bearing_ },
 		{  "destination",
-		  { { "waypoint", nextDest_ },
+		  { { "waypoint", tourOrder_[nextDest_] },
 		    { "latitude", dest_.first },
 		    { "longitude", dest_.second } }	    },
 		{	  "timestamp",       getTimestamp() }
@@ -437,6 +437,7 @@ Navigator::Navigator(int argc, const char **argv) noexcept
 	  argv_{ argv },
 	  ready_{ false },
 	  tour_{ concorde_.getTour() },
+	  tourOrder_{ concorde_.getTourOrder() },
 	  nextDest_{ 1 },
 	  inMotion_{ false },
 	  proximityRadius_{ 0 },

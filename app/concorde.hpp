@@ -34,6 +34,7 @@ class ConcordeTSPSolver {
 
 	const std::filesystem::path		      &getCSVDir(void) noexcept;
 	const std::vector<std::pair<double, double> > &getTour(void) noexcept;
+	const std::vector<std::size_t> &getTourOrder(void) noexcept;
 
 	bool readCSV(void);
 	void writeTSPFile(void);
@@ -58,7 +59,7 @@ class ConcordeTSPSolver {
 
 	std::vector<std::pair<double, double> > waypoints_; /* Lat, lon pairs
 							       from CSV */
-	std::vector<int> tourOrder_; /* Order that waypoints should be
+	std::vector<std::size_t> tourOrder_; /* Order that waypoints should be
 					visited */
 	std::vector<std::pair<double, double> > tour_; /* Lat, lon pairs of
 							       tour */
