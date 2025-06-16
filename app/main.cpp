@@ -24,7 +24,7 @@ int main(int argc, const char **argv)
 	/* If not set or set to 0 (the default), the navigator will take the GPS
 	   readings to calculate motor instructions */
 	/* Cannot be set to a negative value (will result to default of 0) */
-	nav.setSimulationVelocity(1.0);
+	// nav.setSimulationVelocity(1.0);
 
 	/* Spit out downstream controller output */
 	/* Must invoke start and set proximity radius beforehand */
