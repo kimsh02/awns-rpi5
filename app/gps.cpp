@@ -13,7 +13,7 @@ GPSClient::GPSClient(const char *host, const char *port, int timeout_us,
 					       connected_{ false },
 					       timeout_us_{ timeout_us },
 					       max_tries_{ max_tries },
-					       last_ts_{ 0 }
+					       last_ts_{ 0.0 }
 {
 	/* Allocates memory for gps_data_t data_ */
 	std::memset(&data_, 0, sizeof(data_));
@@ -73,17 +73,18 @@ std::optional<GPSFix> GPSClient::readFix(void)
 				  << "\n";
 			return std::nullopt;
 		}
-		/* Check for fresh fix */
-		timespec t	= data_.fix.time;
-		double	 fix_ts = t.tv_sec + t.tv_nsec * 1e-9;
-		/* If stale fix, return nullopt */
-		if (fix_ts <= last_ts_) {
-			return std::nullopt;
-		}
-		last_ts_ = fix_ts;
 		/* If GPS reports at least latitude and longitude (and maybe not
 		   altitude), return GPSFix struct */
 		if (data_.fix.mode >= MODE_2D) {
+			/* Check for fresh fix */
+			timespec t	= data_.fix.time;
+			double	 fix_ts = static_cast<double>(t.tv_sec) +
+					static_cast<double>(t.tv_nsec) * 1.0e-9;
+			/* If stale fix, return nullopt */
+			if (fix_ts <= last_ts_) {
+				return std::nullopt;
+			}
+			last_ts_ = fix_ts;
 			return GPSFix{ data_.fix.latitude,
 				       data_.fix.longitude,
 				       data_.fix.track };
