@@ -30,7 +30,9 @@ class Navigator {
 	bool ready_; /* Flag to mark weather navigator is ready to output
 		       instructions */
 	const std::vector<std::pair<double, double> >
-				 &tour_;    /* Referenced tour from Concorde */
+		&tour_; /* Referenced tour from Concorde */
+	const std::vector<std::size_t>
+		&tourOrder_; /* Referenced tour order from Concorde */
 	std::pair<double, double> currPos_; /* Current position of system */
 	std::size_t nextDest_;		 /* Index of next waypoint to visit */
 	std::pair<double, double> dest_; /* Coordinates of next destination */

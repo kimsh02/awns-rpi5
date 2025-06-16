@@ -134,6 +134,12 @@ ConcordeTSPSolver::getTour(void) noexcept
 	return tour_;
 }
 
+/* Getter for tourOrder_ */
+const std::vector<std::size_t> &ConcordeTSPSolver::getTourOrder(void) noexcept
+{
+	return tourOrder_;
+}
+
 /* Read CSV file to load in waypoints */
 bool ConcordeTSPSolver::readCSV(void)
 {
