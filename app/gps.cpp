@@ -101,7 +101,6 @@ std::optional<GPSFix> GPSClient::waitReadFix(void)
 	/* If GPSClient is not connected, return nullopt */
 	if (!connected_)
 		return std::nullopt;
-
 	int tries = max_tries_;
 	/* Try to get GPS fix */
 	while (tries) {
