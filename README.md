@@ -75,8 +75,8 @@ Examples:
 
 ## Concorde TSP Solver
 
-- Concorde is a standalone executable written in C and is considered the world's
-  fastest traveling salesman problem (TSP) solver to date.
+- Concorde is a standalone executable written in C and is considered to be the
+  world's fastest traveling salesman problem (TSP) solver to date.
 
 - The `install.sh` builds and installs Concorde to the system, and the program
   relies on invoking `concorde` to generate the optimal visiting order of
