@@ -104,7 +104,7 @@ Examples:
 - Must have two columns with headers specifying latitude and longitude and in
   that order.
 
-- See `tests/csv` directory for examples.
+- A `tests/csv` directory is included in this repo providing test CSV files.
 
 ### TSP Output
 
@@ -121,7 +121,7 @@ Examples:
 
 ### SOL Output
 
-- The Concorde TSP solver generates a `.sol` that specifies the solved tour
+- The Concorde TSP solver generates a `.sol` file that specifies the solved tour
   order of waypoints and requires a directory to output these files.
 
 - The program will read in the `.sol` file to get the solved tour order.
@@ -138,11 +138,15 @@ Examples:
 
 ### LOG Output
 
-- The program invokes
+- The program in `run` mode optionally provides writing logs to a `.log` file
+  and requires a directory to output these files.
 
-###
+- A `tests/log` directory is included in this repo for convenient use.
 
 ## API
+
+- Simple API that can be incorporated with downstream motor controller.
+
 
 
 
