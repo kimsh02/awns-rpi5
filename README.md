@@ -53,12 +53,46 @@ necessary tools, and then build and install the executable system-wide.
 
 ## Usage
 
-- You should now be able to invoke the program with the command `awns-rpi5`.
+- You should now be able to invoke the program with the command `awns-rpi5 COMMAND`.
+
+- See the help message below.
+
+```
+Usage: awns-rpi5 COMMAND
+
+Autonomous waypoint navigation system for a mobile platform using Raspberry Pi 5
+
+Commands:
+  gpspoll        Poll GPS to get a reading
+  run            Use GPS data to guide platform along a predefined series of static waypoints and output logs
+  solve          Use Concorde TSP to solve directory of CSV waypoint files and output solutions as plotted graphs
+  help           Show this help message and exit
+
+Examples:
+  awns-rpi5 run
+  awns-rpi5 solve
+```
+
+## File Input/Output
+
+- The `awns-rpi5` program invoked with `run` or `solve` will expect the user to
+  provide certain files and/or directories and is explained below.
+
+### CSV File
+
+- The program will read in a series of static waypoints via a CSV file.
+
+-
+
+
 
 ## API
 
 
 
-## Development Notes
+## Development
 
 - This project is compiled using CMake.
+
+- There is a script `concorde-macos-arm.sh` to install the Concorde/Linkern
+  binary on a Silicon chip MacOS computer.
