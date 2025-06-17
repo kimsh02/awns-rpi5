@@ -410,6 +410,13 @@ void Navigator::setupForNavOutput(void)
 	}
 }
 
+/* Destructor */
+Navigator::~Navigator(void)
+{
+	/* Call stop() to properly close open resources */
+	stop();
+}
+
 /* Stop GPS stream connection */
 void Navigator::stop(void)
 {

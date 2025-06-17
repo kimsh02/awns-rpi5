@@ -12,11 +12,11 @@ using json = nlohmann::json;
 class Navigator {
     public:
 	Navigator(int argc, const char **argv) noexcept;
+	~Navigator(void);
 	void		    start(void);
 	void		    setProximityRadius(double) noexcept;
 	void		    setSimulationVelocity(double) noexcept;
 	std::optional<json> getOutput(void);
-	void		    stop(void);
 
     private:
 	static constexpr double earthRadius_{
@@ -53,6 +53,7 @@ class Navigator {
 	[[noreturn]] void solve(void);
 	[[noreturn]] void help(void) noexcept;
 
+	void		      stop(void);
 	std::optional<json>   gpsOutput(void);
 	std::optional<json>   simulationVelocityOutput(void);
 	std::tm		      localTime(void);

@@ -138,8 +138,8 @@ Examples:
 
 ### LOG Output
 
-- The program in `run` mode optionally provides writing logs to a `.log` file
-  and requires a directory to output these files.
+- The program in `run` mode optionally provides writing navigation output to a
+  `.log` file and requires a directory to output these files.
 
 - A `tests/log` directory is included in this repo for convenient use.
 
@@ -154,23 +154,35 @@ Examples:
 
 ### Documentation
 
-- `Navigator(int argc, const char **argv) noexcept;`
-  - @brief Constructor for 'Navigator` object
-  - @param argc The argc from `int main(int argc, const char **argv)`
-  - @param argv The argv from `int main(int argc, const char **argv)`
-  - @return Navigator object
+- `Navigator(int argc, const char **argv)`
+  - @brief Constructor for 'Navigator` object.
+  - @param argc The argc from `int main(int argc, const char **argv)`.
+  - @param argv The argv from `int main(int argc, const char **argv)`.
+  - @return Navigator object.
 
-- `void start(void) noexcept;`
-  - @brief Invoke CLI to setup Navigator
+- `void start(void)`
+  - @brief Invoke CLI to setup Navigator object. Must be called after object
+    initialization.
 
-void		    setProximityRadius(double) noexcept;
-void		    setSimulationVelocity(double) noexcept;
-std::optional<json> getOutput(void);
-void		    stop(void);
+- `void setProximityRadius(double r) noexcept`
+  - @brief Setter for proximity radius for determining arrival at each waypoint.
+  - @param r Proximity radius in meters. Cannot be set to less than 1.0
+    meters (will result in default of 1.0).
 
+- `void setSimulationVelocity(double v) noexcept`
+  - @brief Optional setter for simulated downstream motor controller speed. If
+    set, navigation output is generated based on simulated speed, else
+    navigation output is generated based on GPS position.
+  - @param v Simulated velocity in meters per second.
 
+- `std::optional<json> getOutput(void)`
+  - @brief Spits out downstream controller output in JSON format and prints
+    output to `stdout` and optionally to a `.log` file. Must invoke
+    `start(void)` and `setProximityRadius(double r)` beforehand.
+  - @return `nlohmann::json` object.
 
-
+- `void stop(void)`
+  - @brief Properly stop Navigator object.
 
 ## Development
 
