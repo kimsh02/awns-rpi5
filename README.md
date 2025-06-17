@@ -189,4 +189,4 @@ Examples:
   managed through `CMakeLists.txt`.
 
 - Script `concorde-macos-arm.sh` installs Concorde/Linkern binary on a Silicon
-  chip MacOS machine for local development.
+  chip MacOS machine for local development on a Mac.
