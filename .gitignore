@@ -4,6 +4,5 @@ qsopt-ex
 tests/tsp/*
 tests/sol/*
 tests/graph/*
-tests/log/*
 
 !.placeholder
