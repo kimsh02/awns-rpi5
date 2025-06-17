@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "navigator.hpp"
 
 int main(int argc, const char **argv)
@@ -14,7 +12,7 @@ int main(int argc, const char **argv)
 	/* Set proxmity radius (meters) for determining arrival at each
 	   waypoint */
 	/* Cannot be set to less 1.0 meters (will result to default of 1) */
-	nav.setProximityRadius(10.0);
+	nav.setProximityRadius(20.0);
 
 	/* OPTIONAL: Set simulated downstream motor controller speed
 	   (meters/second) */
@@ -24,7 +22,7 @@ int main(int argc, const char **argv)
 	/* If not set or set to 0 (the default), the navigator will take the GPS
 	   readings to calculate motor instructions */
 	/* Cannot be set to a negative value (will result to default of 0) */
-	nav.setSimulationVelocity(10.0);
+	nav.setSimulationVelocity(20.0);
 
 	/* Spit out downstream controller output */
 	/* Must invoke start and set proximity radius beforehand */
