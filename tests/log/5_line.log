@@ -1,0 +1,4380 @@
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "timestamp": "2025-06-16 19:54:46",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.39919298483754,
+    "longitude": -110.99682470224553
+  },
+  "timestamp": "2025-06-16 19:54:48",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.399356019185824,
+    "longitude": -110.99673466182935
+  },
+  "timestamp": "2025-06-16 19:54:49",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.399682088352556,
+    "longitude": -110.99655458005157
+  },
+  "timestamp": "2025-06-16 19:54:51",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.39984513008447,
+    "longitude": -110.99646453506978
+  },
+  "timestamp": "2025-06-16 19:54:52",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40017120012936,
+    "longitude": -110.99628445183146
+  },
+  "timestamp": "2025-06-16 19:54:54",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.400334241115495,
+    "longitude": -110.99619440677367
+  },
+  "timestamp": "2025-06-16 19:54:55",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40066031151638,
+    "longitude": -110.99601432236307
+  },
+  "timestamp": "2025-06-16 19:54:57",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.400823353091155,
+    "longitude": -110.99592427649236
+  },
+  "timestamp": "2025-06-16 19:54:58",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40114942874136,
+    "longitude": -110.99574418820697
+  },
+  "timestamp": "2025-06-16 19:55:00",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40131247013796,
+    "longitude": -110.99565414194683
+  },
+  "timestamp": "2025-06-16 19:55:01",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40163854205388,
+    "longitude": -110.99547405474817
+  },
+  "timestamp": "2025-06-16 19:55:03",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40180158348065,
+    "longitude": -110.99538400798349
+  },
+  "timestamp": "2025-06-16 19:55:04",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.4021276535278,
+    "longitude": -110.99520392084128
+  },
+  "timestamp": "2025-06-16 19:55:06",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40229069449861,
+    "longitude": -110.99511387384058
+  },
+  "timestamp": "2025-06-16 19:55:07",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.4026167660339,
+    "longitude": -110.99493378490075
+  },
+  "timestamp": "2025-06-16 19:55:09",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.402779807022654,
+    "longitude": -110.99484373740228
+  },
+  "timestamp": "2025-06-16 19:55:10",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.403105879152456,
+    "longitude": -110.99466364715835
+  },
+  "timestamp": "2025-06-16 19:55:12",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40326891998112,
+    "longitude": -110.99457359926038
+  },
+  "timestamp": "2025-06-16 19:55:13",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.403594990411186,
+    "longitude": -110.99439350897944
+  },
+  "timestamp": "2025-06-16 19:55:15",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40375803198237,
+    "longitude": -110.99430346018346
+  },
+  "timestamp": "2025-06-16 19:55:16",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40408410158497,
+    "longitude": -110.99412336938371
+  },
+  "timestamp": "2025-06-16 19:55:18",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.404247142962824,
+    "longitude": -110.9940333202066
+  },
+  "timestamp": "2025-06-16 19:55:19",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.404573213084454,
+    "longitude": -110.99385322814442
+  },
+  "timestamp": "2025-06-16 19:55:21",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.404736254625156,
+    "longitude": -110.99376317838943
+  },
+  "timestamp": "2025-06-16 19:55:22",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.4050623289305,
+    "longitude": -110.99358308304068
+  },
+  "timestamp": "2025-06-16 19:55:24",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.4052253699036,
+    "longitude": -110.99349303311124
+  },
+  "timestamp": "2025-06-16 19:55:25",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40555143903786,
+    "longitude": -110.99331293964269
+  },
+  "timestamp": "2025-06-16 19:55:27",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.4057144802946,
+    "longitude": -110.99322288906865
+  },
+  "timestamp": "2025-06-16 19:55:28",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.406040550168115,
+    "longitude": -110.99304279421591
+  },
+  "timestamp": "2025-06-16 19:55:30",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40620359134645,
+    "longitude": -110.99295274319724
+  },
+  "timestamp": "2025-06-16 19:55:31",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.4065296635292,
+    "longitude": -110.99277264609316
+  },
+  "timestamp": "2025-06-16 19:55:33",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.406692704115784,
+    "longitude": -110.99268259491333
+  },
+  "timestamp": "2025-06-16 19:55:34",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.407018775277905,
+    "longitude": -110.99250249739703
+  },
+  "timestamp": "2025-06-16 19:55:36",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40718181608472,
+    "longitude": -110.99241244560756
+  },
+  "timestamp": "2025-06-16 19:55:37",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.407507886851384,
+    "longitude": -110.99223234733375
+  },
+  "timestamp": "2025-06-16 19:55:39",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.407670928213584,
+    "longitude": -110.99214229474956
+  },
+  "timestamp": "2025-06-16 19:55:40",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40799699834906,
+    "longitude": -110.99196219584837
+  },
+  "timestamp": "2025-06-16 19:55:42",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40816003922223,
+    "longitude": -110.9918721430463
+  },
+  "timestamp": "2025-06-16 19:55:43",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40848610853042,
+    "longitude": -110.99169204362607
+  },
+  "timestamp": "2025-06-16 19:55:45",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40864914938223,
+    "longitude": -110.99160199034776
+  },
+  "timestamp": "2025-06-16 19:55:46",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40897522134375,
+    "longitude": -110.99142188848595
+  },
+  "timestamp": "2025-06-16 19:55:48",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40913826189057,
+    "longitude": -110.99133183488806
+  },
+  "timestamp": "2025-06-16 19:55:49",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40946433266537,
+    "longitude": -110.9911517327057
+  },
+  "timestamp": "2025-06-16 19:55:51",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.409627373263206,
+    "longitude": -110.99106167859156
+  },
+  "timestamp": "2025-06-16 19:55:52",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.409953442661525,
+    "longitude": -110.99088157619343
+  },
+  "timestamp": "2025-06-16 19:55:54",
+  "velocity": 20.0
+}
+{
+  "bearing": 25,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41011648287596,
+    "longitude": -110.99079152180303
+  },
+  "timestamp": "2025-06-16 19:55:55",
+  "velocity": 20.0
+}
+{
+  "bearing": 26,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41044255059556,
+    "longitude": -110.99061141935601
+  },
+  "timestamp": "2025-06-16 19:55:57",
+  "velocity": 20.0
+}
+{
+  "bearing": 26,
+  "destination": {
+    "latitude": 32.410998,
+    "longitude": -110.990288,
+    "waypoint": 2
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41060424022175,
+    "longitude": -110.99051800709356
+  },
+  "timestamp": "2025-06-16 19:55:58",
+  "velocity": 20.0
+}
+[2025-06-16 19:56:00] (System Message) Waypoint reached: [Latitude: 32.4110, Longitude: -110.9903]
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41092760778391,
+    "longitude": -110.99033118861314
+  },
+  "timestamp": "2025-06-16 19:56:00",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41099499821831,
+    "longitude": -110.99013361386369
+  },
+  "timestamp": "2025-06-16 19:56:01",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.4111297726685,
+    "longitude": -110.98973848168896
+  },
+  "timestamp": "2025-06-16 19:56:03",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41119716248146,
+    "longitude": -110.98954090831882
+  },
+  "timestamp": "2025-06-16 19:56:04",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.411331936815564,
+    "longitude": -110.98914577559924
+  },
+  "timestamp": "2025-06-16 19:56:06",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.411399326521114,
+    "longitude": -110.98894820210137
+  },
+  "timestamp": "2025-06-16 19:56:07",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41153410099859,
+    "longitude": -110.98855306807627
+  },
+  "timestamp": "2025-06-16 19:56:09",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41160149090129,
+    "longitude": -110.98835549355783
+  },
+  "timestamp": "2025-06-16 19:56:10",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41173626560083,
+    "longitude": -110.98796035799643
+  },
+  "timestamp": "2025-06-16 19:56:12",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41180365560204,
+    "longitude": -110.98776278274653
+  },
+  "timestamp": "2025-06-16 19:56:13",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41193842999205,
+    "longitude": -110.9873676472074
+  },
+  "timestamp": "2025-06-16 19:56:15",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.412005819714985,
+    "longitude": -110.98717007233074
+  },
+  "timestamp": "2025-06-16 19:56:16",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41214059367694,
+    "longitude": -110.98677493716144
+  },
+  "timestamp": "2025-06-16 19:56:18",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41220798335493,
+    "longitude": -110.9865773619739
+  },
+  "timestamp": "2025-06-16 19:56:19",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.412342757918225,
+    "longitude": -110.98618222415632
+  },
+  "timestamp": "2025-06-16 19:56:21",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41241014799172,
+    "longitude": -110.98598464736665
+  },
+  "timestamp": "2025-06-16 19:56:22",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41254492294176,
+    "longitude": -110.98558950753
+  },
+  "timestamp": "2025-06-16 19:56:24",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41261231295281,
+    "longitude": -110.98539193048077
+  },
+  "timestamp": "2025-06-16 19:56:25",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.4127470868696,
+    "longitude": -110.98499679278814
+  },
+  "timestamp": "2025-06-16 19:56:27",
+  "velocity": 20.0
+}
+{
+  "bearing": 68,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41281447696176,
+    "longitude": -110.98479921505844
+  },
+  "timestamp": "2025-06-16 19:56:28",
+  "velocity": 20.0
+}
+{
+  "bearing": 69,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41294925153973,
+    "longitude": -110.98440407454211
+  },
+  "timestamp": "2025-06-16 19:56:30",
+  "velocity": 20.0
+}
+{
+  "bearing": 69,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.413013720119515,
+    "longitude": -110.9842051340471
+  },
+  "timestamp": "2025-06-16 19:56:31",
+  "velocity": 20.0
+}
+{
+  "bearing": 69,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.413142651774116,
+    "longitude": -110.98380726851173
+  },
+  "timestamp": "2025-06-16 19:56:33",
+  "velocity": 20.0
+}
+{
+  "bearing": 69,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41320712037299,
+    "longitude": -110.9836083275315
+  },
+  "timestamp": "2025-06-16 19:56:34",
+  "velocity": 20.0
+}
+{
+  "bearing": 69,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.413336052748456,
+    "longitude": -110.98321045891879
+  },
+  "timestamp": "2025-06-16 19:56:36",
+  "velocity": 20.0
+}
+{
+  "bearing": 69,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.413400521262496,
+    "longitude": -110.98301151777395
+  },
+  "timestamp": "2025-06-16 19:56:37",
+  "velocity": 20.0
+}
+{
+  "bearing": 69,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.413529453440916,
+    "longitude": -110.98261364891658
+  },
+  "timestamp": "2025-06-16 19:56:39",
+  "velocity": 20.0
+}
+{
+  "bearing": 69,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41359392224978,
+    "longitude": -110.98241470643552
+  },
+  "timestamp": "2025-06-16 19:56:40",
+  "velocity": 20.0
+}
+{
+  "bearing": 69,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41372285455834,
+    "longitude": -110.98201683632385
+  },
+  "timestamp": "2025-06-16 19:56:42",
+  "velocity": 20.0
+}
+{
+  "bearing": 69,
+  "destination": {
+    "latitude": 32.413934,
+    "longitude": -110.981349,
+    "waypoint": 3
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.413787323127224,
+    "longitude": -110.98181789415696
+  },
+  "timestamp": "2025-06-16 19:56:43",
+  "velocity": 20.0
+}
+[2025-06-16 19:56:45] (System Message) Waypoint reached: [Latitude: 32.4139, Longitude: -110.9813]
+{
+  "bearing": 35,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41391625508591,
+    "longitude": -110.98142002427221
+  },
+  "timestamp": "2025-06-16 19:56:45",
+  "velocity": 20.0
+}
+{
+  "bearing": 35,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41406361656375,
+    "longitude": -110.98129779719136
+  },
+  "timestamp": "2025-06-16 19:56:46",
+  "velocity": 20.0
+}
+{
+  "bearing": 35,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41435833029389,
+    "longitude": -110.98105334978544
+  },
+  "timestamp": "2025-06-16 19:56:48",
+  "velocity": 20.0
+}
+{
+  "bearing": 35,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41450569193822,
+    "longitude": -110.98093112196767
+  },
+  "timestamp": "2025-06-16 19:56:49",
+  "velocity": 20.0
+}
+{
+  "bearing": 35,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41480040413487,
+    "longitude": -110.9806866746361
+  },
+  "timestamp": "2025-06-16 19:56:51",
+  "velocity": 20.0
+}
+{
+  "bearing": 35,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41494776494146,
+    "longitude": -110.9805644469144
+  },
+  "timestamp": "2025-06-16 19:56:52",
+  "velocity": 20.0
+}
+{
+  "bearing": 35,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41524247496342,
+    "longitude": -110.98032000018895
+  },
+  "timestamp": "2025-06-16 19:56:54",
+  "velocity": 20.0
+}
+{
+  "bearing": 35,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41538983507399,
+    "longitude": -110.9801977724457
+  },
+  "timestamp": "2025-06-16 19:56:55",
+  "velocity": 20.0
+}
+{
+  "bearing": 35,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41568454467574,
+    "longitude": -110.97995332487119
+  },
+  "timestamp": "2025-06-16 19:56:57",
+  "velocity": 20.0
+}
+{
+  "bearing": 35,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41583190540571,
+    "longitude": -110.97983109601535
+  },
+  "timestamp": "2025-06-16 19:56:58",
+  "velocity": 20.0
+}
+{
+  "bearing": 35,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41612662338618,
+    "longitude": -110.97958664029335
+  },
+  "timestamp": "2025-06-16 19:57:00",
+  "velocity": 20.0
+}
+{
+  "bearing": 35,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41627398470003,
+    "longitude": -110.97946441035435
+  },
+  "timestamp": "2025-06-16 19:57:01",
+  "velocity": 20.0
+}
+{
+  "bearing": 35,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41656869567377,
+    "longitude": -110.97921995924645
+  },
+  "timestamp": "2025-06-16 19:57:03",
+  "velocity": 20.0
+}
+{
+  "bearing": 35,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.416716057906996,
+    "longitude": -110.97909772794594
+  },
+  "timestamp": "2025-06-16 19:57:04",
+  "velocity": 20.0
+}
+{
+  "bearing": 35,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41701076899801,
+    "longitude": -110.97885327554303
+  },
+  "timestamp": "2025-06-16 19:57:06",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41715812954764,
+    "longitude": -110.97873104504015
+  },
+  "timestamp": "2025-06-16 19:57:07",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.4174491943344,
+    "longitude": -110.97848053571965
+  },
+  "timestamp": "2025-06-16 19:57:09",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.4175947318907,
+    "longitude": -110.97835527646714
+  },
+  "timestamp": "2025-06-16 19:57:10",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.417885798159524,
+    "longitude": -110.97810476465872
+  },
+  "timestamp": "2025-06-16 19:57:12",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.418031336427234,
+    "longitude": -110.97797950418772
+  },
+  "timestamp": "2025-06-16 19:57:13",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41832240071256,
+    "longitude": -110.97772899287418
+  },
+  "timestamp": "2025-06-16 19:57:15",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41846793957849,
+    "longitude": -110.97760373128216
+  },
+  "timestamp": "2025-06-16 19:57:16",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41875900424636,
+    "longitude": -110.97735321842708
+  },
+  "timestamp": "2025-06-16 19:57:18",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41890454163271,
+    "longitude": -110.9772279575023
+  },
+  "timestamp": "2025-06-16 19:57:19",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41919560611461,
+    "longitude": -110.97697744359488
+  },
+  "timestamp": "2025-06-16 19:57:21",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41934114332314,
+    "longitude": -110.97685218221693
+  },
+  "timestamp": "2025-06-16 19:57:22",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41963220801501,
+    "longitude": -110.97660166691645
+  },
+  "timestamp": "2025-06-16 19:57:24",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41977774545257,
+    "longitude": -110.9764764047352
+  },
+  "timestamp": "2025-06-16 19:57:25",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.42006880925768,
+    "longitude": -110.97622588898554
+  },
+  "timestamp": "2025-06-16 19:57:27",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.420214349527214,
+    "longitude": -110.97610062376054
+  },
+  "timestamp": "2025-06-16 19:57:28",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.42050541513232,
+    "longitude": -110.97585010524921
+  },
+  "timestamp": "2025-06-16 19:57:30",
+  "velocity": 20.0
+}
+{
+  "bearing": 36,
+  "destination": {
+    "latitude": 32.421053,
+    "longitude": -110.975377,
+    "waypoint": 1
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.42065095318132,
+    "longitude": -110.97572484132922
+  },
+  "timestamp": "2025-06-16 19:57:31",
+  "velocity": 20.0
+}
+[2025-06-16 19:57:33] (System Message) Waypoint reached: [Latitude: 32.4211, Longitude: -110.9754]
+{
+  "bearing": 93,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.42094201845203,
+    "longitude": -110.97547432189327
+  },
+  "timestamp": "2025-06-16 19:57:33",
+  "velocity": 20.0
+}
+{
+  "bearing": 93,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.42093260332271,
+    "longitude": -110.97526150217635
+  },
+  "timestamp": "2025-06-16 19:57:34",
+  "velocity": 20.0
+}
+{
+  "bearing": 93,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.42091377342894,
+    "longitude": -110.97483587916486
+  },
+  "timestamp": "2025-06-16 19:57:36",
+  "velocity": 20.0
+}
+{
+  "bearing": 93,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.420904358317934,
+    "longitude": -110.97462305992838
+  },
+  "timestamp": "2025-06-16 19:57:37",
+  "velocity": 20.0
+}
+{
+  "bearing": 93,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.42088552837239,
+    "longitude": -110.97419743587977
+  },
+  "timestamp": "2025-06-16 19:57:39",
+  "velocity": 20.0
+}
+{
+  "bearing": 93,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.420876113184676,
+    "longitude": -110.97398461497619
+  },
+  "timestamp": "2025-06-16 19:57:40",
+  "velocity": 20.0
+}
+{
+  "bearing": 93,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.420857283284285,
+    "longitude": -110.97355899208185
+  },
+  "timestamp": "2025-06-16 19:57:42",
+  "velocity": 20.0
+}
+{
+  "bearing": 93,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.42084786811838,
+    "longitude": -110.97334617173772
+  },
+  "timestamp": "2025-06-16 19:57:43",
+  "velocity": 20.0
+}
+{
+  "bearing": 93,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.420829038198306,
+    "longitude": -110.97292054853148
+  },
+  "timestamp": "2025-06-16 19:57:45",
+  "velocity": 20.0
+}
+{
+  "bearing": 94,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.420819623156696,
+    "longitude": -110.97270773106357
+  },
+  "timestamp": "2025-06-16 19:57:46",
+  "velocity": 20.0
+}
+{
+  "bearing": 94,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.42079452579273,
+    "longitude": -110.97228256270029
+  },
+  "timestamp": "2025-06-16 19:57:48",
+  "velocity": 20.0
+}
+{
+  "bearing": 94,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.420781976845085,
+    "longitude": -110.97206997102415
+  },
+  "timestamp": "2025-06-16 19:57:49",
+  "velocity": 20.0
+}
+{
+  "bearing": 94,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.42075687943047,
+    "longitude": -110.97164480198046
+  },
+  "timestamp": "2025-06-16 19:57:51",
+  "velocity": 20.0
+}
+{
+  "bearing": 94,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.420744330336454,
+    "longitude": -110.97143220791338
+  },
+  "timestamp": "2025-06-16 19:57:52",
+  "velocity": 20.0
+}
+{
+  "bearing": 94,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.42071923296136,
+    "longitude": -110.97100703971626
+  },
+  "timestamp": "2025-06-16 19:57:54",
+  "velocity": 20.0
+}
+{
+  "bearing": 94,
+  "destination": {
+    "latitude": 32.420671,
+    "longitude": -110.970237,
+    "waypoint": 4
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.420706683918695,
+    "longitude": -110.9707944466079
+  },
+  "timestamp": "2025-06-16 19:57:55",
+  "velocity": 20.0
+}
+[2025-06-16 19:57:57] (System Message) Waypoint reached: [Latitude: 32.4207, Longitude: -110.9702]
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.42068158657289,
+    "longitude": -110.97036927908448
+  },
+  "timestamp": "2025-06-16 19:57:57",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.42055438194599,
+    "longitude": -110.97051997114158
+  },
+  "timestamp": "2025-06-16 19:57:58",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.42029998252295,
+    "longitude": -110.97082134254748
+  },
+  "timestamp": "2025-06-16 19:58:00",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.4201727770789,
+    "longitude": -110.97097203493513
+  },
+  "timestamp": "2025-06-16 19:58:01",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41991837659833,
+    "longitude": -110.97127340631903
+  },
+  "timestamp": "2025-06-16 19:58:03",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41979117102723,
+    "longitude": -110.97142409821981
+  },
+  "timestamp": "2025-06-16 19:58:04",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41953677103428,
+    "longitude": -110.97172546775124
+  },
+  "timestamp": "2025-06-16 19:58:06",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.419409567081196,
+    "longitude": -110.97187615709782
+  },
+  "timestamp": "2025-06-16 19:58:07",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41915516735229,
+    "longitude": -110.97217752504173
+  },
+  "timestamp": "2025-06-16 19:58:09",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.419027963201316,
+    "longitude": -110.9723282139854
+  },
+  "timestamp": "2025-06-16 19:58:10",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41877356333353,
+    "longitude": -110.9726295808191
+  },
+  "timestamp": "2025-06-16 19:58:12",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41864635663914,
+    "longitude": -110.97278027213832
+  },
+  "timestamp": "2025-06-16 19:58:13",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.418391956448815,
+    "longitude": -110.9730816380794
+  },
+  "timestamp": "2025-06-16 19:58:15",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41826474689521,
+    "longitude": -110.97323233214831
+  },
+  "timestamp": "2025-06-16 19:58:16",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41801034692633,
+    "longitude": -110.97353369655241
+  },
+  "timestamp": "2025-06-16 19:58:18",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.417883142450535,
+    "longitude": -110.9736843839687
+  },
+  "timestamp": "2025-06-16 19:58:19",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.417628736826806,
+    "longitude": -110.9739857537968
+  },
+  "timestamp": "2025-06-16 19:58:21",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.417501532614914,
+    "longitude": -110.97413644026312
+  },
+  "timestamp": "2025-06-16 19:58:22",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.4172471316783,
+    "longitude": -110.97443780326427
+  },
+  "timestamp": "2025-06-16 19:58:24",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.417119926086336,
+    "longitude": -110.97458849072808
+  },
+  "timestamp": "2025-06-16 19:58:25",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41686552599524,
+    "longitude": -110.97488985145299
+  },
+  "timestamp": "2025-06-16 19:58:27",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41673831968495,
+    "longitude": -110.97504053913042
+  },
+  "timestamp": "2025-06-16 19:58:28",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.416483915015505,
+    "longitude": -110.97534190400421
+  },
+  "timestamp": "2025-06-16 19:58:30",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41635671046696,
+    "longitude": -110.97549258895737
+  },
+  "timestamp": "2025-06-16 19:58:31",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.416102311068514,
+    "longitude": -110.97579394631265
+  },
+  "timestamp": "2025-06-16 19:58:33",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.415975106962705,
+    "longitude": -110.97594463010404
+  },
+  "timestamp": "2025-06-16 19:58:34",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41572070764694,
+    "longitude": -110.97624598608684
+  },
+  "timestamp": "2025-06-16 19:58:36",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.415595741546966,
+    "longitude": -110.97639927777266
+  },
+  "timestamp": "2025-06-16 19:58:37",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.415345817902804,
+    "longitude": -110.97670584957245
+  },
+  "timestamp": "2025-06-16 19:58:39",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41522084930843,
+    "longitude": -110.97685914368117
+  },
+  "timestamp": "2025-06-16 19:58:40",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41497092829511,
+    "longitude": -110.97716571098005
+  },
+  "timestamp": "2025-06-16 19:58:42",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41484596158891,
+    "longitude": -110.97731900213574
+  },
+  "timestamp": "2025-06-16 19:58:43",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.4145960400943,
+    "longitude": -110.97762556875131
+  },
+  "timestamp": "2025-06-16 19:58:45",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41447107558163,
+    "longitude": -110.97777885657945
+  },
+  "timestamp": "2025-06-16 19:58:46",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41422115429293,
+    "longitude": -110.97808542166877
+  },
+  "timestamp": "2025-06-16 19:58:48",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41409618674923,
+    "longitude": -110.97823871257799
+  },
+  "timestamp": "2025-06-16 19:58:49",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41384625919282,
+    "longitude": -110.97854528408186
+  },
+  "timestamp": "2025-06-16 19:58:51",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41372129402544,
+    "longitude": -110.9786985714394
+  },
+  "timestamp": "2025-06-16 19:58:52",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41347137071953,
+    "longitude": -110.97900513645584
+  },
+  "timestamp": "2025-06-16 19:58:54",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41334640562162,
+    "longitude": -110.97915842309129
+  },
+  "timestamp": "2025-06-16 19:58:55",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41309648435656,
+    "longitude": -110.97946498433078
+  },
+  "timestamp": "2025-06-16 19:58:57",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41297151731513,
+    "longitude": -110.97961827271342
+  },
+  "timestamp": "2025-06-16 19:58:58",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.412721596834594,
+    "longitude": -110.97992483171703
+  },
+  "timestamp": "2025-06-16 19:59:00",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41259663148679,
+    "longitude": -110.98007811738535
+  },
+  "timestamp": "2025-06-16 19:59:01",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41234670843791,
+    "longitude": -110.98038467826575
+  },
+  "timestamp": "2025-06-16 19:59:03",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41222174360627,
+    "longitude": -110.98053796266419
+  },
+  "timestamp": "2025-06-16 19:59:04",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41197182247104,
+    "longitude": -110.98084451992378
+  },
+  "timestamp": "2025-06-16 19:59:06",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41184685815065,
+    "longitude": -110.9809978030583
+  },
+  "timestamp": "2025-06-16 19:59:07",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.411596934620746,
+    "longitude": -110.98130436198176
+  },
+  "timestamp": "2025-06-16 19:59:09",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41147196625604,
+    "longitude": -110.98145764944036
+  },
+  "timestamp": "2025-06-16 19:59:10",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41122204571331,
+    "longitude": -110.98176420342622
+  },
+  "timestamp": "2025-06-16 19:59:12",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.411097078480104,
+    "longitude": -110.98191748886012
+  },
+  "timestamp": "2025-06-16 19:59:13",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41084715541787,
+    "longitude": -110.98222404466293
+  },
+  "timestamp": "2025-06-16 19:59:15",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.41072219096118,
+    "longitude": -110.9823773260544
+  },
+  "timestamp": "2025-06-16 19:59:16",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.410472267780996,
+    "longitude": -110.98268388072847
+  },
+  "timestamp": "2025-06-16 19:59:18",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.410347303116026,
+    "longitude": -110.9828371617387
+  },
+  "timestamp": "2025-06-16 19:59:19",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.410097381379714,
+    "longitude": -110.98314371336835
+  },
+  "timestamp": "2025-06-16 19:59:21",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40997241650422,
+    "longitude": -110.98329699400006
+  },
+  "timestamp": "2025-06-16 19:59:22",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40972249289388,
+    "longitude": -110.98360354665493
+  },
+  "timestamp": "2025-06-16 19:59:24",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.409597528291634,
+    "longitude": -110.98375682631479
+  },
+  "timestamp": "2025-06-16 19:59:25",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40934760742094,
+    "longitude": -110.9840633743359
+  },
+  "timestamp": "2025-06-16 19:59:27",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.409222641298506,
+    "longitude": -110.98421665522369
+  },
+  "timestamp": "2025-06-16 19:59:28",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40897271552725,
+    "longitude": -110.98452320798242
+  },
+  "timestamp": "2025-06-16 19:59:30",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.408847749835246,
+    "longitude": -110.98467648770554
+  },
+  "timestamp": "2025-06-16 19:59:31",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.408597825482374,
+    "longitude": -110.98498303745117
+  },
+  "timestamp": "2025-06-16 19:59:33",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40847286063961,
+    "longitude": -110.98513631549599
+  },
+  "timestamp": "2025-06-16 19:59:34",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.408222939852415,
+    "longitude": -110.9854428595948
+  },
+  "timestamp": "2025-06-16 19:59:36",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40809797561827,
+    "longitude": -110.98559613625645
+  },
+  "timestamp": "2025-06-16 19:59:37",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40784805360711,
+    "longitude": -110.98590268058325
+  },
+  "timestamp": "2025-06-16 19:59:39",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40772307803326,
+    "longitude": -110.98605597051704
+  },
+  "timestamp": "2025-06-16 19:59:40",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40747315665395,
+    "longitude": -110.98636251279555
+  },
+  "timestamp": "2025-06-16 19:59:42",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40734819237595,
+    "longitude": -110.98651578823768
+  },
+  "timestamp": "2025-06-16 19:59:43",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40709827028634,
+    "longitude": -110.9868223301142
+  },
+  "timestamp": "2025-06-16 19:59:45",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40697330462458,
+    "longitude": -110.98697560661697
+  },
+  "timestamp": "2025-06-16 19:59:46",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40672338126492,
+    "longitude": -110.98728214877809
+  },
+  "timestamp": "2025-06-16 19:59:48",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40659841664444,
+    "longitude": -110.98743542336706
+  },
+  "timestamp": "2025-06-16 19:59:49",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40634849100116,
+    "longitude": -110.98774196705591
+  },
+  "timestamp": "2025-06-16 19:59:51",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40622352596899,
+    "longitude": -110.98789524151317
+  },
+  "timestamp": "2025-06-16 19:59:52",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40597360284086,
+    "longitude": -110.98820178084395
+  },
+  "timestamp": "2025-06-16 19:59:54",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40584863848201,
+    "longitude": -110.9883550538388
+  },
+  "timestamp": "2025-06-16 19:59:55",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.405598717714085,
+    "longitude": -110.98866158900165
+  },
+  "timestamp": "2025-06-16 19:59:57",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.405473752256235,
+    "longitude": -110.9888148627079
+  },
+  "timestamp": "2025-06-16 19:59:58",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.405223828026976,
+    "longitude": -110.98912140084303
+  },
+  "timestamp": "2025-06-16 20:00:00",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40509886188194,
+    "longitude": -110.98927467475556
+  },
+  "timestamp": "2025-06-16 20:00:01",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40484893700472,
+    "longitude": -110.9895812124123
+  },
+  "timestamp": "2025-06-16 20:00:03",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40472397168344,
+    "longitude": -110.98973448467791
+  },
+  "timestamp": "2025-06-16 20:00:04",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.404474049284495,
+    "longitude": -110.99004101802194
+  },
+  "timestamp": "2025-06-16 20:00:06",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40434908443738,
+    "longitude": -110.99019428906945
+  },
+  "timestamp": "2025-06-16 20:00:07",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.404099161605885,
+    "longitude": -110.99050082167099
+  },
+  "timestamp": "2025-06-16 20:00:09",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40397419682849,
+    "longitude": -110.99065409199648
+  },
+  "timestamp": "2025-06-16 20:00:10",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40372427407086,
+    "longitude": -110.99096062323446
+  },
+  "timestamp": "2025-06-16 20:00:12",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40359930564709,
+    "longitude": -110.99111389739568
+  },
+  "timestamp": "2025-06-16 20:00:13",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40334938405119,
+    "longitude": -110.99142042593576
+  },
+  "timestamp": "2025-06-16 20:00:15",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.403224418473144,
+    "longitude": -110.99157369597015
+  },
+  "timestamp": "2025-06-16 20:00:16",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.402974493080436,
+    "longitude": -110.99188022789406
+  },
+  "timestamp": "2025-06-16 20:00:18",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40284952769219,
+    "longitude": -110.9920334970592
+  },
+  "timestamp": "2025-06-16 20:00:19",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40259960071706,
+    "longitude": -110.99234002965096
+  },
+  "timestamp": "2025-06-16 20:00:21",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40247463526409,
+    "longitude": -110.99249329825898
+  },
+  "timestamp": "2025-06-16 20:00:22",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.402224711750435,
+    "longitude": -110.99279982533238
+  },
+  "timestamp": "2025-06-16 20:00:24",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40209974594812,
+    "longitude": -110.99295309373235
+  },
+  "timestamp": "2025-06-16 20:00:25",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.401849824074986,
+    "longitude": -110.99325961752078
+  },
+  "timestamp": "2025-06-16 20:00:27",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40172485606303,
+    "longitude": -110.9934128879944
+  },
+  "timestamp": "2025-06-16 20:00:28",
+  "velocity": 20.0
+}
+{
+  "bearing": 225,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.401474930129325,
+    "longitude": -110.99371941549009
+  },
+  "timestamp": "2025-06-16 20:00:30",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.401347725429616,
+    "longitude": -110.99387007556561
+  },
+  "timestamp": "2025-06-16 20:00:31",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40109780274223,
+    "longitude": -110.99417659779937
+  },
+  "timestamp": "2025-06-16 20:00:33",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.400972837099715,
+    "longitude": -110.99432986409022
+  },
+  "timestamp": "2025-06-16 20:00:34",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.400722914104726,
+    "longitude": -110.99463638542841
+  },
+  "timestamp": "2025-06-16 20:00:36",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40059794853856,
+    "longitude": -110.99478965098916
+  },
+  "timestamp": "2025-06-16 20:00:37",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.40034802655938,
+    "longitude": -110.99509616980873
+  },
+  "timestamp": "2025-06-16 20:00:39",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.400223055859,
+    "longitude": -110.99524944102996
+  },
+  "timestamp": "2025-06-16 20:00:40",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.39997313348874,
+    "longitude": -110.99555595905633
+  },
+  "timestamp": "2025-06-16 20:00:42",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.399848167695936,
+    "longitude": -110.99570922362221
+  },
+  "timestamp": "2025-06-16 20:00:43",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.39959824571451,
+    "longitude": -110.99601573989901
+  },
+  "timestamp": "2025-06-16 20:00:45",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.39947327996806,
+    "longitude": -110.99616900377168
+  },
+  "timestamp": "2025-06-16 20:00:46",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.39922335627689,
+    "longitude": -110.99647552087265
+  },
+  "timestamp": "2025-06-16 20:00:48",
+  "velocity": 20.0
+}
+{
+  "bearing": 226,
+  "destination": {
+    "latitude": 32.3988,
+    "longitude": -110.997,
+    "waypoint": 0
+  },
+  "gps_position": {
+    "latitude": 32.398866923,
+    "longitude": -110.997004779
+  },
+  "sim_position": {
+    "latitude": 32.39909839061366,
+    "longitude": -110.99662878400687
+  },
+  "timestamp": "2025-06-16 20:00:49",
+  "velocity": 20.0
+}
+[2025-06-16 20:00:51] (System Message) Waypoint reached: [Latitude: 32.3988, Longitude: -110.9970]
+[2025-06-16 20:00:51] (System Message) Navigation has completed.
