@@ -55,7 +55,7 @@ necessary tools, and then build and install the executable system-wide.
 
 - You should now be able to invoke the program with the command `awns-rpi5 COMMAND`.
 
-- See the help message below.
+- Help message print:
 
 ```
 Usage: awns-rpi5 COMMAND
