@@ -154,7 +154,7 @@ Examples:
 
 ### Documentation
 
-- `Navigator(int argc, const char **argv)`
+- `Navigator(int argc, const char **argv) noexcept`
   - @brief Constructor for 'Navigator` object.
   - @param argc The argc from `int main(int argc, const char **argv)`.
   - @param argv The argv from `int main(int argc, const char **argv)`.
