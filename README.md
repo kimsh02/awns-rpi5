@@ -89,8 +89,8 @@ Examples:
   solutions which are guaranteed only by the `concorde` executable. The full
   build of `concorde` was not achievable for this project as a specific required
   library `qsopt` was determined to be too out-of-date to be refactored in a
-  reasonable amount of time to be compiled with C++23 standards (which is a
-  build requirement for this project).
+  reasonable amount of time to be in compliance with the C++23 standard (which
+  is a build requirement for this project).
 
 ## File Input/Output
 
