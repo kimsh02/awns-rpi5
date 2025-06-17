@@ -102,7 +102,7 @@ std::optional<json> Navigator::simulationVelocityOutput(void)
 	/* If vehicle is in motion, calculate predicted position */
 	if (inMotion_) {
 		/* Update currPos */
-		currPos_ = computeNewPosition(dest_, elapsed.count());
+		currPos_ = computeNewPosition(currPos_, elapsed.count());
 	} else { /* Set vehicle starting point and simulated motion */
 		/* Set 'currPos_' to current GPS position */
 		currPos_.first	= fix.latitude;
@@ -197,23 +197,24 @@ bool Navigator::waypointReached(
 	const std::pair<double, double> &current,
 	const std::pair<double, double> &destination) const noexcept
 {
-	// 1. Convert degrees → radians
+	// 1) convert to radians
 	constexpr double degToRad = std::numbers::pi / 180.0;
-	const double	 lat1	  = current.first * degToRad;
-	const double	 lon1	  = current.second * degToRad;
-	const double	 lat2	  = destination.first * degToRad;
-	const double	 lon2	  = destination.second * degToRad;
-	// 2. Haversine formula
-	const double dLat     = lat2 - lat1;
-	const double dLon     = lon2 - lon1;
-	const double sinDLat2 = std::sin(dLat / 2);
-	const double sinDLon2 = std::sin(dLon / 2);
-	const double a	      = sinDLat2 * sinDLat2 +
-			 std::cos(lat1) * std::cos(lat2) * sinDLon2 * sinDLon2;
-	const double c = 2 * std::asin(std::sqrt(a));
-	// 3. Distance in meters
-	const double distance = earthRadius_ * c;
-	// 4. Compare against your proximity radius
+	double		 φ1	  = current.first * degToRad;
+	double		 λ1	  = current.second * degToRad;
+	double		 φ2	  = destination.first * degToRad;
+	double		 λ2	  = destination.second * degToRad;
+	// 2) haversine “a”
+	double dφ     = φ2 - φ1;
+	double dλ     = λ2 - λ1;
+	double sinDφ2 = std::sin(dφ / 2);
+	double sinDλ2 = std::sin(dλ / 2);
+	double a =
+		sinDφ2 * sinDφ2 + std::cos(φ1) * std::cos(φ2) * sinDλ2 * sinDλ2;
+	a = std::clamp(a, 0.0, 1.0);
+	// 3) central angle c
+	double c = 2 * std::atan2(std::sqrt(a), std::sqrt(1 - a));
+	// 4) distance and compare
+	double distance = earthRadius_ * c;
 	return distance <= proximityRadius_;
 }
 
@@ -245,22 +246,20 @@ std::optional<std::pair<double, double> > Navigator::getDest(void)
 	/* If system has not reached the current destiation, return it */
 	if (!waypointReached(currPos_, tour_[nextDest_])) {
 		return tour_[nextDest_];
-	} else { /* Else get next dest */
-		/* Print destination has been reached */
-		std::ostringstream oss{};
-		oss << "(System Message) Waypoint reached: "
-		    << logCoordinates(tour_[nextDest_]);
-		logPrint(oss.str(), true);
-		/* If nextDest_ is 0, then tour is over and return null */
-		if (!nextDest_) {
-			logPrint("(System Message) Navigation has completed.",
-				 true);
-			return std::nullopt;
-		}
-		/* Else, return next dest */
-		nextDest_ = (nextDest_ + 1) % tour_.size();
-		return tour_[nextDest_];
 	}
+	/* Else get next dest */
+	/* Print destination has been reached */
+	logPrint("(System) Waypoint reached: " +
+			 logCoordinates(tour_[nextDest_]),
+		 true);
+	/* If nextDest_ is 0, then tour is over and return null */
+	if (!nextDest_) {
+		logPrint("(System Message) Navigation has completed.", true);
+		return std::nullopt;
+	}
+	/* Else, return next dest */
+	nextDest_ = (nextDest_ + 1) % tour_.size();
+	return tour_[nextDest_];
 }
 
 /* Helper method to get local time */
