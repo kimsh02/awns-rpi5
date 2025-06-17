@@ -181,12 +181,11 @@ Examples:
     `start(void)` and `setProximityRadius(double r)` beforehand.
   - @return `nlohmann::json` object.
 
-- `void stop(void)`
-  - @brief Properly stop Navigator object.
+- Please see `main.cpp` for example usage of the API.
 
 ## Development
 
 - This project is compiled using CMake.
 
-- There is a script `concorde-macos-arm.sh` to install the Concorde/Linkern
-  binary on a Silicon chip MacOS computer.
+- Script `concorde-macos-arm.sh` installs the Concorde/Linkern binary on a
+  Silicon chip MacOS machine.
