@@ -466,7 +466,7 @@ void Navigator::gpspoll(bool exit)
 }
 
 /* Starting point of Navigator that parses user args */
-void Navigator::start(void) noexcept
+void Navigator::start(void)
 {
 	/* If incorrect number of args passed, default to help */
 	if (argc_ != 2) {
