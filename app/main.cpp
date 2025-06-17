@@ -7,11 +7,13 @@ int main(int argc, const char **argv)
 	/* Instantiate navigator with user args */
 	Navigator nav{ argc, argv };
 	/* Ask navigator to parse args and setup for execution via CLI */
+	/* Must be invoked write after Navigator initialization */
 	nav.start();
 
 	/* Set proxmity radius (meters) for determining arrival at each
 	   waypoint */
-	/* Cannot be set to less 1.0 meters (will result to default of 1) */
+	/* Cannot be set to less than 1.0 meters (will result to default of
+	   1) */
 	nav.setProximityRadius(20.0);
 
 	/* OPTIONAL: Set simulated downstream motor controller speed
@@ -25,10 +27,7 @@ int main(int argc, const char **argv)
 	nav.setSimulationVelocity(20.0);
 
 	/* Spit out downstream controller output */
-	/* Must invoke start and set proximity radius beforehand */
+	/* Must invoke start() and set proximity radius beforehand */
 	for (auto output{ nav.getOutput() }; output; output = nav.getOutput())
 		;
-
-	/* Properly stop navigator before exiting */
-	nav.stop();
 }
