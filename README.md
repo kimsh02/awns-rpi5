@@ -145,7 +145,11 @@ Examples:
 
 ## API
 
-- Simple API that can be incorporated with downstream motor controller.
+- Simple API that can be integrated with development of a downstream motor
+  controller.
+
+- `Navigator{}`
+  - Constructor
 
 
 

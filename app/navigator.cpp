@@ -53,6 +53,8 @@ std::optional<json> Navigator::gpsOutput(void)
 	auto optFix{ gps_.waitReadFix() };
 	/* If can't get GPS reading, return null */
 	if (!optFix) {
+		logPrint("(System Message) GPS signal lost. Ending output.",
+			 true);
 		return std::nullopt;
 	}
 	/* Get current position */
@@ -95,6 +97,8 @@ std::optional<json> Navigator::simulationVelocityOutput(void)
 	auto elapsed{ std::chrono::duration<double>(end - start) };
 	/* If can't get GPS reading, return null */
 	if (!optFix) {
+		logPrint("(System Message) GPS signal lost. Ending output.",
+			 true);
 		return std::nullopt;
 	}
 	/* Init GPS fix */
