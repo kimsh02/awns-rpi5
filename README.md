@@ -183,9 +183,10 @@ Examples:
 
 - Please see `main.cpp` for example usage of the API.
 
-## Development
+## Development Notes
 
-- This project is compiled using CMake.
+- This project is compiled using CMake and its build configuration should be
+  managed through `CMakeLists.txt`.
 
 - Script `concorde-macos-arm.sh` installs Concorde/Linkern binary on a Silicon
-  chip MacOS machine.
+  chip MacOS machine for local development.
