@@ -12,7 +12,7 @@ using json = nlohmann::json;
 class Navigator {
     public:
 	Navigator(int argc, const char **argv) noexcept;
-	void		    start(void) noexcept;
+	void		    start(void);
 	void		    setProximityRadius(double) noexcept;
 	void		    setSimulationVelocity(double) noexcept;
 	std::optional<json> getOutput(void);

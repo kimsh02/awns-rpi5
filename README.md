@@ -148,8 +148,26 @@ Examples:
 - Simple API that can be integrated with development of a downstream motor
   controller.
 
-- `Navigator{}`
-  - Constructor
+### Headers
+
+- `#include "navigator.hpp"
+
+### Documentation
+
+- `Navigator(int argc, const char **argv) noexcept;`
+  - @brief Constructor for 'Navigator` object
+  - @param argc The argc from `int main(int argc, const char **argv)`
+  - @param argv The argv from `int main(int argc, const char **argv)`
+  - @return Navigator object
+
+- `void start(void) noexcept;`
+  - @brief Invoke CLI to setup Navigator
+
+void		    setProximityRadius(double) noexcept;
+void		    setSimulationVelocity(double) noexcept;
+std::optional<json> getOutput(void);
+void		    stop(void);
+
 
 
 
