@@ -188,5 +188,5 @@ Examples:
 - This project is compiled using CMake and its build configuration should be
   managed through `CMakeLists.txt`.
 
-- Script `concorde-macos-arm.sh` installs Concorde/Linkern binary on a Silicon
-  chip MacOS machine for local development on a Mac.
+- Script `concorde-macos-arm.sh` installs Concorde/Linkern binary on an
+  ARM-based MacOS machine for local development if you have a Mac.
