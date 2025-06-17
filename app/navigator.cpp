@@ -249,7 +249,7 @@ std::optional<std::pair<double, double> > Navigator::getDest(void)
 	}
 	/* Else get next dest */
 	/* Print destination has been reached */
-	logPrint("(System) Waypoint reached: " +
+	logPrint("(System Message) Waypoint reached: " +
 			 logCoordinates(tour_[nextDest_]),
 		 true);
 	/* If nextDest_ is 0, then tour is over and return null */
