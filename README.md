@@ -176,9 +176,9 @@ Examples:
   - @param v Simulated velocity in meters per second.
 
 - `std::optional<json> getOutput(void)`
-  - @brief Spits out downstream controller output in JSON format and prints
-    output to `stdout` and optionally to a `.log` file. Must invoke
-    `start(void)` and `setProximityRadius(double r)` beforehand.
+  - @brief Spits out navigation output in JSON format and prints output to
+    `stdout` and optionally to a `.log` file. Must invoke `start(void)` and
+    `setProximityRadius(double r)` beforehand.
   - @return `nlohmann::json` object.
 
 - Please see `main.cpp` for example usage of the API.
