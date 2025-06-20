@@ -191,3 +191,6 @@ Examples:
 
 - Script `concorde-macos-arm.sh` installs Concorde/Linkern binary on an
   ARM-based MacOS machine for local development if you have a Mac.
+
+- Script `dev.sh` is a convenience script that re-pulls from Git and re-installs
+  executable on Raspberry Pi 5.
