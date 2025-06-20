@@ -179,7 +179,8 @@ Examples:
   - @brief Spits out navigation output in JSON format and prints output to
     `stdout` and optionally to a `.log` file. Must invoke `start(void)` and
     `setProximityRadius(double r)` beforehand.
-  - @return `nlohmann::json` object.
+  - @return `nlohmann::json` object. JSON key-value of interest for downstream
+    controller is 'bearing' whose value is reported as degrees from true North.
 
 - Please see `main.cpp` for example usage of the API.
 
