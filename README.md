@@ -194,3 +194,8 @@ Examples:
 
 - Script `dev.sh` is a convenience script that re-pulls from Git and re-installs
   executable on Raspberry Pi 5.
+
+- `.gitlab-ci.yml` configures a CI/CD pipeline on GitLab that replicates the
+  exact build of `awns-rpi5` on a Raspberry PI 5 OS to ensure that the project
+  is building properly without manually having to rebuild on the Raspberry Pi 5
+  every time (which is time consuming).
