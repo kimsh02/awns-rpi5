@@ -3,7 +3,6 @@ concorde
 qsopt-ex
 tests/tsp/*
 tests/sol/*
-tests/graph/*
 
 !.placeholder
 !tests/log/*.log
