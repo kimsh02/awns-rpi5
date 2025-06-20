@@ -189,6 +189,13 @@ Examples:
 - This project is compiled using CMake and its build configuration should be
   managed through `CMakeLists.txt`.
 
+  - There is a 'memory', 'thread', and 'release' version of the build and should
+    be specified through CMake. While 'thread' should not be of interest as this
+    program is single-threaded, 'memory' offers compilation with a
+    memory/address sanitizer (through Clang) for debugging, and 'release' offers
+    a compilation of the software with 'O3' optimization enabled and all other
+    debugging flags disabled.
+
 - Script `concorde-macos-arm.sh` installs Concorde/Linkern binary on an
   ARM-based MacOS machine for local development if you have a Mac.
 
