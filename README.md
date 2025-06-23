@@ -209,4 +209,10 @@ Examples:
 
 ## Artifacts
 
+<<<<<<< HEAD
 - [Test Report](<artifacts/Autonomous Waypoint Navigation System Test Report.docx>)
+=======
+- [Test Report](artifacts/Autonomous Waypoint Navigation System Test Report.docx)
+
+- [System Presentation](artifacts/Presentation1.pptx)
+>>>>>>> e2223f4 (update)
