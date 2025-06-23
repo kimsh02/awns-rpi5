@@ -210,5 +210,3 @@ Examples:
 ## Artifacts
 
 - [Test Report](artifacts/Autonomous Waypoint Navigation System Test Report.docx)
-
-- [System Presentation](artifacts/Presentation1.pptx)
