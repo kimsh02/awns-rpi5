@@ -209,4 +209,4 @@ Examples:
 
 ## Artifacts
 
-- [Test Report](artifacts/Autonomous Waypoint Navigation System Test Report.docx)
+- [Test Report](<artifacts/Autonomous Waypoint Navigation System Test Report.docx>)
