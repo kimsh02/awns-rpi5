@@ -205,4 +205,10 @@ Examples:
 - `.gitlab-ci.yml` configures a CI/CD pipeline on GitLab that replicates the
   exact build of `awns-rpi5` on a Raspberry PI 5 OS to ensure that the project
   is building properly without manually having to rebuild on the Raspberry Pi 5
-  every time (which can be time consuming).
+  every time (which is time consuming).
+
+## Artifacts
+
+- [Test Report](artifacts/Autonomous Waypoint Navigation System Test Report.docx)
+
+- [System Presentation](artifacts/Presentation1.pptx)
