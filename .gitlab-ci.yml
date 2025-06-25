@@ -37,7 +37,7 @@ run:
     # Ensure the executable has the necessary permissions
     - chmod +x app/build/awns-rpi5
     # Provide directory paths required by the executable via standard input to
-    # run solver for CSV test suite
+    # run waypoint route solver for CSV test suite
     - |
       printf "tests/csv\ntests/tsp\ntests/sol\ntests/graph\n" \
       | ./app/build/awns-rpi5 solve
