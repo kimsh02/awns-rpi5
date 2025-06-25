@@ -24,6 +24,7 @@ run:
   dependencies:
     - build
   script:
+    - chmod +x app/build/awns-rpi5
     # pipe the four directory names (each on its own line)
     - printf "tests/csv\ntests/tsp\ntests/sol\ntests/graph\n" \
-      | awns-rpi5 solve
+      | ./app/build/awns-rpi5 solve
