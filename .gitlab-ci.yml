@@ -17,3 +17,12 @@ build:
     paths:
       - app/build/awns-rpi5
     expire_in: 1 week
+
+run:
+  stage: run
+  dependencies:
+    - build
+  script:
+    # pipe the four directory names (each on its own line)
+    - printf "tests/csv\ntests/tsp\ntests/sol\ntests/graph\n" \
+      | awns-rpi5 solve
