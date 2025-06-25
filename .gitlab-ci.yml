@@ -1,30 +1,43 @@
+# Raspberry Pi 5 OS Lite
 image: debian:bookworm
 
+# Define pipeline stages
 stages:
   - build
   - run
 
+# Global variables for CMake build configuration
 variables:
   CMAKE_BUILD_TYPE: Release
 
+# Common setup tasks performed before all stages
 before_script:
   - apt-get update && apt-get install -y build-essential cmake libgps-dev git
 
+# Build Stage: Compiles and prepares the executable
 build:
   stage: build
   script:
+    # Execute installation script (clone/build/install Concorde libraries and
+    # executable, install Python libraries and script, build/install Navigation
+    # System executable)
     - ./scripts/install.sh
   artifacts:
+    # Store compiled binary as an artifact for later stages
     paths:
       - app/build/awns-rpi5
     expire_in: 1 week
 
+# Run Stage: Executes tests using the built executable
 run:
   stage: run
   dependencies:
     - build
   script:
+    # Ensure the executable has the necessary permissions
     - chmod +x app/build/awns-rpi5
-    # pipe the four directory names (each on its own line)
-    - printf "tests/csv\ntests/tsp\ntests/sol\ntests/graph\n" \
+    # Provide directory paths required by the executable via standard input to
+    # run solver for CSV test suite
+    - |
+      printf "tests/csv\ntests/tsp\ntests/sol\ntests/graph\n" \
       | ./app/build/awns-rpi5 solve
