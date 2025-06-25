@@ -1,19 +1,15 @@
 # Raspberry Pi 5 OS Lite
 image: debian:bookworm
-
 # Define pipeline stages
 stages:
   - build
   - run
-
 # Global variables for CMake build configuration
 variables:
   CMAKE_BUILD_TYPE: Release
-
 # Common setup tasks performed before all stages
 before_script:
   - apt-get update && apt-get install -y build-essential cmake libgps-dev git
-
 # Build Stage: Compiles and prepares the executable
 build:
   stage: build
@@ -27,7 +23,6 @@ build:
     paths:
       - app/build/awns-rpi5
     expire_in: 1 week
-
 # Run Stage: Executes tests using the built executable
 run:
   stage: run
