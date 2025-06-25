@@ -2,6 +2,7 @@ image: debian:bookworm
 
 stages:
   - build
+  - run
 
 variables:
   CMAKE_BUILD_TYPE: Release
