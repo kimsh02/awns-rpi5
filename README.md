@@ -209,7 +209,6 @@ Examples:
 
 ## Artifacts
 
-- [Test Report Documentation](<artifacts/Autonomous Waypoint Navigation System
-  Test Report.docx>)
+- [Test Report Documentation](<artifacts/Autonomous Waypoint Navigation System Test Report.docx>)
 
-- [Software PowerPoint Presentation](<artifacts/presentation.pptx>)
+- [PowerPoint Presentation](<artifacts/presentation.pptx>)
